@@ -1,5 +1,3 @@
-//公告展示
-function gonggao() {
 
 //页面动态样式
 $(function () {
@@ -87,16 +85,31 @@ $(function () {
     })
 });
 
-
-
-
-
 //错误提示
 function error(th, te) {
     th.parent().addClass("record-inout-error");
     th.parent().nextAll(".ziroom-record-error").text(te);
 }
 
+var time = 60;
+
+//倒计时
+function getRandomCode() {
+    $('#registerSendHook').addClass("disabled");
+    $('#registerSendHook').css("disabled", "disabled ");
+    if (time === 0) {
+        time = 60;
+        $('#registerSendHook').removeClass("disabled");
+        $('#registerSendHook').remove("disabled", " ");
+        return;
+    } else {
+        time--;
+        $('#registerSendHook').text("重新获取");
+    }
+    setTimeout(function () {
+        getRandomCode();
+    }, 1000);
+}
 
 var code_z;
 //后台操作
@@ -144,7 +157,65 @@ $(function () {
         $("#ok_login a:eq(0)").text(s);
     }
     gonggao();
+    //登录
+    $("#loginAccontSubmitHook").click(function () {
+        //账号
+        var username = $("#accontUserHook");
+        //密码
+        var password = $("#accontPsdHook");
+        var non_empty = true;
+        if (username.val().trim() == "") {
+            error(username, "请输入账号");
+            non_empty = false;
+        }
+        if (password.val().trim() == "") {
+            error(password, "请输入密码");
+            non_empty = false;
+        }
+        //如果等于true 说明不是空
+        if (non_empty) {
+            var zz = true;
+            //在进行校验正则
+            var mobReg = /^1[34578]\d{9}$/;  //手机号
+            if (!mobReg.test(username.val())) {
+                error(username, "请输入正确的格式的账号");
+                zz = false;
+            }
+            var mobReg2 = /^[0-9a-zA-Z_]{6,15}$/;
+            if (!(mobReg2).test(password.val())) {
+                error(password, "请输入6-16位的密码");
+                zz = false;
+            }
+            //如果格式正确
+            if (zz) {
+                $.ajax({
+                    type: "POST",//方法类型
+                    url: "/dataBase/login",
+                    data: {"username": username.val(), "password": password.val()},
+                    success: function (result) {
+                        if (result.code == 0) {
+                            localStorage.setItem("accessToken", result.data.accessToken);
+                            localStorage.setItem("id", result.data.user.id);
+                            $("#ok_login").css("display", "");
+                            $("#loginEntyWrapper").css("display", "none");
+                            $("#ziroomRecordHook").css("display", "none");
+                            localStorage.setItem("name", result.data.user.userName);
+                            $("#ok_login a:eq(0)").text(result.data.user.userName);
+                        }
+                        else {
+                            $("#asnycErrorWrapperHook").css("display", "");
+                            $("#asnycErrorWrapperHook i").text(" " + result.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("登录异常！");
+                    }
+                });
+            }
+        }
+        return false;
 
+    });
     //退出
     $("#zRegister2").click(function () {
         cc = localStorage.getItem("accessToken");
@@ -265,5 +336,5 @@ function register_user() {
         }
     });
 
-}
+
 }

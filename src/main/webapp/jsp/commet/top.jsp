@@ -10,6 +10,7 @@
 <head>
     <title>Title</title>
 </head>
+<link href="/static/css/index.css" rel="stylesheet">
 <script src="/static/js/index.js"></script>
 <body>
 <!--登录/注册-->
@@ -60,8 +61,8 @@
                             <div class="ziroom-record-btn" id="loginAccontSubmitHook">登录</div>
                         </div>
                         <div class="ziroom-login-confrim"><span>登录即代表同意</span><a
-                                href="/jsp/gd_fw.jsp" target="_blank">《国大用户协议》</a><span>及</span><a
-                                href="/jsp/gd_ys.jsp" target="_blank">《国大隐私政策》</a>
+                                href="/jsp/gd_fw.jsp" target="_blank">《猿宝典用户协议》</a><span>及</span><a
+                                href="/jsp/gd_ys.jsp" target="_blank">《猿宝典隐私政策》</a>
                         </div>
                     </div>
                 </div>
@@ -152,18 +153,6 @@
         </div>
     </div>
 </header>
-<script>
-    //个人中心
-    $("#urlgeren").click(function () {
-        var id = localStorage.getItem("id");
-        $("#urlgeren").attr("href", "/jsp/personalCenter/myProfile/myProfile.jsp?userid=" + id);
-    })
 
-    //我想卖房
-    function maifang() {
-        alert("请联系经纪人！");
-    }
-
-</script>
 </body>
 </html>

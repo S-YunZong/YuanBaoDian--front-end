@@ -10,8 +10,6 @@
 <head>
     <title>Title</title>
     <script src="/static/js/jquery-3.2.1.js"></script>
-    <link href="/static/css/index.css" rel="stylesheet">
-    <script src="/static/js/index.js"></script>
     <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
