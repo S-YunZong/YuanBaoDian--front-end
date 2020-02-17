@@ -56,7 +56,6 @@ $(function () {
         $("#switchHook div").removeClass("record-inout-error");
         $("#switchHook div").removeClass("record-inout-foucs");
         $("#switchHook .ziroom-record-error").text("");
-        /*清除完成*/
 
         //关闭登录
         $("#switchHook").css("display", "none");
@@ -128,7 +127,7 @@ $(function () {
         }
         $.ajax({
             type: "POST",//方法类型
-            url: "/shouji/fasong",
+            url: "/user/fasong",
             data: {
                 "tel": tel.val()
             },
@@ -156,7 +155,7 @@ $(function () {
         }
         $("#ok_login a:eq(0)").text(s);
     }
-    gonggao();
+
     //登录
     $("#loginAccontSubmitHook").click(function () {
         //账号
@@ -259,15 +258,15 @@ $(function () {
             return false;
         }
         //校验验证码
-        if (yzm.val().trim() == "") {
+        /*if (yzm.val().trim() == "") {
             error(yzm, "请输入短信验证码");
             return false;
         }
         if (yzm.val() != code_z) {
             error(yzm, "验证码有误");
             return false;
-        }
-        //J校验密码
+        }*/
+        //校验密码
         if (password.val().trim() == "") {
             error(password, "请输入密码");
             return false;
@@ -285,7 +284,7 @@ $(function () {
         }
         $.ajax({
             type: "POST",//方法类型
-            url: "/user/getuser",
+            url: "/user/zhuce",
             data: {"username": $("#registerUserHook").val()},
             success: function (result) {
                 alert(result)

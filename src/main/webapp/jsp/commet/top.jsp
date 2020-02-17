@@ -5,6 +5,7 @@
   Time: 17:16
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -92,7 +93,6 @@
                             <div class="ziroom-record-input">
                                 <input type="text" placeholder="请输入验证码" id="registerSendCodeHook"/>
                             </div>
-                            <!--<button id="registerSendHook" class="record-send disabled" disabled="disabled">重新获取 50</button>-->
                             <button id="registerSendHook" class="record-send">获取验证码</button>
                             <div class="ziroom-record-error"></div>
                         </div>
