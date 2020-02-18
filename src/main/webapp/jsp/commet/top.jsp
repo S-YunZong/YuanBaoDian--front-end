@@ -127,15 +127,15 @@
             <h1 class="Z_logo_box">
                 <a href="#">
                     <!-- 首页logo 区别于其他页面logo -->
-                    <img class="Z_logo" style="margin-top: -5px;margin-left: -10px;height: 50px" id="Z_logo"
-                         src="/static/image/timg.gif" alt="">
+                    <img class="Z_logo" style="margin-top: -8px;height: 50px;width: 300px" id="Z_logo"
+                         src="/static/image/北工商.jpg" alt="">
                 </a>
             </h1>
 
             <!-- 顶部导航 -->
             <ul class="Z_nav_box" onclick="daohang()">
                 <li><a href="/jsp/index.jsp" class="ani active">首页</a></li>
-                <li><a href="/jsp/zuFang/chuzufang.jsp" class="ani ">模拟考试</a></li>
+                <li><a href="/jsp/exam/practiceTest.jsp" class="ani ">模拟考试</a></li>
                 <li><a href="/jsp/Training/Training.jsp" class="ani ">培训机构</a></li>
                 <li><a href="/jsp/PointsGift/PointsGift.jsp" class="ani ">积分礼物</a></li>
                 <li><a href="/jsp/404.jsp" class="ani ">学术分享</a></li>

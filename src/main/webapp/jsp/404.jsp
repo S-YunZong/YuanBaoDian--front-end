@@ -199,33 +199,58 @@
     </style>
 </head>
 <body>
-<div class="error">
-    <div class="container-floud">
-        <div style="text-align: center">
-            <div class="container-error-404">
-                <div class="clip">
-                    <div class="shadow">
-                        <span style="background-color: #ff961e" class="digit thirdDigit">3</span>
-                    </div>
-                </div>
-                <div class="clip">
-                    <div class="shadow">
-                        <span style="background-color: #ff961e" class="digit secondDigit">0</span>
-                    </div>
-                </div>
-                <div class="clip">
-                    <div class="shadow">
-                        <span style="background-color: #ff961e" class="digit firstDigit">3</span>
-                    </div>
-                </div>
-                <div class="msg">OH!
-                    <span class="triangle"></span>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <!-- Header  头部 -->
+                    <%@include file="/jsp/commet/top.jsp" %>
                 </div>
             </div>
-            <h2 class="h1">很抱歉，该功能还未开放！！!</h2>
+            <div class="row clearfix"  style="margin: 60px 0px">
+                <div class="col-md-12 column">
+                    <div class="error">
+                        <div class="container-floud">
+                            <div style="text-align: center">
+                                <div class="container-error-404">
+                                    <div class="clip">
+                                        <div class="shadow">
+                                            <span style="background-color: #ff961e" class="digit thirdDigit">3</span>
+                                        </div>
+                                    </div>
+                                    <div class="clip">
+                                        <div class="shadow">
+                                            <span style="background-color: #ff961e" class="digit secondDigit">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="clip">
+                                        <div class="shadow">
+                                            <span style="background-color: #ff961e" class="digit firstDigit">3</span>
+                                        </div>
+                                    </div>
+                                    <div class="msg">OH!
+                                        <span class="triangle"></span>
+                                    </div>
+                                </div>
+                                <h2 class="h1">很抱歉，该功能还未开放！！!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <!-- 尾部 -->
+                    <%@include file="/jsp/commet/bottom.jsp" %>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
 <script src="/static/layui/layui.js" charset="utf-8"></script>
 <script>
     function randomNum() {
