@@ -159,12 +159,12 @@ $(function () {
     //登录
     $("#loginAccontSubmitHook").click(function () {
         //账号
-        var username = $("#accontUserHook");
+        var phone = $("#accontUserHook");
         //密码
         var password = $("#accontPsdHook");
         var non_empty = true;
-        if (username.val().trim() == "") {
-            error(username, "请输入账号");
+        if (phone.val().trim() == "") {
+            error(phone, "请输入账号");
             non_empty = false;
         }
         if (password.val().trim() == "") {
@@ -176,8 +176,8 @@ $(function () {
             var zz = true;
             //在进行校验正则
             var mobReg = /^1[34578]\d{9}$/;  //手机号
-            if (!mobReg.test(username.val())) {
-                error(username, "请输入正确的格式的账号");
+            if (!mobReg.test(phone.val())) {
+                error(phone, "请输入正确的格式的账号");
                 zz = false;
             }
             var mobReg2 = /^[0-9a-zA-Z_]{6,15}$/;
@@ -189,10 +189,13 @@ $(function () {
             if (zz) {
                 $.ajax({
                     type: "POST",//方法类型
-                    url: "/dataBase/login",
-                    data: {"username": username.val(), "password": password.val()},
+                    url: "/user/login",
+                    data: {"phone": phone.val(), "password": password.val()},
                     success: function (result) {
-                        if (result.code == 0) {
+                        if (result!=null){
+                            alert("登陆成功")
+                        }
+                      /*  if (result.code == 0) {
                             localStorage.setItem("accessToken", result.data.accessToken);
                             localStorage.setItem("id", result.data.user.id);
                             $("#ok_login").css("display", "");
@@ -204,7 +207,7 @@ $(function () {
                         else {
                             $("#asnycErrorWrapperHook").css("display", "");
                             $("#asnycErrorWrapperHook i").text(" " + result.msg);
-                        }
+                        }*/
                     },
                     error: function () {
                         alert("登录异常！");

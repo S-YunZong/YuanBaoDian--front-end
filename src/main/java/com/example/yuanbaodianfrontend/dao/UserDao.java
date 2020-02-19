@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface UserDao {
     boolean zhuce (@Param("tel") String tel, @Param("password") String password);
 
+    boolean login(@Param("phone")String phone ,@Param("password") String password);
+
 }

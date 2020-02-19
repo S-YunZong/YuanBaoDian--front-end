@@ -28,4 +28,14 @@ public class UserController {
         boolean zhuce = userService.zhuce(tel, password);
         return true;
     }
+
+    @RequestMapping("login")
+    @ResponseBody
+    public  boolean login(String phone,String password){
+        boolean login = userService.login(phone, password);
+            if (login==false){
+                return  false;
+            }
+        return true;
+    }
 }

@@ -15,4 +15,9 @@ public class UserServiceImpl implements UserService {
 
         return userDao.zhuce(tel,password);
     }
+
+    @Override
+    public boolean login(String phone, String password) {
+        return userDao.login(phone,password);
+    }
 }
