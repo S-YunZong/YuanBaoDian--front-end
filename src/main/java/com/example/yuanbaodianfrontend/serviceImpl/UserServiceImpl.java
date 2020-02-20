@@ -2,6 +2,7 @@ package com.example.yuanbaodianfrontend.serviceImpl;
 
 import com.example.yuanbaodianfrontend.dao.UserDao;
 import com.example.yuanbaodianfrontend.pojo.YbdGoodnews;
+import com.example.yuanbaodianfrontend.pojo.YbdUser;
 import com.example.yuanbaodianfrontend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean login(String phone, String password) {
+    public YbdUser login(String phone, String password) {
         return userDao.login(phone,password);
     }
 

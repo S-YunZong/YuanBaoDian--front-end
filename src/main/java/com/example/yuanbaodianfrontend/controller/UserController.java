@@ -1,6 +1,7 @@
 package com.example.yuanbaodianfrontend.controller;
 
 import com.example.yuanbaodianfrontend.pojo.YbdGoodnews;
+import com.example.yuanbaodianfrontend.pojo.YbdUser;
 import com.example.yuanbaodianfrontend.service.UserService;
 import com.example.yuanbaodianfrontend.utils.SendSMSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +34,14 @@ public class UserController {
 
     @RequestMapping("login")
     @ResponseBody
-    public  boolean login(String phone,String password){
-        boolean login = userService.login(phone, password);
-            if (login==false){
-                return  false;
+    public boolean login(String phone, String password,HttpSession session){
+        YbdUser login = userService.login(phone, password);
+            if (login!=null){
+                session.setAttribute("user_session",login);
+                return true;
+            }else {
+                return false;
             }
-        return true;
     }
 
 }

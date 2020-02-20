@@ -4,7 +4,7 @@
     <insert id="zhuce">
         insert into ybd_user (phone,password,sex,position) values (#{tel},#{password},'0','学生');
     </insert>
-    <select id="login" resultType="boolean">
+    <select id="login" resultType="YbdUser">
         select * from ybd_user where phone=#{phone} and password=#{password}
     </select>
 </mapper>
