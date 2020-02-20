@@ -157,45 +157,9 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="xibao">
-                <img src="${pageContext.request.contextPath}/static/images/Bann01.jpg" width="900px;">
-                <h3>学生喜报</h3>
+            <div class="tab-pane fade" id="xibao" style="font-size: 15px;font-family: 黑体;">
                 <br><br>
-                <img src="${pageContext.request.contextPath}/static/images/4.jpeg" width="250px" style="float: left">
-                <div >
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">姓名:田雨</span> <br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px; color: red" >职位:大数据</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">班级:大数据学院</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">单位名称：北京众知科技有限公司</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">工资：7000元/月+五险一金+食宿</span>
-                </div>
-                <br><br><br><br>
-                <img src="${pageContext.request.contextPath}/static/images/4.jpeg" width="250px" style="float: left">
-                <div >
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">姓名:田雨</span> <br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px; color: red" >职位:大数据</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">班级:大数据学院</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">单位名称：北京众知科技有限公司</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">工资：7000元/月+五险一金+食宿</span>
-                </div>
-                <br><br><br><br>
-                <img src="${pageContext.request.contextPath}/static/images/4.jpeg" width="250px" style="float: left">
-                <div >
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">姓名:田雨</span> <br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px; color: red" >职位:大数据</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">班级:大数据学院</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">单位名称：北京众知科技有限公司</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">工资：7000元/月+五险一金+食宿</span>
-                </div>
-                <br><br><br><br>
-                <img src="${pageContext.request.contextPath}/static/images/4.jpeg" width="250px" style="float: left">
-                <div >
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">姓名:田雨</span> <br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px; color: red" >职位:大数据</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">班级:大数据学院</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">单位名称：北京众知科技有限公司</span><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 20px;">工资：7000元/月+五险一金+食宿</span>
-                </div>
+
             </div>
             <div class="tab-pane fade" id="fangxiang">
                 <img src="${pageContext.request.contextPath}/static/images/Bann01.jpg" width="900px;">
