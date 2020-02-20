@@ -3,15 +3,15 @@ package com.example.yuanbaodianfrontend.pojo;
 
 public class YbdUser {
 
-  private Integer id;
-  private String userName;
-  private String password;
-  private Integer sex;
-  private String phone;
-  private String email;
-  private Integer integral;
-  private Integer quantization_Integral;
-  private String position;
+  private Integer id; //主键
+  private String userName;//姓名
+  private String password;//密码
+  private Integer sex;//性别
+  private String phone;//电话
+  private String email;//邮箱
+  private Integer integral;//积分
+  private Integer quantization_Integral;//量化积分
+  private String position;//职位
 
   public Integer getId() {
     return id;

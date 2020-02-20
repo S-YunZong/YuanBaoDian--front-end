@@ -220,21 +220,25 @@ $(function () {
     });
     //退出
     $("#zRegister2").click(function () {
-        cc = localStorage.getItem("accessToken");
-        var id = localStorage.getItem("id");
+       // cc = localStorage.getItem("accessToken");
+       // var id = localStorage.getItem("id");
         $.ajax({
             type: "POST",//方法类型
-            url: "/dataBase/logout",
+            url: "/user/LoginOut",
             data: {
-                "accessToken": cc,
-                userid: id
+               // "accessToken": cc,
+               // userid: id
             },
             success: function (result) {
-                if (result.code == 0) {
+               /* if (result.code == 0) {
                     localStorage.removeItem("accessToken");
                     window.location.reload();
                 }
-                console.log(result);
+                console.log(result);*/
+               if (result){
+                   alert("退出成功！");
+                   location.href="/jsp/index.jsp";
+               }
             },
             error: function () {
                 alert("退出异常！");

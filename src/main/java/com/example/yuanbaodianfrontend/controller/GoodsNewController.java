@@ -14,7 +14,7 @@ import java.util.List;
 public class GoodsNewController {
     @Autowired
     private GoodsNewService goodsNewService;
-
+    //就业喜报
     @RequestMapping("GoodsNew")
     @ResponseBody
     public List<YbdGoodnews> GoodsNew(){

@@ -5,18 +5,18 @@ import javax.xml.crypto.Data;
 
 public class YbdGoodnews {
 
-  private Integer id;
-  private String userName;
-  private Integer sex;
-  private Integer age;
-  private String email;
-  private String phone;
-  private Data entrytime;
-  private String entrycompany;
-  private String salary;
-  private String treatment;
-  private Integer disabled;
-  private String personalPic;
+  private Integer id;//主键
+  private String userName;//姓名
+  private Integer sex;//性别
+  private Integer age;//年龄
+  private String email;//邮箱
+  private String phone;//手机号
+  private Data entrytime;//入职时间
+  private String entrycompany;//入职公司
+  private String salary;//薪资
+  private String treatment;//待遇
+  private Integer disabled;//
+  private String personalPic;//个人照片
 
   public Integer getId() {
     return id;

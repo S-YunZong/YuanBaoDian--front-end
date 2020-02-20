@@ -17,6 +17,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+    //发送验证码
     @RequestMapping("fasong")
     @ResponseBody
     public boolean fasong(String tel, HttpSession session){
@@ -25,13 +26,14 @@ public class UserController {
         boolean sendMSM = SendSMSUtils.sendMSM(tel,String.valueOf(code));
         return true;
     }
+    //注册
     @ResponseBody
     @RequestMapping("zhuce")
     public boolean zhuce(String tel,String password){
         boolean zhuce = userService.zhuce(tel, password);
         return true;
     }
-
+    //登陆
     @RequestMapping("login")
     @ResponseBody
     public boolean login(String phone, String password,HttpSession session){
@@ -43,5 +45,11 @@ public class UserController {
                 return false;
             }
     }
-
+    //退出
+    @RequestMapping("LoginOut")
+    @ResponseBody
+    public boolean LoginOut(HttpSession session){
+        session.removeAttribute("LoginOut");
+        return true;
+    }
 }
