@@ -194,20 +194,17 @@ $(function () {
                     success: function (result) {
                         if (result!=null){
                             alert("登陆成功")
-                        }
-                      /*  if (result.code == 0) {
-                            localStorage.setItem("accessToken", result.data.accessToken);
-                            localStorage.setItem("id", result.data.user.id);
                             $("#ok_login").css("display", "");
                             $("#loginEntyWrapper").css("display", "none");
                             $("#ziroomRecordHook").css("display", "none");
-                            localStorage.setItem("name", result.data.user.userName);
-                            $("#ok_login a:eq(0)").text(result.data.user.userName);
+
+
+                           /* $("#ok_login a:eq(0)").text();*/
                         }
                         else {
                             $("#asnycErrorWrapperHook").css("display", "");
-                            $("#asnycErrorWrapperHook i").text(" " + result.msg);
-                        }*/
+                            $("#asnycErrorWrapperHook i").text("&nbsp;账号或密码错误！");
+                        }
                     },
                     error: function () {
                         alert("登录异常！");

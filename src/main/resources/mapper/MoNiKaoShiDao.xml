@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yuanbaodianfrontend.dao.MoNiKaoShiDao">
+    <!--//查看题目类型
+    List<YbdQuestionType> selYbdQuestionType(); -->
+    <select id="selYbdQuestionType" resultType="YbdQuestionType">
+        select * from ybd_question_type
+    </select>
+    <!--//题库
+    List<YbdQuestionBack> listYbdQuestionBack(int questionTypeId);-->
+    <select id="listYbdQuestionBack" resultType="YbdQuestionBack" resultMap="OptionMap">
+      select ybd_question_back.* ,ybd_user.user_name
+      from ybd_question_back,ybd_user
+      where question_type_id=#{questionTypeId}
+      and ybd_question_back.create_user=ybd_user.id
+    </select>
+    <resultMap id="OptionMap" type="YbdQuestionBack">
+        <id property="id" column="id"></id>
+        <collection property="optionList" column="id" select="seldaan" ofType="YbdQuestionBackOption">
+        </collection>
+    </resultMap>
+    <select id="seldaan" resultType="YbdQuestionBackOption">
+      select * from ybd_question_back_option where question_back_id=#{id}
+    </select>
+</mapper>
+
+

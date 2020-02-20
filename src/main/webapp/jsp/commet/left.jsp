@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="c" style="border: #0C0C0C solid 1px;height: 600px;text-align: center;">
-    <div class="a" style="height: 70px;border: #0C0C0C solid 1px;margin: 5px" onclick="zonghe()">
+    <%--<div class="a" style="height: 70px;border: #0C0C0C solid 1px;margin: 5px" onclick="zonghe()">
         <h3>综合答题</h3>
     </div>
     <div class="a"  style="height: 70px;border: #0C0C0C solid 1px;margin: 5px" onclick="chuagguan()">
@@ -36,7 +36,48 @@
         <div style="margin: -30px 180px">
             <i class="iconfont iconsuo2"></i>
         </div>
-    </div>
+    </div>--%>
 </div>
 </body>
+<script>
+    $(function () {
+        timutype()
+    })
+    function timutype() {
+        $.ajax({
+            url:"/user/selYbdQuestionType",
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                var m="";
+                $(data).each(function (a,b) {
+
+                    if(b.questionTypeName=="综合答题"){
+                        var mm="zonghe";
+                    }
+                    if(b.questionTypeName=="闯关答题"){
+                        var mm="chuangguan";
+                    }
+                    if(b.questionTypeName=="真题题库"){
+                        var mm="zhenti";
+                    }
+
+                    m+="<div class=\"a\" style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'"+mm+"()\'>\n" +
+                        "        <h3>"+b.questionTypeName+"</h3>\n" +
+                        "    </div>"
+                })
+                $(".c").html(m)
+            }
+        })
+    }
+    function zonghe() {
+        $("#urljsp").attr("src", "/jsp/exam/zonghe/zongHe.jsp");
+    }
+    function chuangguan() {
+        $("#urljsp").attr("src", "/jsp/exam/chuangguan/chuangguan.jsp");
+    }
+    function zhenti() {
+        $("#urljsp").attr("src", "");
+    }
+</script>
 </html>

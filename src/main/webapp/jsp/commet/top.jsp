@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
+
 <header class="Z_layout_head Z_layout_head_active" id="Z_layout_head">
     <div class="Z_layout_main">
         <div class="Z_container Z_header_main">
@@ -147,12 +148,26 @@
                 <a href="javascript:;" class=" Z_exit" rel="nofollow" id="zRegister">注册</a>
             </div>
             <div class="Z_login_top" id="ok_login" style="display: none">
-                <a id="urlgeren" class=" Z_headtop_tel" rel="nofollow"></a>
+                <a id="urlgeren" class=" Z_headtop_tel" rel="nofollow">${user_session.userName}</a>
                 <a class=" Z_exit" rel="nofollow" id="zRegister2" style="color: #0C0C0C;">退出</a>
             </div>
         </div>
     </div>
 </header>
-
+<script>
+    $(function () {
+        var userName="${user_session.userName}";
+        if(userName!=null && userName!=""){
+            $("#ok_login").css("display", "");
+            $("#loginEntyWrapper").css("display", "none");
+            $("#ziroomRecordHook").css("display", "none");
+            $("#ok_login a:eq(0)").text(userName);
+        }
+    })
+    //个人中心
+    $("#urlgeren").click(function () {
+        $("#urlgeren").attr("href", "/jsp/personalCenter/mySpace/mySpace.jsp");
+    })
+</script>
 </body>
 </html>

@@ -47,16 +47,7 @@
         </div>
     </div>
 </div>
+
 </body>
-<script>
-    function zonghe() {
-        $("#urljsp").attr("src", "/jsp/exam/zonghe/zongHe.jsp");
-    }
-    function chuagguan() {
-        $("#urljsp").attr("src", "/jsp/exam/chuangguan/chuangguan.jsp");
-    }
-    function zhenti() {
-        $("#urljsp").attr("src", "");
-    }
-</script>
+
 </html>

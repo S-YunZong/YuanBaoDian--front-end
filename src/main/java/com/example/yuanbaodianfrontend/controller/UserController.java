@@ -36,6 +36,7 @@ public class UserController {
     @ResponseBody
     public boolean login(String phone, String password,HttpSession session){
         YbdUser login = userService.login(phone, password);
+        System.out.println(login.getUserName());
             if (login!=null){
                 session.setAttribute("user_session",login);
                 return true;
