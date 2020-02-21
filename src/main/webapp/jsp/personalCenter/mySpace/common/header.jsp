@@ -23,7 +23,7 @@
             <ul class="top_list">
                 <li class="user">
                     <img src="/static/image/default.png" width="20" class="img">
-                    茶茶
+                    ${user_session.userName}
                     <i class="line"></i>
                     <b class="icon"></b>
                     <div class="con">

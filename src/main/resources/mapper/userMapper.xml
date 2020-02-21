@@ -16,4 +16,10 @@ WHERE
 	and phone=#{phone}
 	and password=#{password}
     </select>
+	<select id="Personal" resultType="YbdUser">
+		select * from ybd_user where id=#{id}
+	</select>
+	<update id="update_Personal">
+		update ybd_user set user_name=#{userName},sex=#{sex} where id=#{id}
+	</update>
 </mapper>

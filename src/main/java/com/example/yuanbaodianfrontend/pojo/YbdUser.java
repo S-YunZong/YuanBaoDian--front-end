@@ -10,7 +10,7 @@ public class YbdUser {
   private String phone;//电话
   private String email;//邮箱
   private Integer integral;//积分
-  private Integer quantization_Integral;//量化积分
+  private Integer quantizationIntegral;//量化积分
   private String position;//职位
 
   public Integer getId() {
@@ -69,12 +69,12 @@ public class YbdUser {
     this.integral = integral;
   }
 
-  public Integer getQuantization_Integral() {
-    return quantization_Integral;
+  public Integer getQuantizationIntegral() {
+    return quantizationIntegral;
   }
 
-  public void setQuantization_Integral(Integer quantization_Integral) {
-    this.quantization_Integral = quantization_Integral;
+  public void setQuantizationIntegral(Integer quantizationIntegral) {
+    this.quantizationIntegral = quantizationIntegral;
   }
 
   public String getPosition() {

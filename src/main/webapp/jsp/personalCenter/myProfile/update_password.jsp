@@ -284,14 +284,12 @@
                 data: json,
                 success: function (data) {
                     if (data.code == '20000') {
-                        //alert(accountType);
                         window.location.href = '/jsps/personalCenter/myProfile/update_password2.jsp?vid=' + data.resp.vid + '&accountType=' + accountType;
                     }
                     else {
                         mLayerMsg('验证失败');
                     }
                     // console.log(data);
-
                 }
 
             });

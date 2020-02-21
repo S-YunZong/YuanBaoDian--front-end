@@ -25,4 +25,14 @@ public class UserServiceImpl implements UserService {
         return userDao.login(phone,password);
     }
 
+    @Override
+    public YbdUser Personal(Integer id) {
+        return userDao.Personal (id);
+    }
+
+    @Override
+    public boolean update_Personal(Integer sex, Integer id, String userName) {
+        return userDao.update_Personal(sex,id,userName);
+    }
+
 }
