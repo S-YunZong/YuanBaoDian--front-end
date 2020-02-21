@@ -12,6 +12,10 @@ public class YbdUser {
   private Integer integral;//积分
   private Integer quantizationIntegral;//量化积分
   private String position;//职位
+  private Integer pictureId;//图片id
+  private String pictureType;//图片类型
+  private String pictureUrl;//图片url
+  private Integer pserId;//用户id
 
   public Integer getId() {
     return id;
@@ -83,5 +87,37 @@ public class YbdUser {
 
   public void setPosition(String position) {
     this.position = position;
+  }
+
+  public Integer getPictureId() {
+    return pictureId;
+  }
+
+  public void setPictureId(Integer pictureId) {
+    this.pictureId = pictureId;
+  }
+
+  public String getPictureType() {
+    return pictureType;
+  }
+
+  public void setPictureType(String pictureType) {
+    this.pictureType = pictureType;
+  }
+
+  public String getPictureUrl() {
+    return pictureUrl;
+  }
+
+  public void setPictureUrl(String pictureUrl) {
+    this.pictureUrl = pictureUrl;
+  }
+
+  public Integer getPserId() {
+    return pserId;
+  }
+
+  public void setPserId(Integer pserId) {
+    this.pserId = pserId;
   }
 }

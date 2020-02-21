@@ -15,9 +15,27 @@
     <div class="slideLeft">
         <div class="user">
             <div class="img">
-                <img src="/static/image/default.png" width="100" height="100">
+                <img src="" width="100" height="100" id="J-m-imgFileImg2">
+                <script>
+                    $(function () {
+                            var id ="${user_session.id}";
+                            $.ajax({
+                                url: "/user/Personal",
+                                dataType: "json",
+                                type: "post",
+                                data: {
+                                    id: id
+                                },
+                                success: function (data) {
+                                    if (data) {
+                                        $("#J-m-imgFileImg2").attr("src",data.pictureUrl);
+                                    }
+                                }
+                            })
+                    })
+                </script>
             </div>
-            <p>荼荼</p>
+            <p>${user_session.userName}</p>
         </div>
         <ul>
             <li class="myUserInfo"><b></b><a id="geren">个人信息</a></li>

@@ -41,6 +41,7 @@ public class UserController {
             if (login!=null){
                 session.setAttribute("user_session",login);
                 YbdUser user_session = (YbdUser) session.getAttribute("user_session");
+                System.out.println(user_session.getPictureUrl());
                 return true;
             }else {
                 return false;

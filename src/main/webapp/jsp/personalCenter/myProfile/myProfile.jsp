@@ -42,6 +42,7 @@
                     $("#position").val(data.position);
                     $("#integral").val(data.integral);
                     $("#quantizationIntegral").val(data.quantizationIntegral);
+                    $("#J-m-imgFileImg").attr("src",data.pictureUrl);
                     if (data.email != null) {
                         $("#youxiang").attr("style", "");
                         $("#youxiang2").attr("style", "display:none");
@@ -49,8 +50,6 @@
                         $("#youxiang2").attr("style", "");
                         $("#youxiang").attr("style", "display:none");
                     }
-                } else {
-
                 }
             }
         })
@@ -104,8 +103,8 @@
                         <tbody>
                         <tr class="trBorder">
                             <td width="100">头像</td>
-                            <td width="160"><img src="/static/image/default.png" width="140" height="140"
-                                                 id="J-m-imgFileImg"></td>
+                            <td width="160"><img src="" width="140" height="140"
+                                                 id="J-m-imgFileImg"/></td>
                             <td width="600">
                                 <form class="s-m-imgForm" action="http://passport.ziroom.com/index.php?r=user%2Favatar"
                                       enctype="multipart/form-data" method="post" id="form1" name="upform" dotype="ajax"
