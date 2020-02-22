@@ -27,7 +27,15 @@
              margin: auto;
             border-radius: 10px;
          }
+
     </style>
+    <style>
+        .a:hover{
+            color: #0000FF;
+            transform: scale(1.1);
+        }
+    </style>
+
 </head>
 <body>
 <!-- Header  头部 -->
@@ -39,20 +47,11 @@
              <span style="margin-left: 50px"><strong>分类1</strong></span>
               <span style="margin-left: 700px"><strong>更多>></strong></span>
              <div id="biankuang2" style="">
-                 <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
-
-                     <style>
-                         .a:hover{
-                             color: #0000FF;
-                             transform: scale(1.1);
-                         }
-                     </style>
-
+               <%--  <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
                      <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;" >
                      <p style="font-size: 10px;margin: auto;" id="Computer"> 电脑</p>
                      <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
                      <button type="button" class="btn btn-default" onclick="Exchange()" >兑换</button>
-
                  </div>
                  <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
                      <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;" >
@@ -79,7 +78,7 @@
                      <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
                      <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
                      <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
+                 </div>--%>
              </div>
              <br>
              <span style="margin-left: 50px"><strong>分类2</strong></span>

@@ -7,5 +7,6 @@ import java.util.List;
 
 @Repository
 public interface GoodsNewDao {
+    //就业喜报
     List<YbdGoodnews> GoodsNew();
 }

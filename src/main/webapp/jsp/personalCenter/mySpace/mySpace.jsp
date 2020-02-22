@@ -22,7 +22,25 @@
                 <!-- 个人 -->
                 <div class="person clearfix">
                     <div class="photo fl">
-                        <img src="/static/image/gjnone.png">
+                        <img src="" id="J-m-imgFileImg5">
+                        <script>
+                            $(function () {
+                                var id ="${user_session.id}";
+                                $.ajax({
+                                    url: "/user/Personal",
+                                    dataType: "json",
+                                    type: "post",
+                                    data: {
+                                        id: id
+                                    },
+                                    success: function (data) {
+                                        if (data) {
+                                            $("#J-m-imgFileImg5").attr("src",data.pictureUrl);
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
                     </div>
                     <div class="information fl">
                         <p class="p1">上午好，<span>
