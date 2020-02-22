@@ -36,16 +36,15 @@ public class UserController {
     //登陆
     @RequestMapping("login")
     @ResponseBody
-    public boolean login(String phone, String password,HttpSession session){
+    public YbdUser login(String phone, String password,HttpSession session){
         YbdUser login = userService.login(phone, password);
             if (login!=null){
                 session.setAttribute("user_session",login);
                 YbdUser user_session = (YbdUser) session.getAttribute("user_session");
                 System.out.println(user_session.getPictureUrl());
-                return true;
-            }else {
-                return false;
+                return login;
             }
+        return login;
     }
     //退出
     @RequestMapping("LoginOut")

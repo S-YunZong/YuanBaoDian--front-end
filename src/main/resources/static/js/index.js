@@ -197,9 +197,7 @@ $(function () {
                             $("#ok_login").css("display", "");
                             $("#loginEntyWrapper").css("display", "none");
                             $("#ziroomRecordHook").css("display", "none");
-
-
-                           /* $("#ok_login a:eq(0)").text();*/
+                            $("#ok_login a:eq(0)").text(result.userName);
                         }
                         else {
                             $("#asnycErrorWrapperHook").css("display", "");
