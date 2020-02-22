@@ -14,24 +14,24 @@
                 <dl class="fList">
                     <dt>关于我们</dt>
                     <dd>
-                        <a href="http://www.ziroom.com/zhaopin/index.php?r=site/about">关于国大</a>
-                        <a href="http://www.ziroom.com/about/lianxi.html">联系国大</a>
-                        <a href="http://www.ziroom.com/zhaopin/">加入国大</a>
+                        <a href="/jsp/404.jsp">关于猿宝典</a>
+                        <a href="/jsp/404.jsp">联系猿宝典</a>
+                        <a href="/jsp/404.jsp">加入猿宝典</a>
                     </dd>
                 </dl>
                 <dl class="fList">
-                    <dt>国大业务</dt>
+                    <dt>猿宝典业务</dt>
                     <dd>
-                        <a href="http://www.ziroom.com/about/fuwu.html">业务体系</a>
-                        <a href="http://www.ziroom.com/about/fuwu.html">国大产品</a>
-                        <a href="http://www.ziroom.com/servicecentre/">国大服务</a>
+                        <a href="/jsp/404.jsp">业务体系</a>
+                        <a href="/jsp/404.jsp">猿宝典产品</a>
+                        <a href="/jsp/404.jsp">猿宝典服务</a>
                     </dd>
                 </dl>
             </div><!--/glbLeft-->
         </div><!--/clearfix-->
         <div class="footerBottom">
             <p>Copyright@2019 guoda.com 版权所有 冀ICP备16015349号-1经营许可证编号 冀ICP证120198号</p>
-            <p>联系客服：国大微信 周一至周日09:00-22:00</p>
+            <p>联系客服：猿宝典微信 周一至周日09:00-22:00</p>
         </div>
     </div><!--/area-->
 </div>

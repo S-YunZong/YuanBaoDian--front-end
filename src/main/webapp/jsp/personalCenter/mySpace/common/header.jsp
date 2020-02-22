@@ -53,7 +53,7 @@
             <a href="/jsp/404.jsp" title="我的账户">我的账户</a>
         </div>
         <div class="nav_r">
-            <a href="/jsp/index.jsp" title="返回国大网首页">返回国大网首页</a>
+            <a href="/jsp/index.jsp" title="返回猿宝典首页">返回猿宝典首页</a>
         </div>
         <input type="hidden" id="login_flag" value="">
     </div>

@@ -52,13 +52,13 @@
                 var m="";
                 $(data).each(function (a,b) {
 
-                    if(b.questionTypeName=="综合答题"){
+                    if(b.id==1){
                         var mm="zonghe";
                     }
-                    if(b.questionTypeName=="闯关答题"){
+                    if(b.id==2){
                         var mm="chuangguan";
                     }
-                    if(b.questionTypeName=="真题题库"){
+                    if(b.id==3){
                         var mm="zhenti";
                     }
 

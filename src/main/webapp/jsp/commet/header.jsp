@@ -12,7 +12,7 @@
 </head>
 <body>
     <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="//at.alicdn.com/t/font_1643820_abk2pxemzia.css" rel="stylesheet"/>
+    <link href="//at.alicdn.com/t/font_1643820_4vjgbfsw1te.css" rel="stylesheet"/>
 
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>

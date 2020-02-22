@@ -21,17 +21,38 @@
             position: absolute;
             right: 330px;
         }
+        #z-xuanxiang{
+            position: absolute;
+            top: 170px;
+        }
+        #timu{
+            position: absolute;
+            top: 60px;
+        }
+        #anniou{
+            position: absolute;
+            top: 300px;
+        }
+        #biaoti{
+            position: absolute;
+            left: 30px;
+        }
+        .iconiconfontweibiaoti1{
+            position: absolute;
+            top: 15px;
+            left: 560px;
+        }
     </style>
 </head>
 <body>
 <div class="container" id="dati" style="display: block">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <h1 style="margin: 60px 280px">综合答题</h1>
+            <h1 style="margin: 60px 280px">学前教育</h1>
             <h3 style="margin: 60px 220px">
-                学生们可以在综合答题<br>
-                里自由练习习题为闯关<br>
-                答题做好充分的知识储备<br>
+                学生们可以免费，免登<br>
+                陆的享受学前教育带来<br>
+                的知识考验！！<br>
                 同学们快开始答题吧！<br>
             </h3>
             <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 280px">开始答题</button>
@@ -42,15 +63,16 @@
 <div class="container" id="dati2" style="display: none">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <div style="border: #0C0C0C solid 1px;width: 610px;height: 390px;margin: 0px -50px">
-                <div style="margin: 50px 100px">
+            <div style="width: 610px;height: 390px;margin: 0px -50px">
+                <h3 id="biaoti">学前教育</h3>
+                <div style="margin: 0px 100px"  id="timu">
                     <h3>
-                        <span id="z-shumu"></span>
+                        <span id="z-shumu"></span>&nbsp;
                         <span id="z-timu"></span>
                     </h3>
-                    <p id="z-chutiren"></p>
+                    <p id="z-chutiren" style="margin: 0px -500px"></p>
                 </div>
-
+                <%--选项--%>
                 <div style="margin: 0px 100px" id="z-xuanxiang">
                     <%--<label class="radio-inline">
                         <input type="radio" name="option" id="option1" value="1"> A:狼
@@ -65,21 +87,26 @@
                         <input type="radio" name="option" id="option4"  value="4"> D:ds
                     </label>--%>
                 </div>
-                <button type="button" class="btn btn-success" onclick="shangyiye()" style="margin: 50px 100px">上一题</button>
-                <button type="button" class="btn btn-success" onclick="xiayiye()">下一题</button>
-            </div>
-            <div style="border: #0C0C0C solid 1px;width: 200px;height: 590px;margin: -390px 570px">
-                <div class="btn-group" id="z-xuanti">
-                    <button type="button" class="btn btn-default" style="background-color: #4cae4c">1</button>
+                    <div id="anniou">
+                        <button type="button" class="btn btn-success" onclick="shangyiye(this)" style="margin: 0px 100px">上一题</button>
+                        <button type="button" class="btn btn-success" onclick="xiayiye(this)">下一题</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-default" onclick="shoucang(this)">收藏</button>
+                    </div>
+                </div>
+            <%--题号列表--%>
+            <div style="overflow: auto;width: 200px;height: 590px;margin: -390px 570px">
+                <div class="btn-group" id="z-xuanti" style="margin: 0px 1px">
+                    <%--<button type="button" class="btn btn-default" style="background-color: #4cae4c">1</button>
                     <button type="button" class="btn btn-default" style="background-color: #ff3737">2</button>
-                    <button type="button" class="btn btn-default" style="width: 50px">323</button>
-
+                   --%>
                 </div>
             </div>
-            <div id="div3" style="border: #0C0C0C solid 1px;width: 600px;height: 200px;">
+            <%--解析--%>
+            <div id="div3" style="border:#EEEEEE solid 2px;width: 600px;height: 200px;">
                 <h3 style="margin: 20px 50px">试题讲解：</h3>
+                <i class="iconfont iconiconfontweibiaoti1"></i>
                 <div style="overflow: auto; width: 500px;height:130px;margin: -10px 80px;">
-                    <h5 id="z-jiangjie"></h5>
+                    <h5 id="z-jiangjie" style="display: none"></h5>
                 </div>
             </div>
         </div>
@@ -94,27 +121,86 @@
     function kaishi() {
         $("#dati2").attr("style","display:block");
         $("#dati").attr("style","display:none");
+        $("button:contains('完成练习')").text("下一题");
         chaxuntiku()
     }
     /*上一页*/
-    function shangyiye() {
+    function shangyiye(t) {
+        $("#z-jiangjie").attr("style","display:none");//隐藏解释
         var mm=$("#z-shumu").html();
         var page=mm.substr(0,mm.indexOf('/'))-1;//当前页数
         if(page<=0){
             alert("当前是第一题！")
         }else {
+            $(t).next().text("下一题")
             chaxuntiku(page)
         }
+
     }
     /*下一页*/
-    function xiayiye() {
+    function xiayiye(t) {
+        $("#z-jiangjie").attr("style","display:none");//隐藏解释
         var mm=$("#z-shumu").html();
         var page=parseInt(mm.substr(0,mm.indexOf('/')))+1;//当前页数
         var ss=mm.substr(mm.indexOf('/') + 1);//总页数
-        if(page>ss){
-            alert("当前是最后一题！")
+        if(page==ss){
+            $(t).text("完成练习");
+            chaxuntiku(page);
+        }else if(page>ss){
+            map=[];
+            $("#dati2").attr("style","display:none");
+            $("#dati").attr("style","display:block");
         }else {
-            chaxuntiku(page)
+            chaxuntiku(page);
+        }
+
+    }
+    /*点击跳转指定习题*/
+    function xuanxiang(page) {
+        $("#z-jiangjie").attr("style","display:none");
+        chaxuntiku(page);
+
+    }
+    /*选择后*/
+    var map = new Array();//创建map数组
+    function xuanze(x,z,t) {
+        var mm=$("#z-shumu").html();
+        var page=parseInt(mm.substr(0,mm.indexOf('/')));//当前页数
+        map.push({key:page,xvalue:x,zvalue:z});//存入map
+        $("#z-xuanxiang input[name='option']").attr("disabled",true);//选择后禁止在选
+        $("#z-jiangjie").attr("style","display:block");//展示解析
+        if(x==z){
+            $(t).parent().css("color","#4cae4c");//改变正确答案的颜色
+            $("#z-xuanti input[value='"+z+"']").attr("style","width: 50px;background-color:#4cae4c");//改变选项列表字体颜色
+        }else {
+            $("#z-xuanxiang input[value='"+z+"']").parent().css("color","#4cae4c");//改变正确答案的颜色
+            $("#z-xuanti input[value='"+z+"']").attr("style","width: 50px;background-color:#ff3737");//改变选项列表字体颜色
+            $(t).parent().css("color","#ff3737");//改变错误答案颜色
+        }
+    }
+    /*持久化选项列表的颜色*/
+    function xuanxiangliebiao() {
+        if(map != null && map.length > 0) {//查看map是否为空
+            var mm=$("#z-shumu").html();
+            var page=parseInt(mm.substr(0,mm.indexOf('/')));//当前页数
+            for (var i = 0; i < map.length; i++) {
+                if(map[i].xvalue==map[i].zvalue){//判断选的答案和正确的答案是否一样
+                    $("#z-xuanti input[value='"+map[i].key+"']").attr("style","width: 50px;background-color: #4cae4c");//改变选项列表字体颜色
+                }else {
+                    $("#z-xuanti input[value='"+map[i].key+"']").attr("style","width: 50px;background-color: #ff3737");//改变选项列表字体颜色
+                }
+                if(map[i].key==page){
+                    $("#z-xuanxiang input[name='option']").attr("disabled",true);//选择后禁止在选
+                    $("#z-jiangjie").attr("style","display:block");//展示解析
+                    $("#z-xuanxiang input[value='"+map[i].xvalue+"']").attr("checked",true);
+                    if(map[i].xvalue==map[i].zvalue){//判断选的答案和正确的答案是否一样
+                        $("#z-xuanxiang input[value='"+map[i].zvalue+"']").parent().css("color","#4cae4c");//改变正确答案的颜色
+                    }else {
+                        $("#z-xuanxiang input[value='"+map[i].zvalue+"']").parent().css("color","#4cae4c");//改变正确答案的颜色
+                        $("#z-xuanxiang input[value='"+map[i].xvalue+"']").parent().css("color","#ff3737");//改变错误答案的颜色
+                    }
+                }
+            }
         }
     }
     /*分页展示题库*/
@@ -135,8 +221,13 @@
                     var xia="";
                     //当前页/总页数
                     $("#z-shumu").html(data.offset+1+"/"+data.total);
+                    /*$("#timu").attr("style","background-color: #E6E6E6");*/
                     for(var i=1;i<=data.total;i++){
-                        xia+="<button type=\"button\" class=\"btn btn-default\" style=\"width: 50px\">"+i+"</button>";
+                        if(page==i||p==i){
+                            xia+="<input onclick=\'xuanxiang("+i+")\' type=\"button\" class=\"btn btn-default\" style=\"width: 50px;background-color: #E6E6E6\" value='"+i+"'>";
+                        }else {
+                            xia+="<input onclick=\'xuanxiang("+i+")\' type=\"button\" class=\"btn btn-default\" style=\"width: 50px\" value=\'"+i+"\'>";
+                        }
                     }
                     //习题题号
                     $("#z-xuanti").html(xia);
@@ -162,12 +253,13 @@
                                 xu+="D: ";
                             }
                             shang+="<label class=\"radio-inline\">\n" +
-                                "        <input type=\"radio\" name=\"option\" value=\'"+d.option+"\'>"+xu+""+d.optionDescribe+"\n" +
+                                "        <input type=\"radio\" onclick=\'xuanze("+d.option+","+b.answer+",this)\' id=\'option"+d.option+"\' name=\"option\" value=\'"+d.option+"\'>"+xu+""+d.optionDescribe+"\n" +
                                 "   </label><br>";
                         })
                     })
                     //选项
                     $("#z-xuanxiang").html(shang);
+                    xuanxiangliebiao()
                 }else {
                     alert("没数据")
                 }

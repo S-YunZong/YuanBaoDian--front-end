@@ -22,6 +22,16 @@
     <select id="seldaan" resultType="YbdQuestionBackOption">
       select * from ybd_question_back_option where question_back_id=#{id}
     </select>
+    <!--//查询章节
+    List<YbdChapter> listYbdChapter();-->
+    <select id="listYbdChapter" resultType="YbdChapter">
+
+    </select>
+    <!--//查询关卡
+    List<YbdGameLevel> listYbdGameLevel(int id);-->
+    <select id="listYbdGameLevel" resultType="YbdGameLevel">
+
+    </select>
 </mapper>
 
 

@@ -1,5 +1,7 @@
 package com.example.yuanbaodianfrontend.dao;
 
+import com.example.yuanbaodianfrontend.pojo.YbdChapter;
+import com.example.yuanbaodianfrontend.pojo.YbdGameLevel;
 import com.example.yuanbaodianfrontend.pojo.YbdQuestionBack;
 import com.example.yuanbaodianfrontend.pojo.YbdQuestionType;
 
@@ -12,4 +14,8 @@ public interface MoNiKaoShiDao {
     List<YbdQuestionType> selYbdQuestionType();
     //题库查询
     List<YbdQuestionBack> listYbdQuestionBack(int questionTypeId);
+    //查询章节
+    List<YbdChapter> listYbdChapter();
+    //查询关卡
+    List<YbdGameLevel> listYbdGameLevel(int id);
 }

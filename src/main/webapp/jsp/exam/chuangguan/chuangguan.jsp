@@ -54,4 +54,21 @@
     </div>
 </div>
 </body>
+<script>
+    $(function () {
+
+    })
+    /*加载章节*/
+    function zhangjie() {
+        $.ajax({
+            url:"",
+            type:"post",
+            dataType:"json",
+            data:{},
+            success:function (data) {
+
+            }
+        })
+    }
+</script>
 </html>
