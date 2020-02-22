@@ -235,6 +235,7 @@ $(function () {
                if (result){
                    alert("退出成功！");
                    location.href="/jsp/index.jsp";
+                   document.execCommand('Refresh')
                }
             },
             error: function () {

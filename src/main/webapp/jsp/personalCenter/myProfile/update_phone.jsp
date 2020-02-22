@@ -55,7 +55,7 @@
                                     <tbody>
                                     <tr>
                                         <td width="90">手机号</td>
-                                        <td colspan="3">13716621545 <span class="gray">若当前号码无效或无法接收验证码，请拨打客服电话：4001-001-111</span>
+                                            <td colspan="3"><span id="update_phone">${user_session.phone}</span> <span class="gray">若当前号码无效或无法接收验证码，请拨打客服电话：4001-001-111</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -92,7 +92,6 @@
 <script>
     //mqz 2016.5.12 校验手机验证码
     (function () {
-
         var oIpt = $('#J-m-input');
         var getBtn = $('#tel_btn_phone');
 
@@ -101,15 +100,14 @@
         var reg = /^[0-9]{6}$/;
 
         getBtn[0].onclick = getPhoneYzm;
-
+            var tel=${user_session.phone};
         function getPhoneYzm() {
             stopClick();
             $.ajax({
-                url: '/api/index.php?r=user/get-phone-captcha',
+                url: '/user/fasong',
                 type: 'POST',
                 data: {
-                    type: '2',
-                    accountType: '1'
+                   "tel":tel
                 },
                 dataType: 'json',
                 success: function (data) {
@@ -123,9 +121,7 @@
 
         //倒计时
         function stopClick() {
-
             var total = 60;
-
             getBtn.removeClass('ui_org_btn');
             getBtn.addClass('ui_gray_btn');
             getBtn[0].onclick = null;
@@ -150,7 +146,6 @@
             if (!reg.test(this.value)) {
                 oSub.removeClass('ui_org_btn');
                 oSub.addClass('ui_gray_btn');
-
                 oSub[0].onclick = null;
             }
             else {

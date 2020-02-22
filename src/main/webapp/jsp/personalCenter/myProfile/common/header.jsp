@@ -26,8 +26,26 @@
             </ul>
             <ul class="top_list">
                 <li class="user">
-                    <img src="/static/image/default.png" width="20" class="img">
-                    荼荼 <i class="line"></i>
+                    <img src="" id="J-m-imgFileImg4" width="20" class="img">
+                    <script>
+                        $(function () {
+                            var id ="${user_session.id}";
+                            $.ajax({
+                                url: "/user/Personal",
+                                dataType: "json",
+                                type: "post",
+                                data: {
+                                    id: id
+                                },
+                                success: function (data) {
+                                    if (data) {
+                                        $("#J-m-imgFileImg4").attr("src",data.pictureUrl);
+                                    }
+                                }
+                            })
+                        })
+                    </script>
+                    ${user_session.userName} <i class="line"></i>
                     <b class="icon"></b>
                     <div class="con">
                         <a href="http://i.ziroom.com/">个人空间</a>
@@ -36,6 +54,35 @@
                     </div>
                 </li>
                 <li id="logout">退出</li>
+                <script>
+                    $("#logout").click(function () {
+                        // cc = localStorage.getItem("accessToken");
+                        // var id = localStorage.getItem("id");
+                        $.ajax({
+                            type: "POST",//方法类型
+                            url: "/user/LoginOut",
+                            data: {
+                                // "accessToken": cc,
+                                // userid: id
+                            },
+                            success: function (result) {
+                                /* if (result.code == 0) {
+                                     localStorage.removeItem("accessToken");
+                                     window.location.reload();
+                                 }
+                                 console.log(result);*/
+                                if (result){
+                                    alert("退出成功！");
+                                    location.href="/jsp/index.jsp";
+                                    document.execCommand('Refresh')
+                                }
+                            },
+                            error: function () {
+                                alert("退出异常！");
+                            }
+                        });
+                    });
+                </script>
             </ul>
         </div>
     </div>

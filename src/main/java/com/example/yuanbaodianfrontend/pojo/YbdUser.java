@@ -10,8 +10,12 @@ public class YbdUser {
   private String phone;//电话
   private String email;//邮箱
   private Integer integral;//积分
-  private Integer quantization_Integral;//量化积分
+  private Integer quantizationIntegral;//量化积分
   private String position;//职位
+  private Integer pictureId;//图片id
+  private String pictureType;//图片类型
+  private String pictureUrl;//图片url
+  private Integer pserId;//用户id
 
   public Integer getId() {
     return id;
@@ -69,12 +73,12 @@ public class YbdUser {
     this.integral = integral;
   }
 
-  public Integer getQuantization_Integral() {
-    return quantization_Integral;
+  public Integer getQuantizationIntegral() {
+    return quantizationIntegral;
   }
 
-  public void setQuantization_Integral(Integer quantization_Integral) {
-    this.quantization_Integral = quantization_Integral;
+  public void setQuantizationIntegral(Integer quantizationIntegral) {
+    this.quantizationIntegral = quantizationIntegral;
   }
 
   public String getPosition() {
@@ -83,5 +87,37 @@ public class YbdUser {
 
   public void setPosition(String position) {
     this.position = position;
+  }
+
+  public Integer getPictureId() {
+    return pictureId;
+  }
+
+  public void setPictureId(Integer pictureId) {
+    this.pictureId = pictureId;
+  }
+
+  public String getPictureType() {
+    return pictureType;
+  }
+
+  public void setPictureType(String pictureType) {
+    this.pictureType = pictureType;
+  }
+
+  public String getPictureUrl() {
+    return pictureUrl;
+  }
+
+  public void setPictureUrl(String pictureUrl) {
+    this.pictureUrl = pictureUrl;
+  }
+
+  public Integer getPserId() {
+    return pserId;
+  }
+
+  public void setPserId(Integer pserId) {
+    this.pserId = pserId;
   }
 }

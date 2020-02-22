@@ -14,5 +14,7 @@ public interface UserDao {
     YbdUser login(@Param("phone")String phone , @Param("password") String password);
 
 
+    YbdUser Personal(Integer id);
 
+    boolean update_Personal(@Param("sex") Integer sex, @Param("id") Integer id, @Param("userName") String userName);
 }

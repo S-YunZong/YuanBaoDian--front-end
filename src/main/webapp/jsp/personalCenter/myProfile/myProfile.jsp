@@ -19,9 +19,9 @@
 
     //个人信息
     function gerenxinxi() {
-        var id =${param.userid};
+        var id ="${user_session.id}";
         $.ajax({
-            url: "/user/getguser",
+            url: "/user/Personal",
             dataType: "json",
             type: "post",
             data: {
@@ -38,6 +38,11 @@
                     }
                     $("#tel").text(data.tel);
                     $("#email").text(data.email);
+                    $("#tel").text(data.phone);
+                    $("#position").val(data.position);
+                    $("#integral").val(data.integral);
+                    $("#quantizationIntegral").val(data.quantizationIntegral);
+                    $("#J-m-imgFileImg").attr("src",data.pictureUrl);
                     if (data.email != null) {
                         $("#youxiang").attr("style", "");
                         $("#youxiang2").attr("style", "display:none");
@@ -45,8 +50,6 @@
                         $("#youxiang2").attr("style", "");
                         $("#youxiang").attr("style", "display:none");
                     }
-                } else {
-
                 }
             }
         })
@@ -54,17 +57,16 @@
 
     //保存
     function baocun() {
-        var id =${param.userid};
+        var id =${user_session.id};
         var userName = $("#userName").val();
         var sex = $('input[name="sex"]:checked').val();
         if (id != null && id != '') {
             if (userName == null && userName == '') {
                 mLayerMsg('昵称不能为空!');
                 return false;
-            }
-            ;
+            };
             $.ajax({
-                url: "/user/getgerenguser",
+                url: "/user/update_Personal",
                 dataType: "json",
                 type: "post",
                 data: {
@@ -76,6 +78,7 @@
                     if (data) {
                         alert("保存成功！");
                         gerenxinxi();
+                        location.reload();
                     } else {
                         alert("保存失败！");
                     }
@@ -100,8 +103,8 @@
                         <tbody>
                         <tr class="trBorder">
                             <td width="100">头像</td>
-                            <td width="160"><img src="/static/image/default.png" width="140" height="140"
-                                                 id="J-m-imgFileImg"></td>
+                            <td width="160"><img src="" width="140" height="140"
+                                                 id="J-m-imgFileImg"/></td>
                             <td width="600">
                                 <form class="s-m-imgForm" action="http://passport.ziroom.com/index.php?r=user%2Favatar"
                                       enctype="multipart/form-data" method="post" id="form1" name="upform" dotype="ajax"
@@ -115,6 +118,21 @@
                         <tr>
                             <td style="padding-top:40px;">昵称</td>
                             <td colspan="2" style="padding-top:40px;"><input type="text" id="userName"
+                                                                             class="ui_inp ui_inp_big" value=""></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top:40px;">职业</td>
+                            <td colspan="2" style="padding-top:40px;"><input type="text" id="position"
+                                                                             class="ui_inp ui_inp_big" value=""></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top:40px;">积分</td>
+                            <td colspan="2" style="padding-top:40px;"><input type="text" id="integral"
+                                                                             class="ui_inp ui_inp_big" value=""></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top:40px;">量化积分</td>
+                            <td colspan="2" style="padding-top:40px;"><input type="text" id="quantizationIntegral"
                                                                              class="ui_inp ui_inp_big" value=""></td>
                         </tr>
                         <tr>
@@ -162,34 +180,7 @@
                                    class="org j-m-change">修改密码</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>兴趣爱好</td>
-                            <td colspan="2">
-                                <div class="tagsInp j-m-tagsBox">
-                                    <span id="j-m-showTags" style="display: inline-block;"></span>
-                                    <input type="hidden" name="" id="j-m-hidden" value="">
-                                    <input type="text" class="air_inp" value="" placeholder="点此输入爱好，空格添加"
-                                           id="j-m-tagIpt">
-                                    <b class="icon"></b>
-                                </div>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td colspan="2">
-                                <div class="tags clearfix" id="tabsSpan">
-                                    <span>体育运动</span>
-                                    <span>交友</span>
-                                    <span>美食</span>
-                                    <span>电影</span>
-                                    <span>旅行</span>
-                                    <span>音乐</span>
-                                    <span>数码</span>
-                                </div>
-                                <input type="hidden" name="tags" id="tagsList">
-                            </td>
-                        </tr>
                         <tr>
                             <td></td>
                             <td colspan="3">
@@ -211,105 +202,7 @@
 <%@include file="/jsp/personalCenter/myProfile/common/footer.jsp" %>
 
 <!--毛群植2016.4.5：兴趣爱好添加的交互，-->
-<script>
-    (function ($) {
-        /*aSpan.toggle(function(){
-            tagsArr.push(this.innerHTML);
-            $(this).addClass('active');
-            showTags();
-        },function(){
-            tagsArr.splice(tagsArr.indexOf(this.innerHTML),1);
-            $(this).removeClass('active');
-            showTags();
-        });  */
-        var json = {'体育运动': 0, '交友': 1, '美食': 2, '电影': 3, '旅行': 4, '音乐': 5, '数码': 6};
-        var oIpt = $('#j-m-tagIpt');
-        var oHidden = $('#j-m-hidden');
-        var oShow = $('#j-m-showTags');
-        var aSpan = $('#tabsSpan').find('span');
-        var tagsArr = oHidden[0].value.split(',');
-        oShow.css({
-            'display': 'inline-block'
-        });
 
-        for (var i = 1; i < tagsArr.length; i++) {
-            aSpan.eq(json[tagsArr[i]]).addClass('active');
-        }
-
-        showTags();
-
-        //给所有选项加上点击事件
-        aSpan.click(function () {
-            if ($(this).hasClass('active')) {
-
-                var index = 0;
-
-                for (var jj = 0; jj < tagsArr.length; jj++) {
-                    if (tagsArr[jj] == this.innerHTML) {
-                        index = jj;
-                        break;
-                    }
-                }
-                ;
-
-                tagsArr.splice(index, 1);
-                $(this).removeClass('active');
-                showTags();
-            }
-            else {
-
-                if (tagsArr.length >= 6) {
-                    return;
-                }
-
-                tagsArr.push(this.innerHTML);
-                $(this).addClass('active');
-                showTags();
-            }
-        });
-
-        //当输入框输入完成且按空格时
-        oIpt.keydown(function (ev) {
-            var oEvent = ev || event;
-
-            if (oEvent.keyCode == 13) {
-                oEvent.preventDefault();
-                return false;
-            }
-
-            var reg = /^\s+$/;
-            if (oEvent.keyCode == 32 && this.value != '' && !reg.test(this.value)) {
-
-
-                if (tagsArr.length >= 6) {
-                    this.value = '';
-                    return false;
-                }
-
-                if (this.value.length > 10) {
-                    mLayerMsg('输入内容过长');
-                    $(this).attr('value', '');
-                    return;
-                }
-
-                //添加爱好
-                tagsArr.push(this.value.replace(/(^\s*)|(\s*$)/g, ""));
-                showTags();
-                $(this).attr('value', '');
-                this.blur();
-
-                oEvent.preventDefault();
-                return false;
-            }
-        });
-
-        function showTags() {
-            oHidden.val(tagsArr.join(','));
-            oShow.html(tagsArr.join(' #'));
-        }
-
-    })(jQuery);
-</script>
 <!-- mqz 2016.5.14图片上传 -->
 <script type="text/javascript" src="/static/guoda.com_files/js/jquery.form.js"></script>
 <script>

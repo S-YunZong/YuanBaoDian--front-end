@@ -38,9 +38,10 @@ public class UserController {
     @ResponseBody
     public boolean login(String phone, String password,HttpSession session){
         YbdUser login = userService.login(phone, password);
-        System.out.println(login.getUserName());
             if (login!=null){
                 session.setAttribute("user_session",login);
+                YbdUser user_session = (YbdUser) session.getAttribute("user_session");
+                System.out.println(user_session.getPictureUrl());
                 return true;
             }else {
                 return false;
@@ -50,7 +51,25 @@ public class UserController {
     @RequestMapping("LoginOut")
     @ResponseBody
     public boolean LoginOut(HttpSession session){
-        session.removeAttribute("LoginOut");
+        session.removeAttribute("user_session");
         return true;
+    }
+    //我的资料
+    @RequestMapping("Personal")
+    @ResponseBody
+    public YbdUser Personal(Integer id){
+        YbdUser ybdUser=userService.Personal(id);
+        return ybdUser ;
+    }
+    //修改个人信息
+    @ResponseBody
+    @RequestMapping("update_Personal")
+    public boolean update_Personal(Integer sex,Integer id,String userName){
+        boolean update_personal = userService.update_Personal(sex, id, userName);
+        if (update_personal==true){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
