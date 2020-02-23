@@ -47,6 +47,7 @@
              <span style="margin-left: 50px"><strong>分类1</strong></span>
               <span style="margin-left: 700px"><strong>更多>></strong></span>
              <div id="biankuang2" style="">
+                 <input hidden value="${user_session.integral}" id="user_1">
                <%--  <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
                      <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;" >
                      <p style="font-size: 10px;margin: auto;" id="Computer"> 电脑</p>
