@@ -72,4 +72,51 @@ public class UserController {
         }
     }
 
+    //修改密码
+    @RequestMapping("updatePwd")
+    @ResponseBody
+    public boolean updatePwd(String telephone,String password){
+        int i = userService.updatePwd(telephone,password);
+        if(i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    //获取验证码
+    @RequestMapping("getMsg")
+    @ResponseBody
+    public boolean changePwd(HttpSession session){
+        int code = (int) ((Math.random()*9+1)*1000);
+        session.setAttribute("code", code);
+        System.out.println(code);
+        //boolean sendSMS = SendSMSUtils.sendMSM(user.getTel(),String.valueOf(code));
+        return true;
+    }
+
+    //验证码校验
+    @RequestMapping("checkPhoneText")
+    @ResponseBody
+    public boolean checkPhoneText(HttpSession session,Integer phoneText){
+        Integer code1 = (Integer) session.getAttribute("code");
+        if(null==code1) {
+            return false;
+        }else if(!code1.equals(phoneText)){
+            return false;
+        }
+        return true;
+    }
+
+    @RequestMapping("updatePhone")
+    @ResponseBody
+    public boolean updateMobile(String newPhone,Integer id){
+        int i = userService.updatePhone(newPhone,id);
+        if(i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
