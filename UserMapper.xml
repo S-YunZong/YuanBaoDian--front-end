@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yuanbaodianfrontend.dao.UserDao">
+    <insert id="zhuce">
+        insert into ybd_user (phone,password,sex,position) values (#{tel},#{password},'0','学生');
+    </insert>
+    <select id="login" resultType="YbdUser">
+         SELECT
+	u.*,
+	p.picture_type pictureType,
+	p.picture_url pictureUrl,
+	p.pser_id pserId ,
+	p.id pictureId
+FROM
+	ybd_user u,
+	ybd_picture p
+WHERE
+	p.pser_id = u.id
+	and phone=#{phone}
+	and password=#{password}
+    </select>
+	<select id="Personal" resultType="YbdUser">
+		 SELECT
+	u.*,
+	p.picture_type pictureType,
+	p.picture_url pictureUrl,
+	p.pser_id pserId ,
+	p.id pictureId
+FROM
+	ybd_user u,
+	ybd_picture p
+WHERE
+	p.pser_id = u.id
+	 and  u.id=#{id}
+	</select>
+	<update id="update_Personal">
+		update ybd_user set user_name=#{userName},sex=#{sex} where id=#{id}
+	</update>
+	<update id="updatePwd">
+		UPDATE ybd_user SET password = #{password} where phone= #{phone}
+	</update>
+	<update id="updatePhone">
+        update ybd_user set phone=#{phone} where id=#{id}
+    </update>
+</mapper>
