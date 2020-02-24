@@ -18,4 +18,9 @@ public class QuestionBackServiceImpl implements QuestionBackService {
     public List<QuestionVo> MyMessage() {
         return questionBackDao.MyMessage();
     }
+
+    @Override
+    public List<QuestionVo> MyMessage_2(Integer id) {
+        return questionBackDao.MyMessage_2(id);
+    }
 }

@@ -15,4 +15,19 @@ FROM
 WHERE
 	b.id = t.question_back_id
     </select>
+
+	<select id="MyMessage_2" resultType="QuestionVo">
+		SELECT
+	u.user_name userName,
+	p.*,
+	q.*
+FROM
+	ybd_user u,
+	ybd_put_questions_to p,
+	ybd_question_back q
+WHERE
+	u.id = q.create_user
+	AND p.question_back_id = q.id
+	and q.id=#{id}
+	</select>
 </mapper>

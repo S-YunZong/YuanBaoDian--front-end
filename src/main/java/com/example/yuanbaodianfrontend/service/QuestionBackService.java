@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface QuestionBackService {
     List<QuestionVo> MyMessage();
+
+    List<QuestionVo> MyMessage_2(Integer id);
 }

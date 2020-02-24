@@ -22,4 +22,13 @@ public class QuestionBackController {
         List<QuestionVo> questionVos=questionBackService.MyMessage();
         return  questionVos;
     }
+    //消息详情
+
+    @RequestMapping("MyMessage_2")
+    @ResponseBody
+    public List<QuestionVo> MyMessage_2(Integer id){
+        List<QuestionVo> v=   questionBackService.MyMessage_2(id);
+        return  v;
+    }
+
 }

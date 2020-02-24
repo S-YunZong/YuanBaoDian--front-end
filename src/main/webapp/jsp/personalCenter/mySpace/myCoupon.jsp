@@ -18,9 +18,31 @@
 <script type="text/javascript" src="/static/js/zxf_page.js"></script>
 <script src="/static/fenye/jquery.sPage.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/css/youhuiquan.css"/>
-
 <script type="text/javascript" src="/static/js/MyMessage/MyMessage.js"></script>
 
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="MyMessage_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"  style="width: 800px;margin-left: -800px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    详情>>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table id="table_21" border="1" ></table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <div hidden style="width: 100px">
 
 </div>
@@ -44,6 +66,8 @@
                         </div>
                         <div id="ccc" style="height: 500px">
                                 <table id="table_1" border="1" ></table>
+
+
                         </div>
                         <div class="collection"><%--contract--%>
                             <ul class="clearfix" id="chuzulist">
@@ -60,5 +84,8 @@
 
         </div>
     </div>
+
 </div>
+
+
 <%@include file="/jsp/personalCenter/mySpace/common/footer.jsp" %>
