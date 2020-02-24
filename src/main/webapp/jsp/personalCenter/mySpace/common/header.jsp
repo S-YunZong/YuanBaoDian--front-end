@@ -17,6 +17,11 @@
 <link href="/static/guoda.com_files/css/WdatePicker.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/static/guoda.com_files/js/Validform_v5.3.2_min.js"></script>
 <link href="/static/guoda.com_files/css/common_space.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/bootstrap-3.3.7-dist/table/bootstrap-table.js"></script>
+<script type="text/javascript" src="/static/bootstrap-3.3.7-dist/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<link href="/static/bootstrap-3.3.7-dist/table/bootstrap-table.css" rel="stylesheet" type="text/css">
+
 <div id="topBar">
     <div class="area clearfix">
         <div class="glbLeft">

@@ -9,12 +9,12 @@ import java.util.List;
 
 @Repository
 public interface UserDao {
+    //注册
     boolean zhuce (@Param("tel") String tel, @Param("password") String password);
-
+    //登陆
     YbdUser login(@Param("phone")String phone , @Param("password") String password);
-
-
+    //个人信息
     YbdUser Personal(Integer id);
-
+    //修改个人信息
     boolean update_Personal(@Param("sex") Integer sex, @Param("id") Integer id, @Param("userName") String userName);
 }

@@ -91,7 +91,7 @@
 
     //修改
     function update_usermess() {
-        var id =${param.userid};
+        var id =${user_session.id};
         var name = $("#realname").val();
         var ID = $("#IDNumber").val();
         alert(ID);

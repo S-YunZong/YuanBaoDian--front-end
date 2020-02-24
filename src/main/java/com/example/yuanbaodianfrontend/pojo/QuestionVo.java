@@ -1,12 +1,14 @@
 package com.example.yuanbaodianfrontend.pojo;
 
-import lombok.Data;
-
 import java.util.Date;
-import java.util.List;
 
-@Data
-public class YbdQuestionBack {
+public class QuestionVo {
+    private Integer PutQuestionsToId;
+    private Integer objectUserId;
+    private Integer startUserId;
+    private Integer questionBackId;
+    private String description;
+
     private Integer id;
 
     private String questionBack;//题目
@@ -29,7 +31,45 @@ public class YbdQuestionBack {
 
     private String userName;//出题人姓名
 
-    List<YbdQuestionBackOption> optionList;
+    public Integer getPutQuestionsToId() {
+        return PutQuestionsToId;
+    }
+
+    public void setPutQuestionsToId(Integer putQuestionsToId) {
+        PutQuestionsToId = putQuestionsToId;
+    }
+
+    public Integer getObjectUserId() {
+        return objectUserId;
+    }
+
+    public void setObjectUserId(Integer objectUserId) {
+        this.objectUserId = objectUserId;
+    }
+
+    public Integer getStartUserId() {
+        return startUserId;
+    }
+
+    public void setStartUserId(Integer startUserId) {
+        this.startUserId = startUserId;
+    }
+
+    public Integer getQuestionBackId() {
+        return questionBackId;
+    }
+
+    public void setQuestionBackId(Integer questionBackId) {
+        this.questionBackId = questionBackId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Integer getId() {
         return id;
@@ -117,13 +157,5 @@ public class YbdQuestionBack {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public List<YbdQuestionBackOption> getOptionList() {
-        return optionList;
-    }
-
-    public void setOptionList(List<YbdQuestionBackOption> optionList) {
-        this.optionList = optionList;
     }
 }
