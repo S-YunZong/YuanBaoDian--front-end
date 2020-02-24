@@ -197,6 +197,7 @@
             }
         }
     </style>
+    <%@include file="/jsp/commet/header.jsp" %>
 </head>
 <body>
 <div class="container">
