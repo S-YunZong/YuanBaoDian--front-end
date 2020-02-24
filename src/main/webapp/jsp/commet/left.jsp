@@ -62,7 +62,7 @@
                         var mm="zhenti";
                     }
 
-                    m+="<div class=\"a\" style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'"+mm+"()\'>\n" +
+                    m+="<div class=\"a\" style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'"+mm+"("+b.id+")\'>\n" +
                         "        <h3>"+b.questionTypeName+"</h3>\n" +
                         "    </div>"
                 })
@@ -70,13 +70,13 @@
             }
         })
     }
-    function zonghe() {
-        $("#urljsp").attr("src", "/jsp/exam/zonghe/zongHe.jsp");
+    function zonghe(typeid) {
+        $("#urljsp").attr("src", "/jsp/exam/zonghe/zongHe.jsp?typeid="+typeid);
     }
-    function chuangguan() {
-        $("#urljsp").attr("src", "/jsp/exam/chuangguan/chuangguan.jsp");
+    function chuangguan(typeid) {
+        $("#urljsp").attr("src", "/jsp/exam/chuangguan/chuangguan.jsp?typeid="+typeid);
     }
-    function zhenti() {
+    function zhenti(typeid) {
         $("#urljsp").attr("src", "");
     }
 </script>

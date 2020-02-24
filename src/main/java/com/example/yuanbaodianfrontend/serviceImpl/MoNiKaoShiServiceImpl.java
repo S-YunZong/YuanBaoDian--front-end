@@ -1,9 +1,7 @@
 package com.example.yuanbaodianfrontend.serviceImpl;
 
 import com.example.yuanbaodianfrontend.dao.MoNiKaoShiDao;
-import com.example.yuanbaodianfrontend.pojo.LimitVo;
-import com.example.yuanbaodianfrontend.pojo.YbdQuestionBack;
-import com.example.yuanbaodianfrontend.pojo.YbdQuestionType;
+import com.example.yuanbaodianfrontend.pojo.*;
 import com.example.yuanbaodianfrontend.service.MoNiKaoShiService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,10 +28,32 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
 
     @Override
     public void listYbdQuestionBack(LimitVo page,int questionTypeId) {
-        System.out.println("service1:"+questionTypeId);
         PageHelper.offsetPage(page.getOffset(), page.getLimit());
-        System.out.println("service2:"+questionTypeId);
         List<YbdQuestionBack> list = moNiKaoShiDao.listYbdQuestionBack(questionTypeId);
+        PageInfo<YbdQuestionBack> info = new PageInfo<>(list);
+        page.setTotal(Integer.valueOf(String.valueOf(info.getTotal())));
+        page.setRows(info.getList());
+    }
+
+    @Override
+    public List<YbdChapter> listYbdChapter() {
+        return moNiKaoShiDao.listYbdChapter();
+    }
+
+    @Override
+    public List<YbdGameLevel> listYbdGameLevel(int id) {
+        return moNiKaoShiDao.listYbdGameLevel(id);
+    }
+
+    @Override
+    public boolean insYbdPutQuestionsTo(YbdPutQuestionsTo QuestionsTo) {
+        return moNiKaoShiDao.insYbdPutQuestionsTo(QuestionsTo);
+    }
+
+    @Override
+    public void chuangguanYbdQuestionBack(LimitVo page, int questionTypeId, int gameLevelId) {
+        PageHelper.offsetPage(page.getOffset(), page.getLimit());
+        List<YbdQuestionBack> list = moNiKaoShiDao.chuangguanYbdQuestionBack(questionTypeId,gameLevelId);
         PageInfo<YbdQuestionBack> info = new PageInfo<>(list);
         page.setTotal(Integer.valueOf(String.valueOf(info.getTotal())));
         page.setRows(info.getList());

@@ -198,6 +198,7 @@ $(function () {
                             $("#loginEntyWrapper").css("display", "none");
                             $("#ziroomRecordHook").css("display", "none");
                             $("#ok_login a:eq(0)").text(result.userName);
+                            window.location.reload();
                         }
                         else {
                             $("#asnycErrorWrapperHook").css("display", "");

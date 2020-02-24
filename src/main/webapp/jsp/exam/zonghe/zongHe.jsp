@@ -90,7 +90,8 @@
                     <div id="anniou">
                         <button type="button" class="btn btn-success" onclick="shangyiye(this)" style="margin: 0px 100px">上一题</button>
                         <button type="button" class="btn btn-success" onclick="xiayiye(this)">下一题</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-default" onclick="shoucang(this)">收藏</button>
+                        <button type="button" class="btn btn-default" id="collect" onclick="shoucang()">收藏</button>
+                        <span id="timuid" style="display: none"></span>
                     </div>
                 </div>
             <%--题号列表--%>
@@ -104,7 +105,7 @@
             <%--解析--%>
             <div id="div3" style="border:#EEEEEE solid 2px;width: 600px;height: 200px;">
                 <h3 style="margin: 20px 50px">试题讲解：</h3>
-                <i class="iconfont iconiconfontweibiaoti1"></i>
+                <i class="iconfont iconiconfontweibiaoti1" onclick="wenti()"></i>
                 <div style="overflow: auto; width: 500px;height:130px;margin: -10px 80px;">
                     <h5 id="z-jiangjie" style="display: none"></h5>
                 </div>
@@ -112,17 +113,56 @@
         </div>
     </div>
 </div>
+<%--提出疑问--%>
+<%@include file="/jsp/exam/tiwenti.jsp" %>
 </body>
 <script>
     $(function () {
 
     })
+    /*查看是否收藏*/
+    function see() {
+        var phone="${user_session.phone}";
+        var timuid=$("#timuid").text();
+        if(phone!=null && phone!=""){
+            seecollect(timuid,phone)
+        }
+    }
+    /*点击收藏*/
+    function shoucang() {
+        var phone="${user_session.phone}";
+        var timuid=$("#timuid").text();
+        if(phone!=null && phone!=""){
+            var mm=$("#collect").text();
+            if(mm=="收藏"){
+                collect(timuid,phone)
+            }else {
+                cancelcollect(timuid,phone)
+            }
+        }else {
+            alert("登录后才能收藏！")
+        }
+    }
+    /*点击提问*/
+    function wenti() {
+        var userid="${user_session.id}";
+        if(userid!=null && userid!="") {
+            $("#tiwenModal").modal('show');
+            var mm=$("#z-timu").html();
+            var mn=$("#z-chutiren").html();
+            $("#timuu").html(mm)
+            $("#chutiren").html(mn);
+        }else {
+            alert("登录后才能提问！");
+        }
+    }
     /*点击开始考试*/
     function kaishi() {
         $("#dati2").attr("style","display:block");
         $("#dati").attr("style","display:none");
         $("button:contains('完成练习')").text("下一题");
-        chaxuntiku()
+        chaxuntiku()   /*分页展示题库*/
+
     }
     /*上一页*/
     function shangyiye(t) {
@@ -135,7 +175,6 @@
             $(t).next().text("下一题")
             chaxuntiku(page)
         }
-
     }
     /*下一页*/
     function xiayiye(t) {
@@ -153,13 +192,18 @@
         }else {
             chaxuntiku(page);
         }
-
     }
     /*点击跳转指定习题*/
     function xuanxiang(page) {
         $("#z-jiangjie").attr("style","display:none");
         chaxuntiku(page);
-
+        var mm=$("#z-shumu").html();
+        var ss=mm.substr(mm.indexOf('/') + 1);//总页数
+        if(page==ss){
+            $("button:contains('下一题')").text("完成练习");
+        }else{
+            $("button:contains('完成练习')").text("下一题");
+        }
     }
     /*选择后*/
     var map = new Array();//创建map数组
@@ -213,7 +257,7 @@
             data:{
                 offset:p-1,
                 limit:1,
-                questionTypeId:1
+                questionTypeId:${param.typeid}
             },
             success:function (data) {
                 if(data){
@@ -221,7 +265,6 @@
                     var xia="";
                     //当前页/总页数
                     $("#z-shumu").html(data.offset+1+"/"+data.total);
-                    /*$("#timu").attr("style","background-color: #E6E6E6");*/
                     for(var i=1;i<=data.total;i++){
                         if(page==i||p==i){
                             xia+="<input onclick=\'xuanxiang("+i+")\' type=\"button\" class=\"btn btn-default\" style=\"width: 50px;background-color: #E6E6E6\" value='"+i+"'>";
@@ -236,6 +279,8 @@
                         $("#z-timu").html(b.questionBack);
                         //出题人
                         $("#z-chutiren").html("—— "+b.userName);
+                        $("#chutirenid").html(b.createUser);//出题人id
+                        $("#timuid").html(b.id);//题目id
                         //习题讲解
                         $("#z-jiangjie").html(b.analysis);
                         $(b.optionList).each(function (c,d) {
@@ -259,12 +304,14 @@
                     })
                     //选项
                     $("#z-xuanxiang").html(shang);
-                    xuanxiangliebiao()
+                    xuanxiangliebiao()    /*持久化选项列表的颜色*/
+                    see();//查看是否收藏
                 }else {
                     alert("没数据")
                 }
             }
         })
     }
+
 </script>
 </html>

@@ -25,12 +25,37 @@
     <!--//查询章节
     List<YbdChapter> listYbdChapter();-->
     <select id="listYbdChapter" resultType="YbdChapter">
-
+      SELECT * FROM ybd_chapter
     </select>
     <!--//查询关卡
     List<YbdGameLevel> listYbdGameLevel(int id);-->
     <select id="listYbdGameLevel" resultType="YbdGameLevel">
-
+        SELECT * from ybd_game_level where chapter_id=#{id}
+    </select>
+    <!--/提交疑问
+    boolean insYbdPutQuestionsTo(YbdPutQuestionsTo QuestionsTo);-->
+    <insert id="insYbdPutQuestionsTo" parameterType="YbdPutQuestionsTo">
+        insert into ybd_put_questions_to
+        values (null,#{QuestionsTo.objectUserId},#{QuestionsTo.startUserId},
+        #{QuestionsTo.questionBackId},#{QuestionsTo.description});
+    </insert>
+    <!--//闯关查询
+    List<YbdQuestionBack> chuangguanYbdQuestionBack(@Param("questionTypeId") int questionTypeId,@Param("gameLevelId") int gameLevelId);
+-->
+    <select id="chuangguanYbdQuestionBack" resultType="YbdQuestionBack" resultMap="chuangguanMap">
+      select ybd_question_back.* ,ybd_user.user_name
+      from ybd_question_back,ybd_user
+      where question_type_id=#{questionTypeId}
+      and ybd_question_back.create_user=ybd_user.id
+      and game_level_id=#{gameLevelId}
+    </select>
+    <resultMap id="chuangguanMap" type="YbdQuestionBack">
+        <id property="id" column="id"></id>
+        <collection property="optionList" column="id" select="selchuangguan" ofType="YbdQuestionBackOption">
+        </collection>
+    </resultMap>
+    <select id="selchuangguan" resultType="YbdQuestionBackOption">
+      select * from ybd_question_back_option where question_back_id=#{id}
     </select>
 </mapper>
 

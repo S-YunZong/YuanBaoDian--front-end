@@ -1,8 +1,6 @@
 package com.example.yuanbaodianfrontend.service;
 
-import com.example.yuanbaodianfrontend.pojo.LimitVo;
-import com.example.yuanbaodianfrontend.pojo.YbdQuestionBack;
-import com.example.yuanbaodianfrontend.pojo.YbdQuestionType;
+import com.example.yuanbaodianfrontend.pojo.*;
 
 import java.util.List;
 
@@ -11,4 +9,12 @@ public interface MoNiKaoShiService {
     List<YbdQuestionType> selYbdQuestionType();
     //题库
     void listYbdQuestionBack(LimitVo page,int questionTypeId);
+    //查询章节
+    List<YbdChapter> listYbdChapter();
+    //查询关卡
+    List<YbdGameLevel> listYbdGameLevel(int id);
+    //提交疑问
+    boolean insYbdPutQuestionsTo(YbdPutQuestionsTo QuestionsTo);
+    //闯关题库
+    void chuangguanYbdQuestionBack(LimitVo page,int questionTypeId,int gameLevelId);
 }

@@ -16,5 +16,7 @@
 
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <%--收藏--%>
+    <script src="/static/js/collect.js"></script>
 </body>
 </html>

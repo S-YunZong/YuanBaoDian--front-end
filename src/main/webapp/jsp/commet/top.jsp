@@ -148,7 +148,7 @@
                 <a href="javascript:;" class=" Z_exit" rel="nofollow" id="zRegister">注册</a>
             </div>
             <div class="Z_login_top" id="ok_login" style="display: none">
-                <a id="urlgeren" class=" Z_headtop_tel" rel="nofollow">${user_session.userName}</a>
+                <a id="urlgeren" class=" Z_headtop_tel" rel="nofollow"></a>
                 <a class=" Z_exit" rel="nofollow" id="zRegister2" style="color: #0C0C0C;">退出</a>
             </div>
         </div>
