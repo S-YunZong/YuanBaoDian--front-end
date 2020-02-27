@@ -30,16 +30,27 @@ public class QuestionBackServiceImpl implements QuestionBackService {
 
     @Override
     public PageInfo<YbdQuestionBack> myFavorite(Integer pageNum, Integer pageSize, List<String> ybdQuestionBack_list) {
+
+        //如果ybdQuestionBack_list里有值进行操作
+        // 否则返回空集合
         if(ybdQuestionBack_list.size()>0){
+
             String infoIdStr=new String();
+
+            //将ybdQuestionBack_list转换为 1，2，3，的形式
             for (int i=0;i<ybdQuestionBack_list.size();i++){
                 infoIdStr += (ybdQuestionBack_list.get(i));
                 infoIdStr += (",");
             }
 
+            //截取最后一个，
             infoIdStr=infoIdStr.substring(0,infoIdStr.length()-1);
-            PageHelper.startPage(pageNum, pageSize);
+
+            //进行查询
             List<YbdQuestionBack> list = questionBackDao.myFavorite(infoIdStr);
+
+            //进行分页
+            PageHelper.startPage(pageNum, pageSize);
 
             PageInfo<YbdQuestionBack> p = new PageInfo<>(list);
 
@@ -60,13 +71,20 @@ public class QuestionBackServiceImpl implements QuestionBackService {
     @Override
     public PageInfo<YbdQuestionBack> myCovenant(Integer pageNum, Integer pageSize, String id) {
 
+        //错题查询
         List<YbdQuestionBack> list = questionBackDao.myCovenant(id);
+
+//        如果有错题就进行操作 否则返回空集合
         if(list.size()>0) {
+
             for (int i = 0; i < list.size(); i++) {
+                //根据题目id查询 错误选项
                 String errorOptionDescribe =questionBackDao.findError(list.get(i).getId(),list.get(i).getCreateUser());
+                //将查询到的错误选项放到对应的实体类
                 list.get(i).setErrorOptionDescribe(errorOptionDescribe);
             }
 
+            //进行分页
             PageHelper.startPage(pageNum, pageSize);
 
             PageInfo<YbdQuestionBack> p = new PageInfo<>(list);
@@ -86,8 +104,10 @@ public class QuestionBackServiceImpl implements QuestionBackService {
     @Override
     public PageInfo<YbdExchanageMall> queryConvertRecord(Integer pageNum, Integer pageSize, String id) {
 
+//        根据用户id查询兑换记录
         List<YbdExchanageMall> list = questionBackDao.queryConvertRecord(id);
 
+        //进行分页
         PageHelper.startPage(pageNum, pageSize);
 
         PageInfo<YbdExchanageMall> p = new PageInfo<>(list);
