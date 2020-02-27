@@ -1,6 +1,7 @@
 package com.example.yuanbaodianfrontend.service;
 
 import com.example.yuanbaodianfrontend.pojo.*;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface MoNiKaoShiService {
     boolean insYbdPutQuestionsTo(YbdPutQuestionsTo QuestionsTo);
     //闯关题库
     void chuangguanYbdQuestionBack(LimitVo page,int questionTypeId,int gameLevelId);
+    //添加错题
+    boolean insYbdWrongTopicRecord(@Param("ybdWrongTopicRecord") YbdWrongTopicRecord ybdWrongTopicRecord);
+
 }

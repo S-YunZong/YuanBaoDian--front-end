@@ -1,13 +1,16 @@
 package com.example.yuanbaodianfrontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * \* User: 智慧
@@ -80,5 +83,27 @@ public class SpringBootRedis {
         }
         return false;
     }
-
+    //添加选项记录
+    @RequestMapping("RECORD_addHash")
+    @ResponseBody
+    public boolean addHash(String phone,String questionBack_id,String zixuan,String answer){
+        String KEY = "RECORD_" + phone;
+        HashOperations hash=redisTemplate.opsForHash();
+        hash.put(KEY,questionBack_id,questionBack_id+","+answer+","+zixuan);
+        boolean bo=hash.hasKey(KEY,questionBack_id);
+        return bo;
+    }
+    /*查看选项记录*/
+    @RequestMapping("RECORD_allHash")
+    @ResponseBody
+    public List allHash(String phone){
+        String KEY = "RECORD_" + phone;
+        HashOperations hash=redisTemplate.opsForHash();
+        List t=hash.values(KEY);
+        if(t.size()==0){
+            return t;
+        }else {
+            return t;
+        }
+    }
 }

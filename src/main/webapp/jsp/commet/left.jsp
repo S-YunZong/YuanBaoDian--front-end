@@ -77,7 +77,7 @@
         $("#urljsp").attr("src", "/jsp/exam/chuangguan/chuangguan.jsp?typeid="+typeid);
     }
     function zhenti(typeid) {
-        $("#urljsp").attr("src", "");
+        $("#urljsp").attr("src", "/jsp/exam/zhenti/zhanti.jsp?typeid="+typeid);
     }
 </script>
 </html>

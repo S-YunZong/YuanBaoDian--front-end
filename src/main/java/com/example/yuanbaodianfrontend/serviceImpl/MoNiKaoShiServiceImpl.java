@@ -8,6 +8,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,8 +30,10 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
 
     @Override
     public void listYbdQuestionBack(LimitVo page,int questionTypeId) {
+        int[] s=moNiKaoShiDao.listYbdQuestionBackid(questionTypeId);
         PageHelper.offsetPage(page.getOffset(), page.getLimit());
         List<YbdQuestionBack> list = moNiKaoShiDao.listYbdQuestionBack(questionTypeId);
+        page.setTimuid(s);
         PageInfo<YbdQuestionBack> info = new PageInfo<>(list);
         page.setTotal(Integer.valueOf(String.valueOf(info.getTotal())));
         page.setRows(info.getList());
@@ -52,10 +56,17 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
 
     @Override
     public void chuangguanYbdQuestionBack(LimitVo page, int questionTypeId, int gameLevelId) {
+        int s[]=moNiKaoShiDao.chuangguanYbdQuestionBackid(questionTypeId,gameLevelId);
         PageHelper.offsetPage(page.getOffset(), page.getLimit());
         List<YbdQuestionBack> list = moNiKaoShiDao.chuangguanYbdQuestionBack(questionTypeId,gameLevelId);
+        page.setTimuid(s);
         PageInfo<YbdQuestionBack> info = new PageInfo<>(list);
         page.setTotal(Integer.valueOf(String.valueOf(info.getTotal())));
         page.setRows(info.getList());
+    }
+
+    @Override
+    public boolean insYbdWrongTopicRecord(YbdWrongTopicRecord ybdWrongTopicRecord) {
+        return moNiKaoShiDao.insYbdWrongTopicRecord(ybdWrongTopicRecord);
     }
 }

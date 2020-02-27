@@ -170,7 +170,7 @@
                             </div><!--ziroom_box_right_h -->
                             <div class="ziroom_box_right_c">
 
-                                <%--<table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">
+                                <table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">
                                     <tbody id="tbody">
                                     <tr class="ttl_cs">
                                         <td class="td_firsr">房源信息</td>
@@ -207,7 +207,7 @@
                                         </td>
                                     </tr>
                                     </tbody>
-                                </table>--%>
+                                </table>
                                 <div id="ccc">
 
                                 </div>
