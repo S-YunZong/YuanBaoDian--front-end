@@ -14,12 +14,12 @@ public interface QuestionBackDao {
     List<QuestionVo> MyMessage();
     //消息详情
     List<QuestionVo> MyMessage_2(Integer id);
-
+    //我的收藏
     List<YbdQuestionBack> myFavorite(@Param("infoIdStr") String infoIdStr);
-
+    //我的错题
     List<YbdQuestionBack> myCovenant(String id);
-
+    //查询错题选项
     String findError(@Param("id") Integer id,@Param("createUser") Integer createUser);
-
+    //查询兑换记录
     List<YbdExchanageMall> queryConvertRecord(String id);
 }

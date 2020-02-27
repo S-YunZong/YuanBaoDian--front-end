@@ -166,7 +166,8 @@
     })
     //个人中心
     $("#urlgeren").click(function () {
-        $("#urlgeren").attr("href", "/jsp/personalCenter/mySpace/mySpace.jsp");
+        var id = localStorage.getItem("id");
+        $("#urlgeren").attr("href", "/jsp/personalCenter/mySpace/mySpace.jsp?userid=" + id);
     })
 </script>
 </body>
