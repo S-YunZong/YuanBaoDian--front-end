@@ -38,7 +38,6 @@ public class UserController {
     @ResponseBody
     public YbdUser login(String phone, String password,HttpSession session){
         YbdUser login = userService.login(phone, password);
-        System.out.println(login);
             if (login!=null){
                 session.setAttribute("user_session",login);
                 YbdUser user_session = (YbdUser) session.getAttribute("user_session");
@@ -73,7 +72,7 @@ public class UserController {
     }
 
     //修改密码
-    @RequestMapping("updatePwd")
+    /*@RequestMapping("updatePwd")
     @ResponseBody
     public boolean updatePwd(String telephone,String password){
         int i = userService.updatePwd(telephone,password);
@@ -82,7 +81,7 @@ public class UserController {
         }else {
             return false;
         }
-    }
+    }*/
 
     //获取验证码
     @RequestMapping("getMsg")
@@ -108,7 +107,7 @@ public class UserController {
         return true;
     }
 
-    @RequestMapping("updatePhone")
+    /*@RequestMapping("updatePhone")
     @ResponseBody
     public boolean updateMobile(String newPhone,Integer id){
         int i = userService.updatePhone(newPhone,id);
@@ -117,6 +116,6 @@ public class UserController {
         }else {
             return false;
         }
-    }
+    }*/
 
 }

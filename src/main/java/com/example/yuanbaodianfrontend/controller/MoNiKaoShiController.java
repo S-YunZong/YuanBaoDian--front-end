@@ -62,6 +62,14 @@ public class MoNiKaoShiController {
     @ResponseBody
     public LimitVo chuangYbdQuestionBack(LimitVo page,Integer questionTypeId,Integer gameLevelId){
         moNiKaoShiService.chuangguanYbdQuestionBack(page,questionTypeId,gameLevelId);
+
         return page;
+    }
+    /*错题录入*/
+    @RequestMapping("insYbdWrongTopicRecord")
+    @ResponseBody
+    public boolean insYbdWrongTopicRecord(YbdWrongTopicRecord ybdWrongTopicRecord){
+        boolean boo=moNiKaoShiService.insYbdWrongTopicRecord(ybdWrongTopicRecord);
+        return boo;
     }
 }

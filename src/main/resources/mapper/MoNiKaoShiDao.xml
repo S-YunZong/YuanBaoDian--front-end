@@ -22,6 +22,13 @@
     <select id="seldaan" resultType="YbdQuestionBackOption">
       select * from ybd_question_back_option where question_back_id=#{id}
     </select>
+    <!--id
+    int[] listYbdQuestionBackid(int questionTypeId);-->
+    <select id="listYbdQuestionBackid" resultType="int">
+        select ybd_question_back.id
+      from ybd_question_back
+      where question_type_id=#{questionTypeId}
+    </select>
     <!--//查询章节
     List<YbdChapter> listYbdChapter();-->
     <select id="listYbdChapter" resultType="YbdChapter">
@@ -57,6 +64,20 @@
     <select id="selchuangguan" resultType="YbdQuestionBackOption">
       select * from ybd_question_back_option where question_back_id=#{id}
     </select>
+    <!--id
+    int[] chuangguanYbdQuestionBackid(@Param("questionTypeId") int questionTypeId,@Param("gameLevelId") int gameLevelId);-->
+    <select id="chuangguanYbdQuestionBackid" resultType="int">
+        select ybd_question_back.id
+      from ybd_question_back
+      where question_type_id=#{questionTypeId}
+      and game_level_id=#{gameLevelId}
+    </select>
+    <!--//添加错题
+    boolean insYbdWrongTopicRecord(@Param("ybdWrongTopicRecord") YbdWrongTopicRecord ybdWrongTopicRecord);-->
+    <insert id="insYbdWrongTopicRecord" parameterType="YbdWrongTopicRecord">
+        insert into ybd_wrong_topic_record (question_back_id,user_id,create_time,error_option)
+        values (#{ybdWrongTopicRecord.questionBackId},#{ybdWrongTopicRecord.userId},now(),#{ybdWrongTopicRecord.errorOption});
+    </insert>
 </mapper>
 
 

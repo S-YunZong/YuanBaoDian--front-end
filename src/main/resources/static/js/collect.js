@@ -62,3 +62,24 @@ function cancelcollect(questionBack_id,phone) {
         }
     })
 }
+/*记录习题*/
+function Record(phone,questionBack_id,zixuan,answer) {
+    $.ajax({
+        url: "/redis/RECORD_addHash",
+        type: "post",
+        dataType: "json",
+        data: {
+            phone:phone,
+            questionBack_id: questionBack_id,
+            zixuan: zixuan,
+            answer: answer
+        },
+        success: function (data) {
+            if(data){
+                alert("录入成功！")
+            }else {
+                alert("录入失败！")
+            }
+        }
+    })
+}
