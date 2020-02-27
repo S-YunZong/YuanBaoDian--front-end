@@ -28,7 +28,7 @@
     }
 </style>
 <head>
-    <title>我的错题</title>
+    <title>兑换记录</title>
 </head>
 <%@include file="/jsp/personalCenter/mySpace/common/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/static/css/zxf_page.css"/>
@@ -42,13 +42,13 @@
         ajaxPage()
     })
 
-    //查询我的错题
+    //查询我的兑换记录
     function ajaxPage(page) {
         var uid="${user_session.id}";
         var p = page || 1;
         $.ajax({
             type: "POST",
-            url: "/QuestionBack/myCovenant",
+            url: "/QuestionBack/queryConvertRecord",
             dataType: "json",
             data: {
                 "pageNum": p,
@@ -71,9 +71,9 @@
         if (da == "") {
             str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                 "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
-                "        <p>您还没有错题！</p>\n" +
+                "        <p>您还没有兑换记录，快去预约您喜欢的礼物吧！</p>\n" +
                 "      </div>";
-            $("#myCovenant").html("");
+            $("#myExchange").html("");
             $("#ccc").html(str);
             $("#myPage").html("");
             return false;
@@ -82,41 +82,31 @@
         var seeTime;
         str += "<tbody id=\"tbody\">\n" +
             "                                    <tr class=\"ttl_cs\">\n" +
-            "                                        <td class=\"td_firsr\" width=\"70%\">题目</td>\n" +
-            "                                        <td class=\"td_second\" align=\"center\" width=\"15%\">出题人</td>\n" +
+            "                                        <td class=\"td_firsr\">礼物信息</td>\n" +
+            "                                        <td class=\"td_second\" align=\"center\">所需积分</td>\n" +
+            "                                        <td class=\"td_second\" align=\"center\">兑换时间</td>\n" +
             "                                    </tr>";
         for (var i = 0; i < da.length; i++) {
             str += "<tr class=\"content_cs\">\n" +
-                "                                        <td >\n" +
+                "                                        <td>\n" +
                 "                                            <div class=\"left_imgs clearfix\">\n" +
-                "                                                <div class=\"txt_li\" width=\"100%\">\n" +
-                "                                                    <div class=\"panel-group\" id=\"accordion\">\n" +
-                "                                    <div class=\"panel-heading\">\n" +
-                "                            <h4 class=\"panel-title\">\n" +
-                "     <a data-toggle=\"collapse\" data-parent=\"#accordion\" \n" +
-                "      href=\"#collapse"+da[i].id+"\">\n" +
-                " "+da[i].questionBack+"\n" +
-                "     </a>\n" +
-                "                </h4>\n" +
-                "                            </div>\n" +
-                "                           <div id=\"collapse"+da[i].id+"\" class=\"panel-collapse collapse\">\n" +
-                " <div class=\"panel-body\">\n" +
-                " <p>正确答案：</p>"+da[i].optionDescribe+" \n" +
-                " <p>我的选择：</p>"+da[i].errorOptionDescribe+" \n" +
-                " <p>解释：</p>"+da[i].analysis+" \n" +
-                " </div>\n" +
-                "                        </div>\n" +
-                "        </div>\n" +
-                "    </div>\n" +
+                "                                                <div class=\"imgs\">\n" +
+                "                                                    <img src=\""+da[i].itemPic+"\" width=\"137\" height=\"91\">\n" +
+                "                                                </div>\n" +
+                "                                                <div class=\"txt_li\">\n" +
+                "                                                    <p style=\"margin-bottom: 12px\">&nbsp;</p>\n" +
+                "                                                    <p class=\"p1\">\n" +
+                "                                                        量化积分："+da[i].itemDescription+"\n" +
+                "                                                    </p>\n" +
+                "                                                </div>\n" +
                 "                                            </div>\n" +
                 "                                        </td>\n" +
-                "                                        <td align=\"center\" >\n" +
-                "                                            <p>"+da[i].userName+"</p>\n" +
-                "                                        </td>\n" +
+                "                                        <td class=\"price_c\" align=\"center\">"+da[i].price+"</td>\n" +
+                "                                        <td class=\"price_c\" align=\"center\">"+da[i].convertTime+"</td>\n" +
                 "                                    </tr>";
         }
         str += "</tbody>";
-        $("#myCovenant").html(str);
+        $("#myExchange").html(str);
         $("#myPage").sPage({
             page: p,//当前页码，必填
             total: data.total,//数据总条数，必填
@@ -166,53 +156,41 @@
                     <div class="t_spacemainboxright" style="width: 1055px;">
                         <div class="ziroom_box_right">
                             <div class="ziroom_box_right_h  lh30">
-                                <h3>我的错题</h3>
+                                <h3>兑换记录</h3>
                             </div><!--ziroom_box_right_h -->
                             <div class="ziroom_box_right_c">
 
-                                <%--<table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">
-                                    <tbody id="tbody">
-                                    <tr class="ttl_cs">
-                                        <td class="td_firsr">房源信息</td>
-                                        <td class="td_second">经纪人</td>
-                                        <td class="td_second">电话</td>
-                                        <td class="td_second">约看时间</td>
-                                        <td class="td_second">价格</td>
-                                        <td class="td_second">操作</td>
-                                    </tr>
-                                    <tr class="content_cs">
-                                        <td>
-                                            <div class="left_imgs clearfix">
-                                                <div class="imgs">
-                                                    <a href="http://www.ziroom.com/z/vh/60411515.html" target="_blank">
-                                                        <img src="/static/image/CtgFCF3JIwiAGsloADDvzA054os031.jpg" width="137" height="91">
-                                                    </a>
-                                                </div>
-                                                <div class="txt_li">
-                                                    <p class="p1">
-                                                        <a href="http://www.ziroom.com/z/vh/60411515.html" target="_blank">丰台角门10号线角门东司达小区2居室</a>
-                                                    </p>
-                                                    <p class="p2">3/6层 | 15 平方米 |整租</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="price_c">秀明</td>
-                                        <td class="price_c">6032432421</td>
-                                        <td class="price_c">2019-10-10 10:45</td>
-                                        <td class="price_c">6030元/月</td>
-                                        <td>
-                                            <div class="yk-btn">
-                                                <input type="button" value="取消约看" onclick="ykDelete2()">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>--%>
+<%--                                <table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">--%>
+<%--                                    <tbody id="tbody">--%>
+<%--                                    <tr class="ttl_cs">--%>
+<%--                                        <td class="td_firsr">礼物信息</td>--%>
+<%--                                        <td class="td_second" align="center">所需积分</td>--%>
+<%--                                        <td class="td_second" align="center">兑换时间</td>--%>
+<%--                                    </tr>--%>
+<%--                                    <tr class="content_cs">--%>
+<%--                                        <td>--%>
+<%--                                            <div class="left_imgs clearfix">--%>
+<%--                                                <div class="imgs">--%>
+<%--                                                    <img src="https://kidding.oss-cn-beijing.aliyuncs.com/WeChat/know.jpg" width="137" height="91">--%>
+<%--                                                </div>--%>
+<%--                                                <div class="txt_li">--%>
+<%--                                                    <p style="margin-bottom: 12px">&nbsp;</p>--%>
+<%--                                                    <p class="p1">--%>
+<%--                                                        量化积分：10--%>
+<%--                                                    </p>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </td>--%>
+<%--                                        <td class="price_c" align="center">100</td>--%>
+<%--                                        <td class="price_c" align="center">2020-02-24 16:09:30</td>--%>
+<%--                                    </tr>--%>
+<%--                                    </tbody>--%>
+<%--                                </table>--%>
                                 <div id="ccc">
 
                                 </div>
                                 <div class="Z_list-box">
-                                    <table id="myCovenant" width="100%" cellpadding="0" cellspacing="0"
+                                    <table id="myExchange" width="100%" cellpadding="0" cellspacing="0"
                                            class="collect_sheet">
                                     </table>
                                 </div>

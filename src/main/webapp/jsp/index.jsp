@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>猿宝典</title>
     <!-- -->
     <%@include file="/jsp/commet/header.jsp" %>
 </head>
@@ -27,7 +27,7 @@
                     <%--轮播图--%>
                     <div class="carousel slide" id="carousel-481935">
                         <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#carousel-481935">
+                            <li class=" " data-slide-to="0" data-target="#carousel-481935">
                             </li>
                             <li data-slide-to="1" data-target="#carousel-481935">
                             </li>

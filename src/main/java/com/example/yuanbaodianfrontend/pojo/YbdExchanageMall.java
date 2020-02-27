@@ -1,6 +1,11 @@
 package com.example.yuanbaodianfrontend.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class YbdExchanageMall {
 
   private Integer id;
@@ -8,6 +13,18 @@ public class YbdExchanageMall {
   private Integer price;
   private Integer inventory;
   private String itemPic;
+
+  @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+  @DateTimeFormat(pattern="yyyy-MM-dd")
+  private Date convertTime;
+
+  public Date getConvertTime() {
+    return convertTime;
+  }
+
+  public void setConvertTime(Date convertTime) {
+    this.convertTime = convertTime;
+  }
 
   public Integer getId() {
     return id;

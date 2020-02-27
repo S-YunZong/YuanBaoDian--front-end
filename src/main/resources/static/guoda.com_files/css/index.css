@@ -158,8 +158,8 @@
 }
 
 .person .photo {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: auto;
     border-radius: 50%;
     overflow: hidden;
     margin-right: 30px;

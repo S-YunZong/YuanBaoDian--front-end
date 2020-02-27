@@ -31,6 +31,36 @@ public class YbdQuestionBack {
 
     List<YbdQuestionBackOption> optionList;
 
+    private String optionDescribe;//正确答案解释
+
+    private String errorOption;//错误选项
+
+    private String errorOptionDescribe;//错误答案解释
+
+    public String getErrorOption() {
+        return errorOption;
+    }
+
+    public void setErrorOption(String errorOption) {
+        this.errorOption = errorOption;
+    }
+
+    public String getErrorOptionDescribe() {
+        return errorOptionDescribe;
+    }
+
+    public void setErrorOptionDescribe(String errorOptionDescribe) {
+        this.errorOptionDescribe = errorOptionDescribe;
+    }
+
+    public String getOptionDescribe() {
+        return optionDescribe;
+    }
+
+    public void setOptionDescribe(String optionDescribe) {
+        this.optionDescribe = optionDescribe;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -52,7 +52,8 @@
                     <div class="con">
                         <a href="/jsp/personalCenter/mySpace/mySpace.jsp">个人空间</a>
                         <a href="/jsp/personalCenter/myProfile/myProfile.jsp">编辑资料</a>
-                        <a href="/jsp/personalCenter/mySpace/myCovenant.jsp">我的约看</a>
+                        <a href="/jsp/personalCenter/mySpace/myFavorite.jsp">我的收藏</a>
+                        <a href="/jsp/personalCenter/mySpace/myCovenant.jsp">我的错题</a>
                     </div>
                 </li>
                 <li>

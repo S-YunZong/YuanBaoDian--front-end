@@ -30,4 +30,39 @@ WHERE
 	AND p.question_back_id = q.id
 	and q.id=#{id}
 	</select>
+
+	<select id="myFavorite" resultType="YbdQuestionBack">
+		select q.*,u.user_name,o.option_describe
+		from ybd_question_back q,ybd_user u,ybd_question_back_option o
+		where q.create_user=u.id
+		and q.id=o.question_back_id
+		and q.answer=o.`option`
+		and q.id in (${infoIdStr})
+	</select>
+
+	<select id="myCovenant" resultType="YbdQuestionBack">
+		select u.user_name,o.option_describe,r.error_option,b.*
+		from ybd_question_back b,ybd_user u,ybd_question_back_option o,ybd_wrong_topic_record r
+		where b.create_user=u.id
+		and b.id=o.question_back_id
+		and b.id=r.question_back_id
+		and b.answer=o.`option`
+		and r.user_id=#{id}
+	</select>
+
+	<select id="findError" resultType="java.lang.String">
+		select o.option_describe from ybd_question_back_option o,ybd_wrong_topic_record r
+		where o.question_back_id = r.question_back_id
+		and o.`option`=r.error_option
+		and r.user_id=#{createUser}
+		and r.question_back_id = #{id}
+	</select>
+
+	<select id="queryConvertRecord" resultType="YbdExchanageMall">
+		select e.Item_description,e.price,c.convert_time,e.item_pic
+		from ybd_exchanage_mall e,ybd_convert_record c
+		where e.id = c.exchanage_id
+		and c.user_id=#{id}
+	</select>
+
 </mapper>

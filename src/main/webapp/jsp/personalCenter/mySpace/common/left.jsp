@@ -19,7 +19,7 @@
             <li class="myLook"><b></b><a id="yuekan">我的错题</a></li>
             <li class="myContract"><b></b><a id="hetong">我的礼物</a></li>
             <li class="myContract"><b></b><a id="youhui">我的消息</a></li>
-            <li class="myContract"><b></b><a id="">历史记录</a></li>
+            <li class="myContract"><b></b><a id="duihuan">兑换记录</a></li>
         </ul>
     </div>
 </div>
@@ -39,6 +39,10 @@
     $("#youhui").click(function () {
         var id = localStorage.getItem("id");
         $("#youhui").attr("href", "/jsp/personalCenter/mySpace/myCoupon.jsp?userid=" + id);
+    })
+    $("#duihuan").click(function () {
+        var id = localStorage.getItem("id");
+        $("#duihuan").attr("href", "/jsp/personalCenter/mySpace/myExchange.jsp?userid=" + id);
     })
 </script>
 </body>
