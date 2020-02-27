@@ -73,16 +73,16 @@ public class UserController {
     }
 
     //修改密码
-//    @RequestMapping("updatePwd")
-//    @ResponseBody
-//    public boolean updatePwd(String telephone,String password){
-//        int i = userService.updatePwd(telephone,password);
-//        if(i>0) {
-//            return true;
-//        }else {
-//            return false;
-//        }
-//    }
+    @RequestMapping("updatePwd")
+    @ResponseBody
+    public boolean updatePwd(String telephone,String password){
+       int i = userService.updatePwd(telephone,password);
+        if(i>0) {
+            return true;
+       }else {
+           return false;
+        }
+    }
 
     //获取验证码
     @RequestMapping("getMsg")
@@ -107,16 +107,16 @@ public class UserController {
         }
         return true;
     }
-
-//    @RequestMapping("updatePhone")
-//    @ResponseBody
-//    public boolean updateMobile(String newPhone,Integer id){
-//        int i = userService.updatePhone(newPhone,id);
-//        if(i>0) {
-//            return true;
-//        }else {
-//            return false;
-//        }
-//    }
+        //修改手机号
+   @RequestMapping("updatePhone")
+   @ResponseBody
+    public boolean updateMobile(String newPhone,Integer id){
+        int i = userService.updatePhone(newPhone,id);
+       if(i>0) {
+           return true;
+       }else {
+           return false;
+        }
+    }
 
 }

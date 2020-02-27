@@ -17,4 +17,8 @@ public interface UserDao {
     YbdUser Personal(Integer id);
     //修改个人信息
     boolean update_Personal(@Param("sex") Integer sex, @Param("id") Integer id, @Param("userName") String userName);
+    //修改密码
+    int updatePwd(@Param("telephone") String telephone, @Param("password")String password);
+    //修改手机号
+    int updatePhone(@Param("newPhone") String newPhone, @Param("id")Integer id);
 }

@@ -15,4 +15,8 @@ public interface UserService {
     YbdUser Personal(Integer id);
 
     boolean update_Personal(Integer sex, Integer id, String userName);
+
+    int updatePwd(String telephone, String password);
+
+    int updatePhone(String newPhone, Integer id);
 }

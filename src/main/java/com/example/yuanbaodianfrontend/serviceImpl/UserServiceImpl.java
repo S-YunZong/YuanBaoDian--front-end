@@ -35,4 +35,14 @@ public class UserServiceImpl implements UserService {
         return userDao.update_Personal(sex,id,userName);
     }
 
+    @Override
+    public int updatePwd(String telephone, String password) {
+        return userDao.updatePwd(telephone,password);
+    }
+
+    @Override
+    public int updatePhone(String newPhone, Integer id) {
+        return userDao.updatePhone(newPhone,id);
+    }
+
 }

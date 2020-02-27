@@ -36,4 +36,13 @@ WHERE
 	<update id="update_Personal">
 		update ybd_user set user_name=#{userName},sex=#{sex} where id=#{id}
 	</update>
+
+	<update id="updatePwd">
+		update ybd_user set password=#{password} where phone=#{telephone}
+	</update>
+
+	<update id="updatePhone">
+	update ybd_user set phone=#{newPhone} where id=#{id}
+	</update>
+
 </mapper>
