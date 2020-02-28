@@ -24,7 +24,7 @@
                             <div class="img">
                                 <img src="/static/image/default.png" width="100" height="100">
                             </div>
-                            <p>荼荼</p>
+                            <p>${user_session.userName}</p>
                         </div>
                         <ul>
                             <li class="myUserInfo"><b></b><a href="/jsp/personalCenter/myProfile/myProfile.jsp">个人信息</a>
@@ -79,7 +79,27 @@
                                             <font style="vertical-align: inherit;"><font
                                                     style="vertical-align: inherit;"><input type="button" value="确定"
                                                                                             class="ui_btn disabled ui_org_btn"
-                                                                                            id="J-m-submit"></font></font>
+                                                                                            id="J-m-submit" onclick="submit_1()"></font></font>
+                                            <script>
+                                                function submit_1() {
+                                                    var password=$("#J-m-pass").val();
+                                                    $.ajax({
+                                                        url:"/user/updatePwd",
+                                                        data:{password:password},
+                                                        type:"post",
+                                                        dataaType:"json",
+                                                        success:function (data) {
+                                                            if (data){
+                                                                alert("修改密码成功!")
+                                                            }else {
+                                                                alert("修改密码失败!")
+                                                            }
+                                                        },error:function () {
+                                                            alert("操作失败!")
+                                                        }
+                                                    })
+                                                }
+                                            </script>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -94,7 +114,7 @@
 </div>
 </body>
 <%--修改密码--%>
-<script>
+<%--<script>
     (function () {
         var t =
         ${param.tel}
@@ -132,5 +152,5 @@
             }
         });
     })();
-</script>
+</script>--%>
 </html>

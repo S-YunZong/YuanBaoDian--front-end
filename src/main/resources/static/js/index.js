@@ -338,6 +338,5 @@ function register_user() {
             alert("异常！");
         }
     });
-
-
 }
+

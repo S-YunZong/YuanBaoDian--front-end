@@ -75,8 +75,9 @@ public class UserController {
     //修改密码
     @RequestMapping("updatePwd")
     @ResponseBody
-    public boolean updatePwd(String telephone,String password){
-       int i = userService.updatePwd(telephone,password);
+    public boolean updatePwd(String telephone,String password,HttpSession session){
+        YbdUser a = (YbdUser)session.getAttribute("user_session");
+       int i = userService.updatePwd(a.getPhone(),password);
         if(i>0) {
             return true;
        }else {
@@ -110,8 +111,9 @@ public class UserController {
         //修改手机号
    @RequestMapping("updatePhone")
    @ResponseBody
-    public boolean updateMobile(String newPhone,Integer id){
-        int i = userService.updatePhone(newPhone,id);
+    public boolean updateMobile(String newPhone,Integer id,HttpSession session){
+       YbdUser a = (YbdUser)session.getAttribute("user_session");
+       int i = userService.updatePhone(newPhone,a.getId());
        if(i>0) {
            return true;
        }else {

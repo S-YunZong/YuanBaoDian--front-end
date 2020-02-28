@@ -16,8 +16,8 @@ FROM
 	ybd_picture p
 WHERE
 	p.pser_id = u.id
-	and phone=#{phone}
-	and password=#{password}
+	and u.phone=#{phone}
+	and u.password=#{password}
     </select>
 	<select id="Personal" resultType="YbdUser">
 		 SELECT
