@@ -104,8 +104,30 @@ public class QuestionBackServiceImpl implements QuestionBackService {
     @Override
     public PageInfo<YbdExchanageMall> queryConvertRecord(Integer pageNum, Integer pageSize, String id) {
 
-//        根据用户id查询兑换记录
+//        根据用户id查询礼物
         List<YbdExchanageMall> list = questionBackDao.queryConvertRecord(id);
+
+        //进行分页
+        PageHelper.startPage(pageNum, pageSize);
+
+        PageInfo<YbdExchanageMall> p = new PageInfo<>(list);
+
+        p.setTotal((int) p.getTotal());
+
+        p.setList(p.getList());
+
+        return p;
+    }
+
+    @Override
+    public List<YbdExchanageMall> queryConvertRecord2(String id) {
+        return questionBackDao.queryConvertRecord2(id);
+    }
+
+    @Override
+    public PageInfo<YbdExchanageMall> myContract(Integer pageNum, Integer pageSize, String id) {
+        //        根据用户id查询积分记录
+        List<YbdExchanageMall> list = questionBackDao.myContract(id);
 
         //进行分页
         PageHelper.startPage(pageNum, pageSize);

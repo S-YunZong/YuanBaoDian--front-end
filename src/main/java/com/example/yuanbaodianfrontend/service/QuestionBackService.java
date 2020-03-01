@@ -19,4 +19,8 @@ public interface QuestionBackService {
     PageInfo<YbdQuestionBack> myCovenant(Integer pageNum, Integer pageSize, String id);
 
     PageInfo<YbdExchanageMall> queryConvertRecord(Integer pageNum, Integer pageSize, String id);
+
+    List<YbdExchanageMall> queryConvertRecord2(String id);
+
+    PageInfo<YbdExchanageMall> myContract(Integer pageNum, Integer pageSize, String id);
 }

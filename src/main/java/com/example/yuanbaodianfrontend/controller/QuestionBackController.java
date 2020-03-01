@@ -91,7 +91,7 @@ public class QuestionBackController {
         return list;
     }
 
-//    查询我的兑换记录
+//    查询我的礼物
     @RequestMapping("/queryConvertRecord")
     @ResponseBody
     public PageInfo<YbdExchanageMall> queryConvertRecord(String id, Integer pageNum, Integer pageSize){
@@ -104,6 +104,33 @@ public class QuestionBackController {
         }
 
         PageInfo<YbdExchanageMall> list = questionBackService.queryConvertRecord(pageNum,pageSize,id);
+
+        return list;
+    }
+
+    //首页我的礼物
+    @RequestMapping("/queryConvertRecord2")
+    @ResponseBody
+    public List<YbdExchanageMall> queryConvertRecord2(String id){
+
+        List<YbdExchanageMall> list = questionBackService.queryConvertRecord2(id);
+
+        return list;
+    }
+
+//    查询积分记录
+    @RequestMapping("/myContract")
+    @ResponseBody
+    public PageInfo<YbdExchanageMall> myContract(String id, Integer pageNum, Integer pageSize){
+
+        if(pageNum==null){
+            pageNum=1;
+        }
+        if(pageSize==null){
+            pageSize=5;
+        }
+
+        PageInfo<YbdExchanageMall> list = questionBackService.myContract(pageNum,pageSize,id);
 
         return list;
     }

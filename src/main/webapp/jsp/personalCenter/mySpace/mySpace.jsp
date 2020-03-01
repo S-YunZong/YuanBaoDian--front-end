@@ -68,18 +68,19 @@
                         <p class="p2"><span>${user_session.integral}分</span></p></div>
                 </div>
 
-                <!-- 履行中合同 -->
+                <!-- 我的礼物 -->
                 <div class="collection"><%--contract--%>
                     <h5>我的礼物</h5>
-                    <ul class="clearfix" id="luxinghetong">
-                        <%--<li>
-                            <a href="https://btupian.oss-cn-beijing.aliyuncs.com/tupian/201912091451-cdefc8aa62ae405ebb2e7278af8544fa.jpg">
-                                <div class="img">
-                                    <img width="285" height="190" src="https://btupian.oss-cn-beijing.aliyuncs.com/tupian/201912091451-cdefc8aa62ae405ebb2e7278af8544fa.jpg">
-                                </div>
-                            </a>
-                        </li>--%>
-                    </ul>
+                    <div id="bbb">
+
+                    </div>
+                    <div class="clearfix" id="liwu">
+<%--                        <div style="float: left;border: 2px dashed red;width: 140px;height: 170px;text-align:center;padding-top: 20px;margin-left:20px" class="a">--%>
+<%--                            <img src="https://kidding.oss-cn-beijing.aliyuncs.com/WeChat/know.jpg" style="width: 100px;height: 100px;">--%>
+<%--                            <p style="font-size: 10px;margin: 0 auto;">所需积分:100</p>--%>
+<%--                            <p style="font-size: 15px;margin: 0 auto;">兑换量化积分：10</p>--%>
+<%--                        </div>--%>
+                    </div>
                 </div>
 
                 <!-- 最近收藏 -->
@@ -101,6 +102,7 @@
     $(function () {
         ajaxPage();
         time();
+        liwu();
     })
 
     // 问好
@@ -122,91 +124,7 @@
         }
     }
 
-    //房源redis取
-    function fangyuanid() {
-        var userid =${param.userid};
-        $.ajax({
-            url: "/redis/listrediszuijin",
-            dataType: "json",
-            type: "post",
-            data: {
-                userid: userid
-            },
-            success: function (data) {
-                if (data) {
-                    zuijinshouchang(data);
-                }
-            }
-        })
-    }
-
-    //房源分页
-    function zuijinshouchang(hid) {
-        var ids = [];
-        ids.push(hid);
-        $.ajax({
-            type: "POST",
-            url: "/user/zuijinHousing",
-            dataType: "json",
-            data: {
-                "hid": ids
-            },
-            traditional: true,
-            success: function (data) {
-                if (data) {
-                    var m = "";
-                    $(data).each(function (a, b) {
-                        m += "<li>\n" +
-                            "                        <a href=\"" + b.pictureName + "\">\n" +
-                            "                            <div class=\"img\">\n" +
-                            "                                <img width=\"285\" height=\"190\" src=\"" + b.pictureName + "\">\n" +
-                            "                            </div>\n" +
-                            "                            <div class=\"clearfix\">\n" +
-                            "                                <p class=\"name fl\">" + b.sheng + "" + b.shi + "" + b.areaName + "" + b.housingName + "" + b.houseType + "</p>\n" +
-                            "                                <p class=\"price fr\">¥" + b.rental + "/月</p>\n" +
-                            "                            </div>\n" +
-                            "                        </a>\n" +
-                            "                    </li>";
-                    })
-                    $("#ulzuijin").html(m)
-                } else {
-
-                }
-            }
-        });
-    }
-
-    //合同
-    function hetong() {
-        $.ajax({
-            type: "POST",
-            url: "/user/ListSell2",
-            dataType: "json",
-            data: {
-                id:${param.userid}
-            },
-            success: function (data) {
-                if (data !== '') {
-                    var m = "";
-                    for (var i = 0; i < 2; i++) {
-                        m += "<li>\n" +
-                            "   <a href=\"" + data[i].contract + "\">\n" +
-                            "       <div class=\"img\">\n" +
-                            "           <img width=\"285\" height=\"190\" src=\"" + data[i].contract + "\">\n" +
-                            "        </div>\n" +
-                            "    </a>\n" +
-                            "</li>";
-                    }
-                    $("#luxinghetong").html(m)
-                } else {
-                    var s = "<p class=\"noContent\">您还没有履行中的合同，快去签约吧！</p>";
-                    $("#luxinghetong").html(s);
-                }
-            }
-        })
-    }
-
-    //查询我的收藏
+    //查询最近收藏
     function ajaxPage(page) {
         var phone="${user_session.phone}";
         $.ajax({
@@ -221,7 +139,7 @@
             success: function (data) {
                 var da = data.list;
                 var str = "";
-                if (da == null) {
+                if (da == "") {
                     str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                         "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
                         "        <p>您还没有收藏，快去收藏吧！</p>\n" +
@@ -266,6 +184,39 @@
                 }
                 str += "</tbody>";
                 $("#myFavorite").html(str);
+            }
+        });
+    }
+
+    // 我的礼物
+    function liwu(){
+        var uid="${user_session.id}";
+        $.ajax({
+            type: "POST",
+            url: "/QuestionBack/queryConvertRecord2",
+            dataType: "json",
+            data: {
+                "id": uid
+            },
+            success: function (data) {
+                var str = "";
+                if (data == "") {
+                    str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
+                        "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
+                        "        <p>您还没有礼物，快去兑换吧！</p>\n" +
+                        "      </div>";
+                    $("#myFavorite").html("");
+                    $("#bbb").html(str);
+                    return false;
+                }
+                for(var i=0;i<data.length;i++){
+                    str += "<div style=\"float: left;border: 2px solid #DCDCDC;width: 140px;height: 170px;text-align:center;padding-top: 20px;margin-left:20px\" class=\"a\">\n" +
+                        "                            <img src=\""+data[i].itemPic+"\" style=\"width: 100px;height: 100px;\">\n" +
+                        "                            <p style=\"font-size: 10px;margin: 0 auto;\">所需积分:"+data[i].price+"</p>\n" +
+                        "                            <p style=\"font-size: 15px;margin: 0 auto;\">兑换量化积分："+data[i].itemDescription+"</p>\n" +
+                        "                        </div>";
+                }
+                $("#liwu").html(str);
             }
         });
     }

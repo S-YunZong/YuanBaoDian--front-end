@@ -170,44 +170,44 @@
                             </div><!--ziroom_box_right_h -->
                             <div class="ziroom_box_right_c">
 
-                                <table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">
-                                    <tbody id="tbody">
-                                    <tr class="ttl_cs">
-                                        <td class="td_firsr">房源信息</td>
-                                        <td class="td_second">经纪人</td>
-                                        <td class="td_second">电话</td>
-                                        <td class="td_second">约看时间</td>
-                                        <td class="td_second">价格</td>
-                                        <td class="td_second">操作</td>
-                                    </tr>
-                                    <tr class="content_cs">
-                                        <td>
-                                            <div class="left_imgs clearfix">
-                                                <div class="imgs">
-                                                    <a href="http://www.ziroom.com/z/vh/60411515.html" target="_blank">
-                                                        <img src="/static/image/CtgFCF3JIwiAGsloADDvzA054os031.jpg" width="137" height="91">
-                                                    </a>
-                                                </div>
-                                                <div class="txt_li">
-                                                    <p class="p1">
-                                                        <a href="http://www.ziroom.com/z/vh/60411515.html" target="_blank">丰台角门10号线角门东司达小区2居室</a>
-                                                    </p>
-                                                    <p class="p2">3/6层 | 15 平方米 |整租</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="price_c">秀明</td>
-                                        <td class="price_c">6032432421</td>
-                                        <td class="price_c">2019-10-10 10:45</td>
-                                        <td class="price_c">6030元/月</td>
-                                        <td>
-                                            <div class="yk-btn">
-                                                <input type="button" value="取消约看" onclick="ykDelete2()">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+<%--                                <table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">--%>
+<%--                                    <tbody id="tbody">--%>
+<%--                                    <tr class="ttl_cs">--%>
+<%--                                        <td class="td_firsr">房源信息</td>--%>
+<%--                                        <td class="td_second">经纪人</td>--%>
+<%--                                        <td class="td_second">电话</td>--%>
+<%--                                        <td class="td_second">约看时间</td>--%>
+<%--                                        <td class="td_second">价格</td>--%>
+<%--                                        <td class="td_second">操作</td>--%>
+<%--                                    </tr>--%>
+<%--                                    <tr class="content_cs">--%>
+<%--                                        <td>--%>
+<%--                                            <div class="left_imgs clearfix">--%>
+<%--                                                <div class="imgs">--%>
+<%--                                                    <a href="http://www.ziroom.com/z/vh/60411515.html" target="_blank">--%>
+<%--                                                        <img src="/static/image/CtgFCF3JIwiAGsloADDvzA054os031.jpg" width="137" height="91">--%>
+<%--                                                    </a>--%>
+<%--                                                </div>--%>
+<%--                                                <div class="txt_li">--%>
+<%--                                                    <p class="p1">--%>
+<%--                                                        <a href="http://www.ziroom.com/z/vh/60411515.html" target="_blank">丰台角门10号线角门东司达小区2居室</a>--%>
+<%--                                                    </p>--%>
+<%--                                                    <p class="p2">3/6层 | 15 平方米 |整租</p>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </td>--%>
+<%--                                        <td class="price_c">秀明</td>--%>
+<%--                                        <td class="price_c">6032432421</td>--%>
+<%--                                        <td class="price_c">2019-10-10 10:45</td>--%>
+<%--                                        <td class="price_c">6030元/月</td>--%>
+<%--                                        <td>--%>
+<%--                                            <div class="yk-btn">--%>
+<%--                                                <input type="button" value="取消约看" onclick="ykDelete2()">--%>
+<%--                                            </div>--%>
+<%--                                        </td>--%>
+<%--                                    </tr>--%>
+<%--                                    </tbody>--%>
+<%--                                </table>--%>
                                 <div id="ccc">
 
                                 </div>

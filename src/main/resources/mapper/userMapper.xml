@@ -36,4 +36,39 @@ WHERE
 	<update id="update_Personal">
 		update ybd_user set user_name=#{userName},sex=#{sex} where id=#{id}
 	</update>
+
+	<select id="rotationChart" resultType="YbdPicture">
+		select * from ybd_picture where picture_type = 'lunbo'
+	</select>
+
+	<select id="queryUserListByQuestion" resultType="YbdUser">
+		SELECT q.*,p.picture_url from ybd_picture p
+				RIGHT JOIN (SELECT ybd_user.id,ybd_user.user_name,
+        COUNT(ybd_question_back.game_level_id) as questionNum
+        from ybd_user
+        LEFT JOIN ybd_user_answer_record on ybd_user.id=ybd_user_answer_record.user_id
+        LEFT JOIN ybd_question_back on ybd_question_back.game_level_id=ybd_user_answer_record.chapter_serial_number
+        GROUP BY ybd_user.id
+        ORDER BY questionNum desc) q on p.pser_id = q.id and p.picture_type='head' ORDER BY questionNum desc limit 10
+	</select>
+
+	<select id="queryUserListByanswerRate" resultType="YbdUser">
+		SELECT q.*,p.picture_url from ybd_picture p
+				RIGHT JOIN (select ybd_user.id,ybd_user.user_name,
+        CAST(ybd_answer_number_question_by_user.correct_count_number/
+        ybd_answer_number_question_by_user.cumulative_count_number * 100
+        AS decimal(9,2)) as answerRate
+        from ybd_user
+        LEFT JOIN ybd_answer_number_question_by_user
+        on ybd_answer_number_question_by_user.user_id=ybd_user.id
+        order by answerRate desc) q on p.pser_id = q.id and p.picture_type='head' ORDER BY answerRate desc limit 10
+	</select>
+
+	<delete id="delete_Head">
+		delete from ybd_picture where picture_type='head' and pser_id=#{id}
+	</delete>
+
+	<insert id="insert_Head">
+		insert into ybd_picture values(null,'head',#{uploadUrl},#{id})
+	</insert>
 </mapper>

@@ -1,6 +1,7 @@
 package com.example.yuanbaodianfrontend.service;
 
 import com.example.yuanbaodianfrontend.pojo.YbdGoodnews;
+import com.example.yuanbaodianfrontend.pojo.YbdPicture;
 import com.example.yuanbaodianfrontend.pojo.YbdUser;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
@@ -15,4 +16,12 @@ public interface UserService {
     YbdUser Personal(Integer id);
 
     boolean update_Personal(Integer sex, Integer id, String userName);
+
+    List<YbdPicture> rotationChart();
+
+    List<YbdUser> queryUserListByQuestion();
+
+    List<YbdUser> queryUserListByanswerRate();
+
+    boolean update_Head(String uploadUrl, Integer id);
 }

@@ -9,7 +9,7 @@
 
 
 <head>
-    <title>我的合同</title>
+    <title>积分记录</title>
 </head>
 <%@include file="/jsp/personalCenter/mySpace/common/header.jsp" %>
 <link href="/static/guoda.com_files/css/index.css" rel="stylesheet" type="text/css">
@@ -22,18 +22,18 @@
         ajaxPage();
     })
 
-    //查询收藏房源
+    //查询积分记录
     function ajaxPage(page) {
-
+        var uid="${user_session.id}";
         var p = page || 1;
         $.ajax({
             type: "POST",
-            url: "/user/ListSell",
+            url: "/QuestionBack/myContract",
             dataType: "json",
             data: {
                 "pageNum": p,
-                "pageSize": 6,
-                "id":${param.userid}
+                "pageSize": 5,
+                "id":uid
             },
             success: function (data) {
                 //调用拼接以及展示
@@ -51,24 +51,37 @@
         if (da == "") {
             str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                 "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
-                "        <p>您还没有合同，快去预约您喜欢的房源吧！</p>\n" +
+                "        <p>您还没有积分记录，快去获取积分吧！</p>\n" +
                 "      </div>";
-            $("#chuzulist").html("");
+            $("#myContract").html("");
             $("#ccc").html(str);
             $("#myPage").html("");
             return false;
         }
         $("#ccc").html("");
+        str += "<tbody id=\"tbody\">\n" +
+            "                                    <tr class=\"ttl_cs\">\n" +
+            "                                        <td class=\"td_firsr\" width=\"70%\">积分记录</td>\n" +
+            "                                        <td class=\"td_second\" align=\"center\" width=\"15%\">物品名称</td>\n" +
+            "                                        <td class=\"td_second\" align=\"center\" width=\"15%\">操作时间</td>\n" +
+            "                                    </tr>";
         for (var i = 0; i < da.length; i++) {
-            str += "<li>\n" +
-                "                                    <a href=\"" + da[i].contract + "\">\n" +
-                "                                        <div class=\"img\">\n" +
-                "                                            <img width=\"285\" height=\"190\" src=\"" + da[i].contract + "\">\n" +
-                "                                        </div>\n" +
-                "                                    </a>\n" +
-                " </li>";
+            str += "<tr class=\"content_cs\">\n" +
+                "                                        <td>\n" +
+                "                                            <div class=\"left_imgs clearfix\">\n" +
+                "                                                <div class=\"txt_li\">\n" +
+                "                                                    <p class=\"p1\">\n" +
+                "                                                        -"+da[i].price+"\n" +
+                "                                                    </p>\n" +
+                "                                                </div>\n" +
+                "                                            </div>\n" +
+                "                                        </td>\n" +
+                "                                        <td class=\"price_c\" align=\"center\">"+da[i].itemDescription+"</td>\n" +
+                "                                        <td class=\"price_c\" align=\"center\">"+da[i].convertTime+"</td>\n" +
+                "                                    </tr>";
         }
-        $("#chuzulist").html(str);
+        str += "</tbody>";
+        $("#myContract").html(str);
         $("#myPage").sPage({
             page: p,//当前页码，必填
             total: data.total,//数据总条数，必填
@@ -95,23 +108,34 @@
             <div class="t_spacemainboxright">
                 <div class="ziroom_box_right">
                     <div class="ziroom_box_right_h  lh30">
-                        <h3>我的合同</h3>
+                        <h3>积分记录</h3>
                     </div><!--ziroom_box_right_h -->
                     <div class="ziroom_box_right_c">
-                        <div style="margin-bottom:8px;background:#eee;height:40px;line-height:40px;padding-left:10px;"
-                             class="clearfix">
-
-                            <div class="fl">
-                                <p class="fb color_333">
-                                    <a href="/jsp/personalCenter/mySpace/myFavorite.jsp" class="org">我的合同</a>
-                                </p>
-                            </div>
-                            <div class="fr page_c" id="page_show"></div>
-                        </div>
                         <div id="ccc"></div>
                         <div class="collection"><%--contract--%>
-                            <ul class="clearfix" id="chuzulist">
-
+                            <ul class="clearfix" id="myContract">
+<%--                                <table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">--%>
+<%--                                    <tbody id="tbody">--%>
+<%--                                    <tr class="ttl_cs">--%>
+<%--                                        <td class="td_firsr">积分记录</td>--%>
+<%--                                        <td class="td_second" align="center">物品名称</td>--%>
+<%--                                        <td class="td_second" align="center">操作时间</td>--%>
+<%--                                    </tr>--%>
+<%--                                    <tr class="content_cs">--%>
+<%--                                        <td>--%>
+<%--                                            <div class="left_imgs clearfix">--%>
+<%--                                                <div class="txt_li">--%>
+<%--                                                    <p class="p1">--%>
+<%--                                                        +10--%>
+<%--                                                    </p>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </td>--%>
+<%--                                        <td class="price_c" align="center">2020-02-24 16:09:30</td>--%>
+<%--                                        <td class="price_c" align="center">2020-02-24 16:09:30</td>--%>
+<%--                                    </tr>--%>
+<%--                                    </tbody>--%>
+<%--                                </table>--%>
                             </ul>
                         </div>
                         <div class="zxf_pagediv">

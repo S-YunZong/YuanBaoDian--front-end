@@ -87,7 +87,6 @@
         } else {
             alert("请重新登录！")
         }
-
     }
 </script>
 <body style="font-size: 12px">
@@ -106,34 +105,35 @@
                             <td width="160"><img src="" width="140" height="140"
                                                  id="J-m-imgFileImg"/></td>
                             <td width="600">
-                                <form class="s-m-imgForm" action="http://passport.ziroom.com/index.php?r=user%2Favatar"
+                                <form class="s-m-imgForm" action="/user/update_Head"
                                       enctype="multipart/form-data" method="post" id="form1" name="upform" dotype="ajax"
                                       callback="form1">
                                     <input type="button" value="本地照片" class="ui_btn ui_org_btn" id="uploadImg">
+                                    <input type="hidden" name="id" value="${user_session.id}">
                                     <input type="file" name="file" id="J-m-imgFile" class="s-m-file">
                                     <p class="gray mt10">仅支持JPG、PNG格式，文件小于3M。</p>
                                 </form>
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding-top:40px;">昵称</td>
-                            <td colspan="2" style="padding-top:40px;"><input type="text" id="userName"
+                            <td style="padding-top:10px;">昵称</td>
+                            <td colspan="2" style="padding-top:10px;"><input type="text" id="userName"
                                                                              class="ui_inp ui_inp_big" value=""></td>
                         </tr>
                         <tr>
-                            <td style="padding-top:40px;">职业</td>
-                            <td colspan="2" style="padding-top:40px;"><input type="text" id="position"
-                                                                             class="ui_inp ui_inp_big" value=""></td>
+                            <td style="padding-top:10px;">职业</td>
+                            <td colspan="2" style="padding-top:10px;"><input type="text" id="position"
+                                                                             class="ui_inp ui_inp_big" readonly value=""></td>
                         </tr>
                         <tr>
-                            <td style="padding-top:40px;">积分</td>
-                            <td colspan="2" style="padding-top:40px;"><input type="text" id="integral"
-                                                                             class="ui_inp ui_inp_big" value=""></td>
+                            <td style="padding-top:10px;">积分</td>
+                            <td colspan="2" style="padding-top:10px;"><input type="text" id="integral"
+                                                                             class="ui_inp ui_inp_big" readonly value=""></td>
                         </tr>
                         <tr>
-                            <td style="padding-top:40px;">量化积分</td>
-                            <td colspan="2" style="padding-top:40px;"><input type="text" id="quantizationIntegral"
-                                                                             class="ui_inp ui_inp_big" value=""></td>
+                            <td style="padding-top:10px;">量化积分</td>
+                            <td colspan="2" style="padding-top:10px;"><input type="text" id="quantizationIntegral"
+                                                                             class="ui_inp ui_inp_big" readonly value=""></td>
                         </tr>
                         <tr>
                             <td>性别</td>
@@ -264,10 +264,11 @@
                 var options = {
                     success: function (txt) {
                         var txt = eval('(' + txt + ')');
-                        if (txt.status == 0) {
+                        if (txt) {
                             // alert("touxiang success");
                             //如果图片上传成功
-                            img.attr("src", txt.url);
+                            alert("更换头像成功")
+                            location.reload();
 
                         } else {
                             // console.log(txt);

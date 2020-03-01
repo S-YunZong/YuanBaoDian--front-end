@@ -20,6 +20,10 @@ public interface QuestionBackDao {
     List<YbdQuestionBack> myCovenant(String id);
     //查询错题选项
     String findError(@Param("id") Integer id,@Param("createUser") Integer createUser);
-    //查询兑换记录
+    //查询我的礼物
     List<YbdExchanageMall> queryConvertRecord(String id);
+    //首页我的礼物
+    List<YbdExchanageMall> queryConvertRecord2(String id);
+    //查询积分记录
+    List<YbdExchanageMall> myContract(String id);
 }

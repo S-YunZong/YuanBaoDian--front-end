@@ -1,11 +1,16 @@
 package com.example.yuanbaodianfrontend.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class YbdIntegral {
 
   private Integer id;
+  @JsonFormat(pattern="yyyy.MM.dd HH:mm:ss", timezone="GMT+8")
+  @DateTimeFormat(pattern="yyyy.MM.dd")
   private Date operationTime;
   private String integralOperation;
   private String quantizationIntegralOperation;

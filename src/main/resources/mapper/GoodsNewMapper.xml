@@ -3,7 +3,7 @@
 <mapper namespace="com.example.yuanbaodianfrontend.dao.GoodsNewDao">
 
     <select id="GoodsNew" resultType="YbdGoodnews">
-        select * from ybd_goodnews
+        select * from ybd_goodnews order by id
     </select>
 
 </mapper>

@@ -19,4 +19,6 @@ public class YbdUser {
   private String pictureUrl;//图片url
   private Integer pserId;//用户id
 
+  private Integer questionNum;//答题数
+  private Integer answerRate;//准确率
   }

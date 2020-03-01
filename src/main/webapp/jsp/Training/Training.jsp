@@ -13,6 +13,17 @@
     <%@include file="/jsp/commet/header.jsp" %>
     <script src="${pageContext.request.contextPath}/static/js/Training/Training.js"></script>
 </head>
+<style>
+    .massage p{
+        margin: 10px 10px 1px;
+        font-size: 15px;
+        color: yellow;
+    }
+    .img-thumbnail{
+        width:197px;
+        height:197px
+    }
+</style>
 <body>
 
 <!-- Header  头部 -->

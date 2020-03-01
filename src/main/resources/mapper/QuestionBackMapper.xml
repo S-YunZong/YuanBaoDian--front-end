@@ -65,4 +65,16 @@ WHERE
 		and c.user_id=#{id}
 	</select>
 
+	<select id="queryConvertRecord2" resultType="YbdExchanageMall">
+		select e.Item_description,e.price,c.convert_time,e.item_pic
+		from ybd_exchanage_mall e,ybd_convert_record c
+		where e.id = c.exchanage_id
+		and c.user_id=#{id} limit 5
+	</select>
+
+	<select id="myContract" resultType="YbdExchanageMall">
+		SELECT e.*,c.convert_time from ybd_exchanage_mall e,ybd_convert_record c
+		where e.id=c.exchanage_id
+		and c.user_id = #{id}
+	</select>
 </mapper>

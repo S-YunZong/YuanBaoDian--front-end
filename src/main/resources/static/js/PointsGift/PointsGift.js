@@ -33,7 +33,7 @@ $(function () {
         success:function (data) {
             var str="";
             if (data){
-                for (let i = 0; i <data.length ; i++) {
+                for (var i = 0; i <data.length ; i++) {
                     str=str+="<div style=\"padding-left: 30px;padding-top: 20px;float: left\"  class=\"a\">\n" +
                         "                     <img src="+data[i].itemPic+" style=\"width: 100px;height: 100px;\" >\n" +
                         "                     <p style=\"font-size: 10px;margin: auto;\" id=\"Computer\"> "+data[i].itemDescription+"</p>\n" +

@@ -1,7 +1,11 @@
 package com.example.yuanbaodianfrontend.pojo;
 
 
-import javax.xml.crypto.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 
 public class YbdGoodnews {
 
@@ -11,7 +15,9 @@ public class YbdGoodnews {
   private Integer age;//年龄
   private String email;//邮箱
   private String phone;//手机号
-  private Data entrytime;//入职时间
+  @JsonFormat(pattern="yyyy.MM.dd", timezone="GMT+8")
+  @DateTimeFormat(pattern="yyyy.MM.dd")
+  private Date entrytime;//入职时间
   private String entrycompany;//入职公司
   private String salary;//薪资
   private String treatment;//待遇
@@ -66,11 +72,11 @@ public class YbdGoodnews {
     this.phone = phone;
   }
 
-  public Data getEntrytime() {
+  public Date getEntrytime() {
     return entrytime;
   }
 
-  public void setEntrytime(Data entrytime) {
+  public void setEntrytime(Date entrytime) {
     this.entrytime = entrytime;
   }
 

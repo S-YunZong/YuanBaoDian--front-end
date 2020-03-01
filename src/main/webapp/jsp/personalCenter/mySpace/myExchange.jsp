@@ -28,7 +28,7 @@
     }
 </style>
 <head>
-    <title>兑换记录</title>
+    <title>我的礼物</title>
 </head>
 <%@include file="/jsp/personalCenter/mySpace/common/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/static/css/zxf_page.css"/>
@@ -42,7 +42,7 @@
         ajaxPage()
     })
 
-    //查询我的兑换记录
+    //查询我的礼物
     function ajaxPage(page) {
         var uid="${user_session.id}";
         var p = page || 1;
@@ -71,7 +71,7 @@
         if (da == "") {
             str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                 "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
-                "        <p>您还没有兑换记录，快去预约您喜欢的礼物吧！</p>\n" +
+                "        <p>您还没有兑换记录，快去兑换您喜欢的礼物吧！</p>\n" +
                 "      </div>";
             $("#myExchange").html("");
             $("#ccc").html(str);
@@ -126,25 +126,6 @@
         });
     }
 
-    //取消预约
-    function ykDelete2(id) {
-        $.ajax({
-            type: "POST",
-            url: "/user/delAppointment",
-            dataType: "json",
-            data: {
-                "id": id
-            },
-            success: function (data) {
-                if (data) {
-                    alert("取消成功！")
-                    ajaxPage();
-                } else {
-
-                }
-            }
-        })
-    }
 </script>
 <div class="container">
     <div class="row clearfix">
@@ -156,8 +137,8 @@
                     <div class="t_spacemainboxright" style="width: 1055px;">
                         <div class="ziroom_box_right">
                             <div class="ziroom_box_right_h  lh30">
-                                <h3>兑换记录</h3>
-                            </div><!--ziroom_box_right_h -->
+                                <h3>我的礼物</h3>
+                            </div>
                             <div class="ziroom_box_right_c">
 
 <%--                                <table width="100%" cellpadding="0" cellspacing="0" class="collect_sheet">--%>
@@ -197,11 +178,9 @@
                                 <div class="zxf_pagediv">
                                     <div id="myPage" class="demo"></div>
                                 </div>
-                                <!-- E 约看管理 -->
-                            </div><!--ziroom_box_right_c -->
+                            </div>
                         </div>
                     </div>
-                    <!--t_spacemainbox -->
                 </div>
             </div>
         </div>
