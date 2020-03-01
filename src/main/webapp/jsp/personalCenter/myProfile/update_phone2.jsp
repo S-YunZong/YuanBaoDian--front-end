@@ -97,7 +97,28 @@
                                             <td></td>
                                             <td colspan="3">
                                                 <input type="button" value="确定"
-                                                       class="ui_btn ui_org_btn disabled j-m-button" id="J-m-Sub">
+                                                       class="ui_btn ui_org_btn disabled j-m-button" id="J-m-Sub" onclick="Sub()">
+                                                <script>
+                                                        function Sub() {
+                                                           var newPhone= $("#J-m-new").val();
+                                                            $.ajax({
+                                                                url:"/user/updatePhone",
+                                                                data:{newPhone:newPhone},
+                                                                type:"post",
+                                                                dataaType:"json",
+                                                                success:function (data) {
+                                                                    if (data){
+                                                                        alert("手机号修改失败!")
+                                                                    }else {
+                                                                        alert("手机号修改成功!")
+                                                                    }
+                                                                },error:function () {
+                                                                    alert("操作失败!")
+                                                                }
+                                                            })
+
+                                                        }
+                                                </script>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -113,7 +134,7 @@
 </div>
 </body>
 <%--修改密码--%>
-<script>
+<%--<script>
     //mqz 2016.5.12校验新手机
     (function () {
         //截取vid
@@ -278,5 +299,5 @@
             }, 1000);
         }
     })();
-</script>
+</script>--%>
 </html>
