@@ -431,6 +431,9 @@ function queryUserListByQuestion(){
             if(data!=null){
                 for(var i=0;i<data.length;i++){
                     var paiming = i+1;
+                    if(data[i].pictureUrl == null){
+                        data[i].pictureUrl="/static/image/xiaolian.jpg";
+                    }
                     str +="<div class=\"panel-heading\">\n" +
                         "                                        <span style=\"margin-left: 20px;float: left\">"+paiming+"</span>\n" +
                         "                                        <span style=\"margin-left: 120px;\"><img src=\""+data[i].pictureUrl+"\" class=\"img\"></span>\n" +
@@ -456,6 +459,9 @@ function queryUserListByanswerRate(){
                 for(var i=0;i<data.length;i++){
                     if(data[i].answerRate==null){
                         data[i].answerRate=0;
+                    }
+                    if(data[i].pictureUrl == null){
+                        data[i].pictureUrl="/static/image/xiaolian.jpg";
                     }
                     var paiming = i+1;
                     str +="<div class=\"panel-heading\">\n" +
