@@ -78,6 +78,38 @@
         insert into ybd_wrong_topic_record (question_back_id,user_id,create_time,error_option)
         values (#{ybdWrongTopicRecord.questionBackId},#{ybdWrongTopicRecord.userId},now(),#{ybdWrongTopicRecord.errorOption});
     </insert>
+    <!--    //查询当前用户的关卡进度
+    YbdUserAnswerRecord selYbdUserAnswerRecord(int id);-->
+    <select id="selYbdUserAnswerRecord" resultType="YbdUserAnswerRecord">
+        select * from ybd_user_answer_record where user_id=#{id}
+    </select>
+    <!--//获取用户积分
+    int selintegral(int id);-->
+    <select id="selintegral" resultType="int">
+        select integral from ybd_user where id=#{id}
+    </select>
+    <!--//修改用户积分
+    boolean updintegral(@Param("id") int id,@Param("integral") int integral);-->
+    <update id="updintegral" parameterType="int">
+        update ybd_user set integral=#{integral} where id=#{id}
+    </update>
+    <!--//修改真题题库状态
+    boolean updzhanti(int id);-->
+    <update id="updzhanti" parameterType="int">
+        update ybd_user_answer_record set realTopic_status=1 where user_id=#{id}
+    </update>
+<!--    //添加学习进度
+    boolean addYbdUserAnswerRecord(int id);-->
+    <insert id="addYbdUserAnswerRecord" parameterType="int">
+      insert into ybd_user_answer_record
+      (user_id,chapter_serial_number,realTopic_status)
+       values(#{id},1,0)
+    </insert>
+    <!-- //修改学习进度
+    boolean updYbdUserAnswerRecord(@Param("id") int id,@Param("chapterSerialNumber") int chapterSerialNumber);-->
+    <update id="updYbdUserAnswerRecord" parameterType="int">
+        update ybd_user_answer_record set chapter_serial_number=#{chapterSerialNumber} where user_id=#{id}
+    </update>
 </mapper>
 
 

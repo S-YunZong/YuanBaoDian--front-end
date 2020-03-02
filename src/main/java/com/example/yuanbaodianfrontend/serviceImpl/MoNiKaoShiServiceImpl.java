@@ -6,6 +6,7 @@ import com.example.yuanbaodianfrontend.service.MoNiKaoShiService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Array;
@@ -25,7 +26,9 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
     private MoNiKaoShiDao moNiKaoShiDao;
     @Override
     public List<YbdQuestionType> selYbdQuestionType() {
-        return moNiKaoShiDao.selYbdQuestionType();
+        List<YbdQuestionType> YbdQuestionType=moNiKaoShiDao.selYbdQuestionType();
+
+        return YbdQuestionType;
     }
 
     @Override
@@ -68,5 +71,36 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
     @Override
     public boolean insYbdWrongTopicRecord(YbdWrongTopicRecord ybdWrongTopicRecord) {
         return moNiKaoShiDao.insYbdWrongTopicRecord(ybdWrongTopicRecord);
+    }
+
+    @Override
+    public YbdUserAnswerRecord selYbdUserAnswerRecord(int id) {
+        return moNiKaoShiDao.selYbdUserAnswerRecord(id);
+    }
+
+    @Override
+    public int selintegral(int id) {
+        return moNiKaoShiDao.selintegral(id);
+    }
+
+    @Override
+    @Transactional
+    public boolean updintegral(int id, int integral,int chapterSerialNumber) {
+        boolean b=false;
+        b=moNiKaoShiDao.updintegral(id,integral);
+        if(b=true){
+            b=moNiKaoShiDao.updYbdUserAnswerRecord(id,chapterSerialNumber);
+        }
+        return b;
+    }
+
+    @Override
+    public boolean addYbdUserAnswerRecord(int id) {
+        return moNiKaoShiDao.addYbdUserAnswerRecord(id);
+    }
+
+    @Override
+    public boolean updzhanti(int id) {
+        return moNiKaoShiDao.updzhanti(id);
     }
 }

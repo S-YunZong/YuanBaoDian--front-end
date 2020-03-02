@@ -72,4 +72,42 @@ public class MoNiKaoShiController {
         boolean boo=moNiKaoShiService.insYbdWrongTopicRecord(ybdWrongTopicRecord);
         return boo;
     }
+    /*查询当前用户积分*/
+    @RequestMapping("selintegral")
+    @ResponseBody
+    public int selintegral(Integer id){
+        int integral=moNiKaoShiService.selintegral(id);
+        return integral;
+    }
+    /*修改用户积分
+    * 修改用户进度*/
+    @RequestMapping("updintegral")
+    @ResponseBody
+    public boolean updintegral(Integer id,Integer integral,Integer chapterSerialNumber){
+        System.out.println(chapterSerialNumber);
+        boolean bo=moNiKaoShiService.updintegral(id,integral,chapterSerialNumber);
+        return bo;
+    }
+    /*查询用户学习进度*/
+    @ResponseBody
+    @RequestMapping("selYbdUserAnswerRecord")
+    public YbdUserAnswerRecord selYbdUserAnswerRecord(Integer id){
+        YbdUserAnswerRecord ss=moNiKaoShiService.selYbdUserAnswerRecord(id);
+        return ss;
+    }
+    /*添加用户学习进度*/
+    @ResponseBody
+    @RequestMapping("addYbdUserAnswerRecord")
+    public boolean addYbdUserAnswerRecord(Integer id){
+        boolean b=moNiKaoShiService.addYbdUserAnswerRecord(id);
+        return b;
+    }
+    //修改真题题库状态
+    @ResponseBody
+    @RequestMapping("updzhanti")
+    public boolean updzhanti(Integer id){
+        System.out.println("id: "+id);
+        boolean b=moNiKaoShiService.updzhanti(id);
+        return b;
+    }
 }
