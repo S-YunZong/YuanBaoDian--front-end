@@ -10,5 +10,4 @@ public class YbdQuestionType {
 
     private String questionTypeName;//类型名称
 
-
 }

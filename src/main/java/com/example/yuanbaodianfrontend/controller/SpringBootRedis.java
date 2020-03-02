@@ -1,6 +1,9 @@
 package com.example.yuanbaodianfrontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -8,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * \* User: 智慧
@@ -22,10 +23,8 @@ import java.util.Map;
 @RequestMapping("redis")
 @Controller
 public class SpringBootRedis {
-
     @Autowired
     private RedisTemplate redisTemplate;
-
 
     //添加收藏
     @RequestMapping("COLLECT_addlist")

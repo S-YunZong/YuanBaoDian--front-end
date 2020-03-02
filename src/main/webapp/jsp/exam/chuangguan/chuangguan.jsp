@@ -160,6 +160,7 @@
                     <button type="button" class="btn btn-success" onclick="xiayiye(this)">下一题</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" class="btn btn-default" id="collect" onclick="shoucang()">收藏</button>
                     <span id="timuid" style="display: none"></span>
+                    <input type="hidden" id="integral">
                 </div>
                 &nbsp;<br>&nbsp;
                 <%--解析--%>
@@ -189,7 +190,7 @@
 </body>
 <script>
     $(function () {
-        zhangjie()
+        zhangjie()//获取章节
     })
     /*关卡返回*/
     $("#fanhui").click(function () {
@@ -203,6 +204,61 @@
         $("#container2").attr("style","display:block");
         $("#container3").attr("style","display:none");
     })
+    /*查询章节进度*/
+    function xuexijindu() {
+        var id="${user_session.id}";
+        $.ajax({
+            url: "/user/selYbdUserAnswerRecord",
+            type: "post",
+            dataType: "json",
+            data:{
+                id:id
+            },
+            success: function (data) {
+                if(data){
+                    if(data.chapterSerialNumber<=5){
+                        if($("#zhang2").find("div").length<=0){
+                            $("#zhang2").append("<div style=\"margin: -50px;\">\n" +
+                                "                    <i class=\"iconfont iconsuo1\"></i>\n" +
+                                "                </div>");
+                        }
+                        if($("#zhang3").find("div").length<=0){
+                            $("#zhang3").append("<div style=\"margin: -50px;\">\n" +
+                                "                    <i class=\"iconfont iconsuo1\"></i>\n" +
+                                "                </div>");
+                        }
+                    }else if(data.chapterSerialNumber<=10){
+                        if($("#zhang3").find("div").length<=0){
+                            $("#zhang3").append("<div style=\"margin: -50px;\">\n" +
+                                "                    <i class=\"iconfont iconsuo1\"></i>\n" +
+                                "                </div>");
+                        }
+                    }else if(data.chapterSerialNumber>15){
+                        updzhanti(id);//解锁真题题库
+                    }
+                    for(var i=data.chapterSerialNumber+1;i<16;i++){
+                        $("#guanqia div[name='guan"+i+"']").append("<div style=\"margin: -20px;\">\n" +
+                            "                    <i class=\"iconfont iconsuo1\"></i>\n" +
+                            "                </div>");
+                    }
+                }
+            }
+        })
+    }
+    /*修改真题题库状态*/
+    function updzhanti(id) {
+        $.ajax({
+            url: "/user/updzhanti",
+            type: "post",
+            dataType: "json",
+            data:{
+                id:id
+            },
+            success: function (data) {
+
+            }
+        })
+    }
     /*加载章节*/
     function zhangjie() {
         $.ajax({
@@ -214,44 +270,51 @@
                 if(data){
                     var mm="";
                     $(data).each(function (a,b) {
-                        mm+="<div class=\"b\" onclick=\"guanqia("+b.id+",'"+b.chapterName+"')\" style=\"height: 150px;border: #0C0C0C solid 1px;margin: 5px;text-align: center;\">\n" +
+                        mm+="<div class=\"b\" id=\'zhang"+b.id+"\' onclick=\"guanqia("+b.id+",'"+b.chapterName+"',this)\" style=\"height: 150px;border: #0C0C0C solid 1px;margin: 5px;text-align: center;\">\n" +
                             "                <h3 style=\"margin: 60px\">\n" +
                             "                    "+b.chapterName+"\n" +
                             "                </h3>\n" +
                             "            </div>";
                     })
                     $("#chuangguan").append(mm);
+                    xuexijindu();//学习进度
                 }
             }
         })
     }
     /*关卡展示*/
-    function guanqia(id,name) {
-        $("#container2").attr("style","display:block");
-        $("#container1").attr("style","display:none");
-        $("#zhangjie").html(" - "+name)
-        $("#zhangjie2").html(" - "+name)
-        $.ajax({
-            url: "/user/ybdGameLevelList",
-            type: "post",
-            dataType: "json",
-            data: {
-                id:id
-            },
-            success: function (data) {
-                if(data){
-                    var mm="";
-                    $(data).each(function (a,b) {
-                        mm+="<div class=\"b\" onclick=\"zhanshidati("+b.id+",'"+b.gameLevelName+"')\" style=\"height: 100px;border: #0C0C0C solid 1px;margin: 5px;text-align: center\">\n" +
-                            "                <h3 style=\"margin: 20px\">\n" +
-                            "                    "+b.gameLevelName+"<br>\n" +
-                            "                奖励:10积分</h3>\n" +
-                            "            </div>";
-                    })
-                    $("#guanqia").append(mm);
+    function guanqia(id,name,th) {
+        if($(th).find("div").length>0){
+            alert("请先完成上一章节");
+        }else {
+            zongjifen()//查询用户积分
+            $("#container2").attr("style","display:block");
+            $("#container1").attr("style","display:none");
+            $("#zhangjie").html(" - "+name)
+            $("#zhangjie2").html(" - "+name)
+            $.ajax({
+                url: "/user/ybdGameLevelList",
+                type: "post",
+                dataType: "json",
+                data: {
+                    id:id
+                },
+                success: function (data) {
+                    if(data){
+                        var mm="";
+                        $(data).each(function (a,b) {
+                            mm+="<div class=\"b\" name=\'guan"+b.id+"\' onclick=\"zhanshidati("+b.id+",'"+b.gameLevelName+"',this)\" style=\"height: 100px;border: #0C0C0C solid 1px;margin: 5px;text-align: center\">\n" +
+                                "                <h3 style=\"margin: 20px\">\n" +
+                                "                    "+b.gameLevelName+"<br>\n" +
+                                "                奖励:50积分</h3>\n" +
+                                "            </div>";
+                        })
+                        $("#guanqia").append(mm);
+                        xuexijindu();//学习进度
+                    }
                 }
-            }
-        })
+            })
+        }
     }
     /*查看是否收藏*/
     function see() {
@@ -311,12 +374,97 @@
             $(t).text("完成练习");
             redisfenye(page);
         }else if(page>ss){
-            $("#container1").attr("style","display:none");
-            $("#container2").attr("style","display:block");
-            $("#container3").attr("style","display:none");
+            var s=parseInt(ss);
+            var zhengque=0;
+            var meizuowan=0;
+            for(var i=1;i<=s;i++){
+                var color=$("#c-xuanti > input[value='"+i+"']").attr("style");
+                var q=color.substr(color.indexOf('#'));
+                if(q=="#4cae4c"){
+                    zhengque++;
+                }else if(q!="#4cae4c"&&q!="#ff3737"){
+                    meizuowan++;
+                }
+            }
+            if(meizuowan==0){//习题已经做完
+                jindu2(zhengque)
+            }else {
+                alert("你还剩"+meizuowan+"道题没答完！")
+            }
         }else {
             redisfenye(page);
         }
+    }
+    /*用户进度查询*/
+    function jindu2(zhengque) {
+        var id="${user_session.id}";
+        $.ajax({
+            url: "/user/selYbdUserAnswerRecord",
+            type: "post",
+            dataType: "json",
+            data:{
+                id:id
+            },
+            success: function (data) {
+                if(data){
+                    var guanqia_id=$("#guanqia_id").text();
+                    if(data.chapterSerialNumber==guanqia_id){
+                        updjifen(zhengque);
+                    }else {
+                        $("#container1").attr("style","display:none");
+                        $("#container2").attr("style","display:block");
+                        $("#container3").attr("style","display:none");
+                    }
+                }
+            }
+        })
+    }
+    /*用户积分*/
+    function zongjifen() {
+        var id="${user_session.id}";
+        $.ajax({
+            url: "/user/selintegral",
+            type: "post",
+            dataType: "json",
+            data:{
+                id:id
+            },
+            success: function (data) {
+                if(data){
+                    $("#integral").val(data);
+                }
+            }
+        })
+    }
+    /*计算总积分*/
+    function updjifen(zhengque) {
+        var id="${user_session.id}";
+        var integral=$("#integral").val();
+        if(integral!=null&&integral!=""){
+            var mm=parseInt(integral)+parseInt(zhengque);
+            updintegral(id,mm,zhengque)
+        }
+    }
+    /*修改积分,用户进度*/
+    function updintegral(id,mm,zhengque) {
+        var guanqia_id=$("#guanqia_id").text();
+        var s=parseInt(guanqia_id)+1;
+        $.ajax({
+            url: "/user/updintegral",
+            type: "post",
+            dataType: "json",
+            data:{
+                id:id,
+                integral:mm,
+                chapterSerialNumber:s
+            },
+            success: function (data) {
+                if(data){
+                    alert("恭喜您获得"+zhengque+"积分！");
+                    window.location.reload();
+                }
+            }
+        })
     }
     /*点击跳转指定习题*/
     function xuanxiang(page) {
@@ -342,15 +490,14 @@
             $("#c-jiangjie").attr("style","display:block");//展示解析
             if(x==z){
                 $(t).parent().css("color","#4cae4c");//改变正确答案的颜色
-                $("#c-xuanti input[value='"+z+"']").attr("style","width: 50px;background-color:#4cae4c");//改变选项列表字体颜色
-                $("#c-xuanti input[value='"+z+"']").attr("style","width: 50px;background-color:#4cae4c");//改变选项列表字体颜色
+                $("#c-xuanti input[value='"+page+"']").attr("style","width: 50px;background-color:#4cae4c");//改变选项列表字体颜色
 
             }else {
                 $("#c-xuanxiang input[value='"+z+"']").parent().css("color","#4cae4c");//改变正确答案的颜色
-                $("#c-xuanti input[value='"+z+"']").attr("style","width: 50px;background-color:#ff3737");//改变选项列表字体颜色
+                $("#c-xuanti input[value='"+page+"']").attr("style","width: 50px;background-color:#ff3737");//改变选项列表字体颜色
                 $(t).parent().css("color","#ff3737");//改变错误答案颜色
+                cuoti(timuid,x);//错题录入
             }
-            cuoti(timuid,x);//错题录入
         }else {
             alert("登录后才能做题！")
         }
@@ -397,18 +544,22 @@
         })
     }
     /*展示答题页面*/
-    function zhanshidati(id,name) {
-        var phone="${user_session.phone}";
-        if(phone!=null && phone!="") {
-            $("#container3").attr("style", "display:block");
-            $("#container2").attr("style", "display:none");
-            $("#container1").attr("style", "display:none");
-            $("#guanqia2").html(" - " + name)
-            $("#guanqia_id").html(id)
-            $("button:contains('完成练习')").text("下一题");
-            redisfenye(0);
+    function zhanshidati(id,name,th) {
+        if($(th).find("div").length>0){
+            alert("请先完成上一关卡");
         }else {
-            alert("登录后才能享受闯关乐趣！")
+            var phone="${user_session.phone}";
+            if(phone!=null && phone!="") {
+                $("#container3").attr("style", "display:block");
+                $("#container2").attr("style", "display:none");
+                $("#container1").attr("style", "display:none");
+                $("#guanqia2").html(" - " + name)
+                $("#guanqia_id").html(id)
+                $("button:contains('完成练习')").text("下一题");
+                redisfenye(0);
+            }else {
+                alert("登录后才能享受闯关乐趣！")
+            }
         }
     }
     /*带做过题的数据跳转分页查询*/

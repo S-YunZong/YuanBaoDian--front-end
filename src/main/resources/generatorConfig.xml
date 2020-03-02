@@ -38,7 +38,7 @@
                         <property name="enableSubPackages" value="false" />
                     </javaClientGenerator>-->
 
-        <table tableName="ybd_wrong_topic_record" domainObjectName="YbdWrongTopicRecord"
+        <table tableName="ybd_user_answer_record" domainObjectName="YbdUserAnswerRecord"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>

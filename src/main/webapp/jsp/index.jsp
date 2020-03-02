@@ -76,7 +76,7 @@
                     <div class="row clearfix">
                         <div class="col-md-6 column">
                             <div style="border: silver solid 1px;height: 300px;width: 500px;margin: 0px 40px;background-color: #F2F2F2">
-                                <h3 style="margin: 30px 200px">综合答题</h3>
+                                <h3 style="margin: 30px 200px">学前教育</h3>
                                 <div style="background-color: #F1F8FF;width: 400px;height: 130px;margin: 0px 50px;text-align: center">
                                     <div style="height: 10px"></div>
                                     <h4>
@@ -86,7 +86,7 @@
                                         同学们快开始答题吧！<br>
                                     </h4>
                                 </div>
-                                <button type="button" class="btn btn-default btn-lg" style="margin: 10px 200px">开始答题</button>
+                                <a type="button" href="/jsp/exam/practiceTest.jsp" class="btn btn-default btn-lg" style="margin: 10px 200px">开始答题</a>
                             </div>
                         </div>
                         <div class="col-md-6 column">
@@ -101,7 +101,7 @@
                                         同学们，快开始闯关答题吧！！
                                     </h4>
                                 </div>
-                                <button type="button" class="btn btn-default btn-lg" style="margin: 10px 200px">开始闯关</button>
+                                <a type="button" href="/jsp/exam/practiceTest.jsp" class="btn btn-default btn-lg" style="margin: 10px 200px">开始闯关</a>
                             </div>
 
                         </div>
