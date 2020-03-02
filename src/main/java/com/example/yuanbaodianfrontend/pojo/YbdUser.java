@@ -19,13 +19,10 @@ public class YbdUser {
   private String pictureUrl;//图片url
   private Integer pserId;//用户id
 
-<<<<<<< HEAD
   private Integer questionNum;//答题数
   private Integer answerRate;//准确率
-=======
   public Integer getId() {
     return id;
->>>>>>> origin/master
   }
 
   public void setId(Integer id) {
