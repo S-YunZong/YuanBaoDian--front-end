@@ -34,10 +34,11 @@ $(function () {
             var str="";
             if (data){
                 for (var i = 0; i <data.length ; i++) {
-                    str=str+="<div style=\"padding-left: 30px;padding-top: 20px;float: left\"  class=\"a\">\n" +
-                        "                     <img src="+data[i].itemPic+" style=\"width: 100px;height: 100px;\" >\n" +
-                        "                     <p style=\"font-size: 10px;margin: auto;\" id=\"Computer\"> "+data[i].itemDescription+"</p>\n" +
-                        "                     <p style=\"font-size: 15px;margin: auto;\"> 所需积分"+data[i].price+"</p>\n" +
+                    str+="<div align=\"center\" style=\"width: 200px;height: 310px;margin: 15px;background-color: #fbfbfb;float: left\"  class=\"a\">\n" +
+                        "&nbsp;<br>"+
+                        "                     <img src=\'"+data[i].itemPic+"\' style=\"width: 150px;height: 200px;\" >\n" +
+                        "                     <p style=\"font-size: 15px;margin: auto;\" id=\"Computer\">量化积分: "+data[i].itemDescription+"</p>\n" +
+                        "                     <p style=\"font-size: 15px;color: #ff3737;margin: auto;\"> 积分:"+data[i].price+"</p>\n" +
                         "                     <button type=\"button\" class=\"btn btn-default\" " +
                         "onclick=\"Exchange('"+data[i].id+"','"+data[i].itemDescription+"','"+data[i].price+"')\" >兑换</button>\n" +
                         "                 </div>";

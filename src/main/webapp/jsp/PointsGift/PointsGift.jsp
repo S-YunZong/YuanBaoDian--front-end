@@ -7,32 +7,22 @@
     <script src="${pageContext.request.contextPath}/static/js/PointsGift/PointsGift.js"></script>
     <style>
         #biankuang{
-            width: 900px;
-            height: 500px;
-            border: 3px solid #1aa094;
+            width: 1000px;
+            height: 600px;
             margin: auto;
-            border-radius: 30px;
+            background-color: #F5F5F5
         }
         #biankuang2{
-            width: 800px;
-            height: 200px;
-            border: 2px solid #1E9FFF;
+            width: 900px;
+            height: 500px;
             margin: auto;
             border-radius: 20px;
         }
-        #biankuang3{
-             width: 800px;
-             height: 200px;
-             border: 2px solid #8a6d3b;
-             margin: auto;
-            border-radius: 10px;
-         }
 
     </style>
     <style>
         .a:hover{
-            color: #0000FF;
-            transform: scale(1.1);
+            border: #ff3737 solid 1px;
         }
     </style>
 
@@ -44,77 +34,23 @@
         <br> <br> <br> <br> <br>
          <div id="biankuang">
              <br>
-             <span style="margin-left: 50px"><strong>分类1</strong></span>
-              <span style="margin-left: 700px"><strong>更多>></strong></span>
+             <span style="margin-left: 50px"><strong>>>量化积分</strong></span>
              <div id="biankuang2" style="">
                  <input hidden value="${user_session.integral}" id="user_1">
-               <%--  <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;" >
-                     <p style="font-size: 10px;margin: auto;" id="Computer"> 电脑</p>
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" onclick="Exchange()" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;" >
-                     <p style="font-size: 10px;margin: auto;"> 手机</p>
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left"  class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>--%>
+                 <%--<div align="center" style="width: 200px;height: 310px;margin: 15px;background-color: #fbfbfb;float: left" class="a">
+                 &nbsp;<br>
+                 <img src="/static/images/4.jpeg" style="width: 150px;height: 200px;" >
+                 <p style="font-size: 15px;margin: auto;" id="Computer"> 电脑</p>
+                 <p style="font-size: 15px;color: #ff3737;margin: auto;">积分:10</p>
+                 <button type="button" class="btn btn-default" onclick="Exchange()" >兑换</button>
              </div>
-             <br>
-             <span style="margin-left: 50px"><strong>分类2</strong></span>
-             <span style="margin-left: 700px"><strong>更多>></strong></span>
-             <div id="biankuang3">
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
-                 <div style="padding-left: 30px;padding-top: 20px;float: left" class="a">
-                     <img src="/static/images/4.jpeg" style="width: 100px;height: 100px;">
-                     <p style="font-size: 15px;margin: auto;"> 所需积分10</p>
-                     <button type="button" class="btn btn-default" >兑换</button>
-                 </div>
+                 <div align="center" style="width: 200px;height: 310px;margin: 15px;background-color: #fbfbfb;float: left" class="a">
+                     &nbsp;<br>
+                     <img src="/static/images/4.jpeg" style="width: 150px;height: 200px;" >
+                     <p style="font-size: 15px;margin: auto;" id=""> 电脑</p>
+                     <p style="font-size: 15px;color: #ff3737;margin: auto;">积分:10</p>
+                     <button type="button" class="btn btn-default" onclick="Exchange()" >兑换</button>
+                 </div>--%>
              </div>
          </div>
 </body>
