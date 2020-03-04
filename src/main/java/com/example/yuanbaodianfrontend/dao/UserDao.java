@@ -28,4 +28,8 @@ public interface UserDao {
     boolean delete_Head(Integer id);
     //根据id添加用户头像
     boolean insert_Head(@Param("uploadUrl") String uploadUrl,@Param("id") Integer id);
+    //修改手机号
+    int updatePhone(@Param("newPhone")String newPhone,@Param("id") Integer id);
+    //修改密码
+    int updatePwd(@Param("phone")String phone,@Param("password") String password);
 }

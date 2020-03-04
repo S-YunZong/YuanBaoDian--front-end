@@ -194,6 +194,7 @@ $(function () {
                     success: function (result) {
                         if (result!=null){
                             alert("登陆成功")
+                            alert(result.userName)
                             $("#ok_login").css("display", "");
                             $("#loginEntyWrapper").css("display", "none");
                             $("#ziroomRecordHook").css("display", "none");

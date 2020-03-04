@@ -16,6 +16,12 @@
 <link rel="stylesheet" href="/static/guoda.com_files/css/layer.css" id="layui_layer_skinlayercss" style="">
 <script src="/static/guoda.com_files/js/crypto-js.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/guoda.com_files/css/zoneStyle.css">
+
+<link rel="stylesheet" type="text/css" href="/static/guoda.com_files/css/my_zone.css">
+<script type="text/javascript" src="/static/guoda.com_files/js/z-ui.js"></script>
+<script type="text/javascript" src="/static/guoda.com_files/js/WdatePicker.js"></script>
+<link href="/static/guoda.com_files/css/WdatePicker.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/guoda.com_files/js/Validform_v5.3.2_min.js"></script>
 <div id="topBar">
     <div class="area clearfix">
         <div class="glbLeft">

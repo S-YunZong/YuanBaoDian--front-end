@@ -29,10 +29,10 @@
                         <ul>
                             <li class="myUserInfo"><b></b><a href="/jsp/personalCenter/myProfile/myProfile.jsp">个人信息</a>
                             </li>
-                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>
+                            <%--<li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>
                             </li>
                             <li class="myIDInformation"><b></b><a
-                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>
+                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>--%>
                         </ul>
                     </div><!--/slideLeft-->
                 </div>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.yuanbaodianfrontend.dao.UserDao">
-    <insert id="zhuce">
+    <insert id="zhuce" useGeneratedKeys="true" keyProperty="id">
         insert into ybd_user (phone,password,sex,position) values (#{tel},#{password},'0','学生');
     </insert>
     <select id="login" resultType="YbdUser">
@@ -71,4 +71,14 @@ WHERE
 	<insert id="insert_Head">
 		insert into ybd_picture values(null,'head',#{uploadUrl},#{id})
 	</insert>
+	<!--//修改手机号
+	int updatePhone(String newPhone, Integer id);-->
+	<update id="updatePhone" parameterType="int">
+		update ybd_user set phone=#{newPhone} where id=#{id}
+	</update>
+	<!--//修改密码
+	int updatePwd(String phone, String password);-->
+	<update id="updatePwd" parameterType="int">
+		update ybd_user set password=#{password} where phone=#{phone}
+	</update>
 </mapper>

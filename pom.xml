@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>yuanbaodian-front-end</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>yuanbaodian-front-end</name>
     <description>Demo project for Spring Boot</description>
 
@@ -314,16 +314,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.6</version>
+                <version>1.4.2.RELEASE</version>
                 <configuration>
-                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
-                    <overwrite>true</overwrite>
-                    <verbose>true</verbose>
+                    <mainClass>com.example.yuanbaodianfrontend.YuanbaodianFrontEndApplication</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -34,16 +34,15 @@ public class UserController {
     //注册
     @ResponseBody
     @RequestMapping("zhuce")
-    public boolean zhuce(String tel,String password){
-        boolean zhuce = userService.zhuce(tel, password);
-        return true;
+    public boolean zhuce(YbdUser user,String tel,String password){
+        boolean zhuce = userService.zhuce(user,tel, password);
+        return zhuce;
     }
     //登陆
     @RequestMapping("login")
     @ResponseBody
     public YbdUser login(String phone, String password,HttpSession session){
         YbdUser login = userService.login(phone, password);
-        System.out.println(login);
             if (login!=null){
                 session.setAttribute("user_session",login);
                 YbdUser user_session = (YbdUser) session.getAttribute("user_session");
@@ -117,17 +116,17 @@ public class UserController {
     }
 
     //修改密码
-//    @RequestMapping("updatePwd")
-//    @ResponseBody
-//    public boolean updatePwd(String telephone,String password,HttpSession session){
-//        YbdUser a = (YbdUser)session.getAttribute("user_session");
-//       int i = userService.updatePwd(a.getPhone(),password);
-//        if(i>0) {
-//            return true;
-//       }else {
-//           return false;
-//        }
-//    }
+    @RequestMapping("updatePwd")
+    @ResponseBody
+    public boolean updatePwd(String telephone,String password,HttpSession session){
+        YbdUser a = (YbdUser)session.getAttribute("user_session");
+       int i = userService.updatePwd(a.getPhone(),password);
+        if(i>0) {
+           return true;
+      }else {
+           return false;
+        }
+    }
 
     //获取验证码
     @RequestMapping("getMsg")
@@ -153,17 +152,17 @@ public class UserController {
         return true;
     }
         //修改手机号
-//   @RequestMapping("updatePhone")
-//   @ResponseBody
-//    public boolean updateMobile(String newPhone,Integer id,HttpSession session){
-//       YbdUser a = (YbdUser)session.getAttribute("user_session");
-//       int i = userService.updatePhone(newPhone,a.getId());
-//       if(i>0) {
-//           return true;
-//       }else {
-//           return false;
-//        }
-//    }
+   @RequestMapping("updatePhone")
+   @ResponseBody
+    public boolean updateMobile(String newPhone,Integer id,HttpSession session){
+       YbdUser a = (YbdUser)session.getAttribute("user_session");
+       int i = userService.updatePhone(newPhone,a.getId());
+       if(i>0) {
+           return true;
+       }else {
+           return false;
+        }
+    }
 
 
 //    轮播图展示

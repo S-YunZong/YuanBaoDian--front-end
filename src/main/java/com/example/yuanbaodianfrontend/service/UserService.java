@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public interface UserService {
-    boolean zhuce (String tel,String password);
+    boolean zhuce (YbdUser user,String tel,String password);
     YbdUser login(String phone , String password);
 
     YbdUser Personal(Integer id);
@@ -24,4 +24,8 @@ public interface UserService {
     List<YbdUser> queryUserListByanswerRate();
 
     boolean update_Head(String uploadUrl, Integer id);
+    //修改手机号
+    int updatePhone(String newPhone, Integer id);
+    //修改密码
+    int updatePwd(String phone, String password);
 }
