@@ -29,7 +29,7 @@
                 大家可以免费、免登陆的享受学前教育<br><br>
                 带来的知识考验,同学们快开始答题吧！
             </h3>
-            <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 280px">开始答题</button>
+            <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 246px;width: 200px;background-color: #F5FAFC">开始答题</button>
         </div>
     </div>
 </div>

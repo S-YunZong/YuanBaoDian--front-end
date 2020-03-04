@@ -24,13 +24,11 @@
     <div class="row clearfix">
         <div class="col-md-12 column">
             <h1 style="margin: 60px 280px">真题题库</h1>
-            <h3 style="margin: 60px 220px">
-                学生们可以免费，免登<br>
-                陆的享受真题题库带来<br>
-                的知识考验！！<br>
-                同学们快开始答题吧！<br>
+            <h3 style="margin: 60px 133px">
+                学生们可以免费的享受真题题库带来<br><br>
+                的知识考验！！同学们快开始答题吧！
             </h3>
-            <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 280px">开始答题</button>
+            <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 246px;width: 200px;background-color: #F5FAFC">开始答题</button>
         </div>
     </div>
 </div>

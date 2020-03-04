@@ -55,6 +55,7 @@
       where question_type_id=#{questionTypeId}
       and ybd_question_back.create_user=ybd_user.id
       and game_level_id=#{gameLevelId}
+      and is_select=0
     </select>
     <resultMap id="chuangguanMap" type="YbdQuestionBack">
         <id property="id" column="id"></id>
@@ -71,6 +72,7 @@
       from ybd_question_back
       where question_type_id=#{questionTypeId}
       and game_level_id=#{gameLevelId}
+      and is_select=0
     </select>
     <!--//添加错题
     boolean insYbdWrongTopicRecord(@Param("ybdWrongTopicRecord") YbdWrongTopicRecord ybdWrongTopicRecord);-->
