@@ -65,7 +65,7 @@
                     </div>
                     <div class="line fr"></div>
                     <div class="wallet fr"><p class="p1">剩余积分</p>
-                        <p class="p2"><span>${user_session.integral}分</span></p></div>
+                        <p class="p2"><span id="integral"></span></p></div>
                 </div>
 
                 <!-- 我的礼物 -->
@@ -103,6 +103,7 @@
         ajaxPage();
         time();
         liwu();
+        findIntegralById();
     })
 
     // 问好
@@ -217,6 +218,22 @@
                         "                        </div>";
                 }
                 $("#liwu").html(str);
+            }
+        });
+    }
+
+    //查询用户积分
+    function findIntegralById(){
+        var uid="${user_session.id}";
+        $.ajax({
+            type: "POST",
+            url: "/user/Personal",
+            dataType: "json",
+            data: {
+                "id": uid
+            },
+            success: function (data) {
+                $("#integral").html(data.integral);
             }
         });
     }
