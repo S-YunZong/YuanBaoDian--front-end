@@ -390,7 +390,7 @@ function goodNews(){
             var str ="";
             if(data!=null){
                 for(var i=0;i<4;i++){
-                    str +="<div class=\"col-md-6 column\" style=\"background-color:red;border: silver solid 1px;height: 200px;width: 500px;margin: 20px 20px\">\n" +
+                    str +="<div class=\"col-md-6 column\" style=\"background-color:#EEEEEE;border: silver solid 1px;height: 200px;width: 500px;margin: 20px 20px\">\n" +
                         "                                    <div style=\"float: right\">\n" +
                         "                                        <img src=\""+data[i].personalPic+"\" class=\"img-thumbnail\" >\n" +
                         "                                    </div>\n" +

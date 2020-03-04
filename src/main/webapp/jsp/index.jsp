@@ -15,7 +15,7 @@
         .massage p{
             margin: 10px 10px 1px;
             font-size: 15px;
-            color: yellow;
+            color: #000000;
         }
         .massage2 p{
             margin: 10px 10px 1px;
@@ -30,9 +30,13 @@
             height: 20px;
             border-radius: 10px;
         }
+        h2 {
+            font-weight: bolder;
+        }
     </style>
 </head>
 <body>
+<div class="d1" style="background-color: #EEEEEE;width: 100%;height: auto;" >
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -75,14 +79,12 @@
                     <h2 style="margin: 50px 480px">模拟考试</h2>
                     <div class="row clearfix">
                         <div class="col-md-6 column">
-                            <div style="border: silver solid 1px;height: 300px;width: 500px;margin: 0px 40px;background-color: #F2F2F2">
+                            <div style="border: silver solid 1px;border-radius: 10px;height: 300px;width: 500px;margin: 0px 40px;background-color: #F5F5F5">
                                 <h3 style="margin: 30px 200px">学前教育</h3>
-                                <div style="background-color: #F1F8FF;width: 400px;height: 130px;margin: 0px 50px;text-align: center">
+                                <div style="background-color: #F5F5F5;border-radius:5px;width: 400px;height: 130px;margin: 0px 50px;text-align: center">
                                     <div style="height: 10px"></div>
                                     <h4>
-                                        学生们可以在综合答题<br>
-                                        里自由练习习题为闯关<br>
-                                        答题做好充分的知识储备<br>
+                                        做好充分准备，只为走的更远<br>
                                         同学们快开始答题吧！<br>
                                     </h4>
                                 </div>
@@ -90,15 +92,13 @@
                             </div>
                         </div>
                         <div class="col-md-6 column">
-                            <div style="border: silver solid 1px;height: 300px;width: 500px;background-color: #F2F2F2">
+                            <div style="border: silver solid 1px;border-radius: 10px;height: 300px;width: 500px;background-color: #F5F5F5">
                                 <h3 style="margin: 30px 200px">闯关答题</h3>
-                                <div style="background-color: #F1F8FF;width: 400px;height: 130px;margin: 0px 50px;text-align: center">
+                                <div style="background-color: #F5F5F5;border-radius:5px;width: 400px;height: 130px;margin: 0px 50px;text-align: center">
                                     <div style="height: 10px"></div>
                                     <h4>
-                                        闯关答题分为1-1~1-5,1-6~1-10，<br>
-                                        2-1~2-5每个关卡里还有小关卡，<br>
-                                        完成2-1~2-5后可解锁真题题库，<br>
-                                        同学们，快开始闯关答题吧！！
+                                        在这里可以解锁更多的知识<br>
+                                        同学们，快开始闯关答题吧！
                                     </h4>
                                 </div>
                                 <a type="button" href="/jsp/exam/practiceTest.jsp" class="btn btn-default btn-lg" style="margin: 10px 200px">开始闯关</a>
@@ -109,7 +109,7 @@
                         <h2 style="margin: 50px 500px">排行榜</h2>
                         <div class="row clearfix">
                             <div class="col-md-6 column">
-                                <div style="border: silver solid 1px;height: 60px;width: 500px;margin: 0px 40px">
+                                <div style="border: silver solid 1px;height: 60px;width: 500px;margin: 0px 40px;background-color:#FFD700">
                                     <h3 style="margin: 15px 180px">答题排行榜</h3>
                                 </div>
                                 <div class="panel panel-default" style="width: 500px;margin: 0px 40px" id="queryUserListByQuestion">
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 column">
-                                <div style="border: silver solid 1px;height: 60px;width: 500px;margin: 0px 0px">
+                                <div style="border: silver solid 1px;height: 60px;width: 500px;margin: 0px 0px;background-color:#FFD700">
                                     <h3 style="margin: 15px 170px">准确率排行榜</h3>
                                 </div>
                                 <div class="panel panel-default" style="width: 500px" id="queryUserListByanswerRate">

@@ -30,7 +30,7 @@
 <body>
 <!-- Header  头部 -->
 <%@include file="/jsp/commet/top.jsp" %>
-
+    <div class="d1" style="background-color: #EEEEEE;width: 100%;height: auto;" >
         <br> <br> <br> <br> <br>
          <div id="biankuang">
              <br>
@@ -53,6 +53,7 @@
                  </div>--%>
              </div>
          </div>
+    </div>
 </body>
 
 </html>

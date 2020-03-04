@@ -11,12 +11,15 @@
     <title>Title</title>
     <style>
         .a:hover{
-            background-color: limegreen;
+            background-color: pink;
             color: #fbfbfb;
             transform:scale(1.1);
         }
         .c{
-            background-color: #e3e3e3;
+            background-color: #ffffff;
+            padding-top: 20px;
+            height: 640px;
+            text-align: center;
         }
         .a{
             background-color: #F5FAFC;
@@ -24,7 +27,7 @@
     </style>
 </head>
 <body>
-<div class="c" style="border: #0C0C0C solid 1px;height: 600px;text-align: center;">
+<div class="c">
     <%--<div class="a" style="height: 70px;border: #0C0C0C solid 1px;margin: 5px" onclick="zonghe()">
         <h3>综合答题</h3>
     </div>
@@ -186,19 +189,19 @@
                 var m="";
                 $(data).each(function (a,b) {
                     if(b.id==1){
-                        m+="<div class=\"a\" style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'zonghe("+b.id+")\'>\n" +
-                            "        <h3>"+b.questionTypeName+"</h3>\n" +
+                        m+="<div class=\"a\" style=\"height: 70px;margin: 5px\" onclick=\'zonghe("+b.id+")\'>\n" +
+                            "        <h3 style='line-height:70px'>"+b.questionTypeName+"</h3>\n" +
                             "    </div>";
                     }
                     if(b.id==2){
                         if(id!=null&&id!=""){
-                            m+="<div class=\"a\" style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'chuangguan("+b.id+")\'>\n" +
-                                "        <h3>"+b.questionTypeName+"</h3>\n" +
+                            m+="<div class=\"a\" style=\"height: 70px;margin: 5px\" onclick=\'chuangguan("+b.id+")\'>\n" +
+                                "        <h3 style='line-height:70px'>"+b.questionTypeName+"</h3>\n" +
                                 "    </div>";
                         }else {
-                            m+="<div class=\"a\"  style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'chuangguan("+0+")\'>\n" +
-                                "        <h3>"+b.questionTypeName+"</h3>\n" +
-                                "        <div style=\"margin: -30px 180px\">\n" +
+                            m+="<div class=\"a\"  style=\"height: 70px;margin: 5px\" onclick=\'chuangguan("+0+")\'>\n" +
+                                "        <h3 style='line-height:70px'>"+b.questionTypeName+"</h3>\n" +
+                                "        <div style=\"margin: -50px 180px\">\n" +
                                 "            <i class=\"iconfont iconsuo1\"></i>\n" +
                                 "        </div>\n" +
                                 "    </div>";
@@ -213,14 +216,14 @@
                                 "        </div>\n" +
                                 "    </div>";
                         }else*/ if(id!=null&&id!=""){
-                            m+="<div class=\"a\" style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'zhenti("+b.id+","+realTopicStatus+")\'>\n" +
-                                "        <h3>"+b.questionTypeName+"</h3>\n" +
+                            m+="<div class=\"a\" style=\"height: 70px;margin: 5px\" onclick=\'zhenti("+b.id+","+realTopicStatus+")\'>\n" +
+                                "        <h3 style='line-height:70px'>"+b.questionTypeName+"</h3>\n" +
                                 "    </div>";
                         }else{
-                            m+="<div class=\"a\"  style=\"height: 70px;border: #0C0C0C solid 1px;margin: 5px\" onclick=\'zhenti("+0+","+realTopicStatus+")\'>\n" +
-                                "        <h3>"+b.questionTypeName+"</h3>\n" +
-                                "        <div style=\"margin: -30px 180px\">\n" +
-                                "            <i class=\"iconfont iconsuo2\"></i>\n" +
+                            m+="<div class=\"a\"  style=\"height: 70px;margin: 5px\" onclick=\'zhenti("+0+","+realTopicStatus+")\'>\n" +
+                                "        <h3 style='line-height: 70px'>"+b.questionTypeName+"</h3>\n" +
+                                "        <div style=\"margin: -50px 180px\">\n" +
+                                "            <i class=\"iconfont iconsuo1\"></i>\n" +
                                 "        </div>\n" +
                                 "    </div>";
                         }

@@ -21,15 +21,13 @@
     </style>
 </head>
 <body>
-<div class="container" id="dati" style="display: block">
+<div class="container" id="dati" style="display: block;background-color: #ffffff">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <h1 style="margin: 60px 280px">学前教育</h1>
-            <h3 style="margin: 60px 220px">
-                学生们可以免费，免登<br>
-                陆的享受学前教育带来<br>
-                的知识考验！！<br>
-                同学们快开始答题吧！<br>
+            <h3 style="margin: 60px 133px">
+                大家可以免费、免登陆的享受学前教育<br><br>
+                带来的知识考验,同学们快开始答题吧！
             </h3>
             <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 280px">开始答题</button>
         </div>

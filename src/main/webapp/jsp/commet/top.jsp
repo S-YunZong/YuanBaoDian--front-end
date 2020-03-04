@@ -125,12 +125,12 @@
     <div class="Z_layout_main">
         <div class="Z_container Z_header_main">
             <!-- 国大Logo -->
-            <h1 class="Z_logo_box">
-                <a href="#">
+            <h1 class="Z_logo_box">数据云学院
+                <%--<a href="#">
                     <!-- 首页logo 区别于其他页面logo -->
                     <img class="Z_logo" style="margin-top: -8px;height: 50px;width: 300px" id="Z_logo"
                          src="/static/image/北工商.jpg" alt="">
-                </a>
+                </a>--%>
             </h1>
 
             <!-- 顶部导航 -->

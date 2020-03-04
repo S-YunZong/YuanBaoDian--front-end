@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<div class="second" style="width: 100%;height:auto;background-color: #EEEEEE">
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -33,7 +34,7 @@
                         </div>
 
                         <div class="col-md-9 column">
-                            <iframe src="/jsp/exam/zonghe/zongHe.jsp" style="border: #0C0C0C solid 1px;height: 600px;width: 840px" id="urljsp"></iframe>
+                            <iframe src="/jsp/exam/zonghe/zongHe.jsp" style="height: 640px;width: 840px;border: none" id="urljsp"></iframe>
                         </div>
                     </div>
                 </div>

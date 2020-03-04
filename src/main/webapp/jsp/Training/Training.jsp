@@ -29,9 +29,9 @@
 <!-- Header  头部 -->
 <%@include file="/jsp/commet/top.jsp" %>
 
-    <br><br><br>
+    <br><br><br><br>
 
-    <div style="width: 900px;margin-left: 400px;">
+    <div style="width: 900px;margin-left: 250px;">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active">
                 <a href="#jianli" data-toggle="tab">

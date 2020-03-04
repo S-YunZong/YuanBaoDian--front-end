@@ -15,9 +15,9 @@
     <div style="height: 30px">
 
     </div>
-        <img src="/static/image/北工商.jpg" width="300px" height="70px"><br>
-        由北工商数据云追云工作室专属为您打造学习平台
-
+      <%--  <img src="/static/image/北工商.jpg" width="300px" height="70px"><br>
+        由北工商数据云追云工作室专属为您打造学习平台--%>
+    <span style="font-size: 30px;font-weight: bold">北工商数据云学院</span>
 </div>
 </body>
 </html>
