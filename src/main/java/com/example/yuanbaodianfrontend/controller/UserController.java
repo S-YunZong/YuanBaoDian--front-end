@@ -4,7 +4,7 @@ import com.example.yuanbaodianfrontend.pojo.YbdPicture;
 import com.example.yuanbaodianfrontend.pojo.YbdUser;
 import com.example.yuanbaodianfrontend.service.UserService;
 import com.example.yuanbaodianfrontend.utils.AliyunOSSUtil;
-import com.example.yuanbaodianfrontend.utils.SendSMSUtils;
+import com.example.yuanbaodianfrontend.utils.SendSms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +28,8 @@ public class UserController {
     public boolean fasong(String tel, HttpSession session){
         int code=(int)((Math.random()*9+1)*10);
         session.setAttribute("code", code);
-        boolean sendMSM = SendSMSUtils.sendMSM(tel,String.valueOf(code));
-        return true;
+        boolean sendMSM = SendSms.sendMSM(tel,String.valueOf(code));
+        return sendMSM;
     }
     //注册
     @ResponseBody
@@ -146,10 +146,11 @@ public class UserController {
         Integer code1 = (Integer) session.getAttribute("code");
         if(null==code1) {
             return false;
-        }else if(!code1.equals(phoneText)){
+        }else if(code1.equals(phoneText)){
+            return true;
+        }else {
             return false;
         }
-        return true;
     }
         //修改手机号
    @RequestMapping("updatePhone")

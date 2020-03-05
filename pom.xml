@@ -248,7 +248,7 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>-->
-        <!--redis-->
+        <!--redis  RedisTemplate-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -278,6 +278,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <!--阿里云手机验证-->
+        <!--<dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.0.3</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.4.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-ecs</artifactId>
+            <version>4.17.6</version>
         </dependency>
         <!--UEditor依赖的jar包 富文本框-->
         <dependency>

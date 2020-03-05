@@ -281,12 +281,6 @@ $(function () {
             error(password, "请输入6-16位的密码");
             return false;
         }
-        //校验是否勾选协议
-        if (!$("#registerConfrimHook i").hasClass("iconfont icon-xuanzhong")) {
-            $("#asnycErrorWrapperHook2").css("display", "");
-            $("#zhuce_error").text("请阅读协议并确认");
-            return false;
-        }
         $.ajax({
             type: "POST",//方法类型
             url: "/user/zhuce",
