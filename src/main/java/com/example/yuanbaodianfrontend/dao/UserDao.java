@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface UserDao {
     //注册
-    boolean zhuce (@Param("tel") String tel, @Param("password") String password);
+    boolean zhuce (YbdUser user);
     //登陆
     YbdUser login(@Param("phone")String phone , @Param("password") String password);
     //个人信息
@@ -29,7 +29,9 @@ public interface UserDao {
     //根据id添加用户头像
     boolean insert_Head(@Param("uploadUrl") String uploadUrl,@Param("id") Integer id);
     //修改手机号
-    int updatePhone(@Param("newPhone")String newPhone,@Param("id") Integer id);
+    boolean updatePhone(@Param("newPhone")String newPhone,@Param("id") Integer id);
     //修改密码
-    int updatePwd(@Param("phone")String phone,@Param("password") String password);
+    boolean updatePwd(@Param("phone")String phone,@Param("password") String password);
+    //手机号校验
+    Integer checkTel(String tel);
 }

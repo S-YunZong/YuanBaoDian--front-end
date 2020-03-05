@@ -68,7 +68,7 @@
         var da = data.list;
         var p = page || 1;
         var str = "";
-        if (da == "") {
+        if (da == null) {
             str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                 "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
                 "        <p>您还没有错题！</p>\n" +

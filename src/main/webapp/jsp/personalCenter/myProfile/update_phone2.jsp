@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
 <head>
-    <title>修改手机号2</title>
+    <title>修改手机号</title>
 </head>
 <body>
 <%@include file="/jsp/personalCenter/myProfile/common/header.jsp" %>
@@ -20,19 +20,19 @@
             <div class="row clearfix">
                 <div class="col-md-2 column">
                     <div class="slideLeft">
-                        <div class="user">
-                            <div class="img">
-                                <img src="/static/image/default.png" width="100" height="100">
-                            </div>
-                            <p>荼荼</p>
-                        </div>
+<%--                        <div class="user">--%>
+<%--                            <div class="img">--%>
+<%--                                <img src="/static/image/default.png" width="100" height="100">--%>
+<%--                            </div>--%>
+<%--                            <p>荼荼</p>--%>
+<%--                        </div>--%>
                         <ul>
                             <li class="myUserInfo"><b></b><a href="/jsp/personalCenter/myProfile/myProfile.jsp">个人信息</a>
                             </li>
-                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>
-                            </li>
-                            <li class="myIDInformation"><b></b><a
-                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>
+<%--                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>--%>
+<%--                            </li>--%>
+<%--                            <li class="myIDInformation"><b></b><a--%>
+<%--                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>--%>
                         </ul>
                     </div><!--/slideLeft-->
                 </div>
@@ -69,19 +69,6 @@
                                         </tr>
 
                                         <tr>
-                                            <td>验证码</td>
-                                            <td>
-                                                <input type="text" class="ui_inp j-m-jsCheck" placeholder="输入图片中验证码"
-                                                       id="J-m-imgIpt">
-                                            </td>
-                                            <td width="150">
-                                                <img src="https://passport.ziroom.com/img/verify/code/v1?imgId=68fc3225f4b0de316f080ded88cf097e"
-                                                     height="40" id="J-m-Img"
-                                                     data-imgid="68fc3225f4b0de316f080ded88cf097e">
-                                            </td>
-                                            <td>看不清？ <a href="javascript:;" class="org" id="J-m-change">换一张</a></td>
-                                        </tr>
-                                        <tr>
                                             <td>手机验证码</td>
                                             <td width="185">
                                                 <input type="text" class="ui_inp j-m-jsCheck" placeholder="输入短信验证码"
@@ -97,8 +84,61 @@
                                             <td></td>
                                             <td colspan="3">
                                                 <input type="button" value="确定"
-                                                       class="ui_btn ui_org_btn disabled j-m-button" id="J-m-Sub" onclick="Sub()">
+                                                       class="ui_btn abled" id="J-m-Sub">
                                                 <script>
+                                                    var code_z;
+                                                    var oIpt = $('#J-m-yzmIpt');
+                                                    var getBtn = $('#tel_btn');
+
+                                                    var oSub = $('#J-m-Sub');
+
+                                                    var reg = /^[0-9]{2}$/;
+
+                                                    getBtn[0].onclick = getPhoneYzm;
+
+                                                    var tel=${user_session.phone};
+
+                                                    function getPhoneYzm() {
+                                                        stopClick();
+                                                        $.ajax({
+                                                            url: '/user/fasong',
+                                                            type: 'POST',
+                                                            data: {
+                                                                "tel":tel
+                                                            },
+                                                            dataType: 'json',
+                                                            success: function (data) {
+                                                                code_z = data;
+                                                                // if (data.code != '20000') {
+                                                                //     mLayerMsg(data.message);
+                                                                // }
+                                                                // console.log(data);
+                                                            }
+                                                        });
+                                                    }
+
+                                                    //倒计时
+                                                    function stopClick() {
+                                                        var total = 60;
+                                                        getBtn.removeClass('ui_org_btn');
+                                                        getBtn.addClass('ui_gray_btn');
+                                                        getBtn[0].onclick = null;
+                                                        getBtn.val('60');
+
+                                                        var t = setInterval(function () {
+                                                            total--;
+                                                            getBtn.val(total);
+
+                                                            if (total == 0) {
+                                                                clearInterval(t);
+                                                                getBtn.removeClass('ui_gray_btn');
+                                                                getBtn.addClass('ui_org_btn');
+                                                                getBtn[0].onclick = getPhoneYzm;
+                                                                getBtn.val('重新发送');
+                                                            }
+                                                        }, 1000);
+                                                    }
+
                                                         function Sub() {
                                                            var newPhone= $("#J-m-new").val();
                                                             $.ajax({
@@ -108,9 +148,9 @@
                                                                 dataaType:"json",
                                                                 success:function (data) {
                                                                     if (data){
-                                                                        alert("手机号修改失败!")
+                                                                        window.location = '/jsp/personalCenter/myProfile/update_phone3.jsp'
                                                                     }else {
-                                                                        alert("手机号修改成功!")
+                                                                        alert("手机号修改失败!")
                                                                     }
                                                                 },error:function () {
                                                                     alert("操作失败!")
@@ -118,6 +158,30 @@
                                                             })
 
                                                         }
+
+                                                        //下一步
+                                                        oIpt.keyup(function () {
+                                                            if (!reg.test(this.value)) {
+                                                                oSub.removeClass('ui_org_btn');
+                                                                oSub.addClass('ui_gray_btn');
+                                                                oSub[0].onclick = null;
+                                                            }else if(oIpt.val()!=code_z){
+                                                                oSub.removeClass('ui_org_btn');
+                                                                oSub.addClass('ui_gray_btn');
+                                                                oSub[0].onclick = null;
+                                                                alert("验证码不正确");
+                                                            }else if(oIpt.val().trim() == ""){
+                                                                oSub.removeClass('ui_org_btn');
+                                                                oSub.addClass('ui_gray_btn');
+                                                                oSub[0].onclick = null;
+                                                                alert("验证码不能为空");
+                                                            }else {
+                                                                oSub.removeClass('ui_gray_btn');
+                                                                oSub.addClass('ui_org_btn');
+                                                                oSub[0].onclick = Sub;
+                                                            }
+                                                        });
+
                                                 </script>
                                             </td>
                                         </tr>

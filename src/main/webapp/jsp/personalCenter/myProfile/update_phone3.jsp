@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
 <head>
-    <title>修改手机号2</title>
+    <title>修改手机号</title>
 </head>
 <body>
 <%@include file="/jsp/personalCenter/myProfile/common/header.jsp" %>
@@ -20,19 +20,19 @@
             <div class="row clearfix">
                 <div class="col-md-2 column">
                     <div class="slideLeft">
-                        <div class="user">
-                            <div class="img">
-                                <img src="/static/image/default.png" width="100" height="100">
-                            </div>
-                            <p>荼荼</p>
-                        </div>
+<%--                        <div class="user">--%>
+<%--                            <div class="img">--%>
+<%--                                <img src="/static/image/default.png" width="100" height="100">--%>
+<%--                            </div>--%>
+<%--                            <p>荼荼</p>--%>
+<%--                        </div>--%>
                         <ul>
                             <li class="myUserInfo"><b></b><a href="/jsp/personalCenter/myProfile/myProfile.jsp">个人信息</a>
                             </li>
-                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>
-                            </li>
-                            <li class="myIDInformation"><b></b><a
-                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>
+<%--                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>--%>
+<%--                            </li>--%>
+<%--                            <li class="myIDInformation"><b></b><a--%>
+<%--                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>--%>
                         </ul>
                     </div><!--/slideLeft-->
                 </div>
@@ -48,7 +48,7 @@
                                             <p>验证身份</p><b></b></li>
                                         <li class="active"><span>2</span>
                                             <p>验证新手机号</p><b></b></li>
-                                        <li><span>3</span>
+                                        <li class="active"><span>3</span>
                                             <p>完成</p><b></b></li>
                                     </ul>
                                 </div><!--/step-->

@@ -233,6 +233,9 @@
                 "id": uid
             },
             success: function (data) {
+                if(data.integral==null){
+                    data.integral=0;
+                }
                 $("#integral").html(data.integral);
             }
         });

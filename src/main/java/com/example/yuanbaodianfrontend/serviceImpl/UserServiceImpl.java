@@ -18,9 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public boolean zhuce(YbdUser user,String tel, String password) {
+    public boolean zhuce(YbdUser user) {
         boolean b=false;
-        b=userDao.zhuce(tel,password);
+        b=userDao.zhuce(user);
         if(b=true){
             String s="http://kangkang666666.oss-cn-beijing.aliyuncs.com/oss/2020-03-02/47848259dc1843d781774962ac79d44d-11.jpg.png";
             b=userDao.insert_Head(s,user.getId());
@@ -73,13 +73,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int updatePhone(String newPhone, Integer id) {
-        return 0;
+    public boolean updatePhone(String newPhone, Integer id) {
+        return userDao.updatePhone(newPhone,id);
     }
 
     @Override
-    public int updatePwd(String phone, String password) {
-        return 0;
+    public boolean updatePwd(String phone, String password) {
+        return userDao.updatePwd(phone,password);
+    }
+
+    @Override
+    public Integer checkTel(String tel) {
+        return userDao.checkTel(tel) ;
     }
 
 

@@ -19,19 +19,19 @@
             <div class="row clearfix">
                 <div class="col-md-2 column">
                     <div class="slideLeft">
-                        <div class="user">
-                            <div class="img">
-                                <img src="/static/image/default.png" width="100" height="100">
-                            </div>
-                            <p>荼荼</p>
-                        </div>
+<%--                        <div class="user">--%>
+<%--                            <div class="img">--%>
+<%--                                <img src="/static/image/default.png" width="100" height="100">--%>
+<%--                            </div>--%>
+<%--                            <p>荼荼</p>--%>
+<%--                        </div>--%>
                         <ul>
                             <li class="myUserInfo"><b></b><a href="/jsp/personalCenter/myProfile/myProfile.jsp">个人信息</a>
                             </li>
-                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>
-                            </li>
-                            <li class="myIDInformation"><b></b><a
-                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>
+<%--                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>--%>
+<%--                            </li>--%>
+<%--                            <li class="myIDInformation"><b></b><a--%>
+<%--                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>--%>
                         </ul>
                     </div><!--/slideLeft-->
                 </div>
@@ -55,7 +55,7 @@
                                     <tbody>
                                     <tr>
                                         <td width="90">手机号</td>
-                                            <td colspan="3"><span id="update_phone">${user_session.phone}</span> <span class="gray">若当前号码无效或无法接收验证码，请拨打客服电话：4001-001-111</span>
+                                            <td colspan="3"><span id="update_phone"></span> <span class="gray">若当前号码无效或无法接收验证码，请拨打客服电话：4001-001-111</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,17 +90,36 @@
 </body>
 <%--修改手机号--%>
 <script>
+    //查询手机号码
+    function findPhoneById(){
+        var uid="${user_session.id}";
+        $.ajax({
+            type: "POST",
+            url: "/user/Personal",
+            dataType: "json",
+            data: {
+                "id": uid
+            },
+            success: function (data) {
+                $("#update_phone").html(data.phone);
+            }
+        });
+    }
     //mqz 2016.5.12 校验手机验证码
     (function () {
+        findPhoneById();
+        var code_z;
         var oIpt = $('#J-m-input');
         var getBtn = $('#tel_btn_phone');
 
         var oSub = $('#J-m-submit_phone');
 
-        var reg = /^[0-9]{6}$/;
+        var reg = /^[0-9]{2}$/;
 
         getBtn[0].onclick = getPhoneYzm;
-            var tel=${user_session.phone};
+
+        var tel=${user_session.phone};
+
         function getPhoneYzm() {
             stopClick();
             $.ajax({
@@ -111,9 +130,10 @@
                 },
                 dataType: 'json',
                 success: function (data) {
-                    if (data.code != '20000') {
-                        mLayerMsg(data.message);
-                    }
+                    code_z = data;
+                    // if (data.code != '20000') {
+                    //     mLayerMsg(data.message);
+                    // }
                     // console.log(data);
                 }
             });
@@ -147,34 +167,42 @@
                 oSub.removeClass('ui_org_btn');
                 oSub.addClass('ui_gray_btn');
                 oSub[0].onclick = null;
-            }
-            else {
+            }else if(oIpt.val()!=code_z){
+                oSub.removeClass('ui_org_btn');
+                oSub.addClass('ui_gray_btn');
+                oSub[0].onclick = null;
+                alert("验证码不正确");
+            }else if(oIpt.val().trim() == ""){
+                oSub.removeClass('ui_org_btn');
+                oSub.addClass('ui_gray_btn');
+                oSub[0].onclick = null;
+                alert("验证码不能为空");
+            }else {
                 oSub.removeClass('ui_gray_btn');
                 oSub.addClass('ui_org_btn');
-
                 oSub[0].onclick = next;
             }
         });
 
         function next() {
-
-            $.ajax({
-                url: '/user/update_phone_authCode',
-                type: 'POST',
-                dataType: 'json',
-                data: {"accountType": "1", "vcode": oIpt.val(), "type": "2"},
-                success: function (data) {
-                    if (data.code == '20000') {
-                        window.location = '/jsp/personalCenter/myProfile/update_phone2.jsp?vid=' + data.resp.vid;
-                    }
-                    else {
-                        mLayerMsg('验证失败');
-                    }
-                    // console.log(data);
-
-                }
-
-            });
+            window.location = '/jsp/personalCenter/myProfile/update_phone2.jsp'
+            // $.ajax({
+            //     url: '/user/update_phone_authCode',
+            //     type: 'POST',
+            //     dataType: 'json',
+            //     data: {"accountType": "1", "vcode": oIpt.val(), "type": "2"},
+            //     success: function (data) {
+            //         if (data.code == '20000') {
+            //             window.location = '/jsp/personalCenter/myProfile/update_phone2.jsp?vid=' + data.resp.vid;
+            //         }
+            //         else {
+            //             mLayerMsg('验证失败');
+            //         }
+            //         // console.log(data);
+            //
+            //     }
+            //
+            // });
         }
 
 

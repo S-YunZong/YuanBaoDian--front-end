@@ -25,17 +25,20 @@ public class UserController {
     //发送验证码
     @RequestMapping("fasong")
     @ResponseBody
-    public boolean fasong(String tel, HttpSession session){
+    public Integer fasong(String tel, HttpSession session){
         int code=(int)((Math.random()*9+1)*10);
         session.setAttribute("code", code);
         boolean sendMSM = SendSms.sendMSM(tel,String.valueOf(code));
-        return sendMSM;
+        if(sendMSM){
+            return code;
+        }
+        return 0;
     }
     //注册
     @ResponseBody
     @RequestMapping("zhuce")
-    public boolean zhuce(YbdUser user,String tel,String password){
-        boolean zhuce = userService.zhuce(user,tel, password);
+    public boolean zhuce(YbdUser user){
+        boolean zhuce = userService.zhuce(user);
         return zhuce;
     }
     //登陆
@@ -118,14 +121,10 @@ public class UserController {
     //修改密码
     @RequestMapping("updatePwd")
     @ResponseBody
-    public boolean updatePwd(String telephone,String password,HttpSession session){
+    public boolean updatePwd(String password,HttpSession session){
         YbdUser a = (YbdUser)session.getAttribute("user_session");
-       int i = userService.updatePwd(a.getPhone(),password);
-        if(i>0) {
-           return true;
-      }else {
-           return false;
-        }
+       boolean b = userService.updatePwd(a.getPhone(),password);
+        return b;
     }
 
     //获取验证码
@@ -155,14 +154,10 @@ public class UserController {
         //修改手机号
    @RequestMapping("updatePhone")
    @ResponseBody
-    public boolean updateMobile(String newPhone,Integer id,HttpSession session){
+    public boolean updateMobile(String newPhone,HttpSession session){
        YbdUser a = (YbdUser)session.getAttribute("user_session");
-       int i = userService.updatePhone(newPhone,a.getId());
-       if(i>0) {
-           return true;
-       }else {
-           return false;
-        }
+       boolean b = userService.updatePhone(newPhone,a.getId());
+       return b;
     }
 
 
@@ -190,5 +185,17 @@ public class UserController {
     public List<YbdUser> queryUserListByanswerRate(){
         List<YbdUser> list =userService.queryUserListByanswerRate();
         return list;
+    }
+
+//    手机号校验
+    @RequestMapping("/checkTel")
+    @ResponseBody
+    public boolean checkTel(String tel){
+        boolean b = false;
+        Integer checkTel = userService.checkTel(tel);
+        if(checkTel==null){
+            b=true;
+        }
+        return b;
     }
 }

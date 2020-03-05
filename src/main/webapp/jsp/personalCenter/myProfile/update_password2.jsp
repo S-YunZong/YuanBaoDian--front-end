@@ -20,19 +20,19 @@
             <div class="row clearfix">
                 <div class="col-md-2 column">
                     <div class="slideLeft">
-                        <div class="user">
-                            <div class="img">
-                                <img src="/static/image/default.png" width="100" height="100">
-                            </div>
-                            <p>${user_session.userName}</p>
-                        </div>
+<%--                        <div class="user">--%>
+<%--                            <div class="img">--%>
+<%--                                <img src="/static/image/default.png" width="100" height="100">--%>
+<%--                            </div>--%>
+<%--                            <p>${user_session.userName}</p>--%>
+<%--                        </div>--%>
                         <ul>
                             <li class="myUserInfo"><b></b><a href="/jsp/personalCenter/myProfile/myProfile.jsp">个人信息</a>
                             </li>
-                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>
-                            </li>
-                            <li class="myIDInformation"><b></b><a
-                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>
+<%--                            <li class="myCertificate"><b></b><a href="/jsp/personalCenter/myProfile/IDInformation.jsp">证件信息</a>--%>
+<%--                            </li>--%>
+<%--                            <li class="myIDInformation"><b></b><a--%>
+<%--                                    href="/jsp/personalCenter/myProfile/realNameAuthentication.jsp">实名认证</a></li>--%>
                         </ul>
                     </div><!--/slideLeft-->
                 </div>
@@ -78,7 +78,7 @@
                                         <td>
                                             <font style="vertical-align: inherit;"><font
                                                     style="vertical-align: inherit;"><input type="button" value="确定"
-                                                                                            class="ui_btn disabled ui_org_btn"
+                                                                                            class="ui_btn ui_org_btn"
                                                                                             id="J-m-submit" onclick="submit_1()"></font></font>
                                             <script>
                                                 function submit_1() {
@@ -87,10 +87,10 @@
                                                         url:"/user/updatePwd",
                                                         data:{password:password},
                                                         type:"post",
-                                                        dataaType:"json",
+                                                        dataType:"json",
                                                         success:function (data) {
                                                             if (data){
-                                                                alert("修改密码成功!")
+                                                                window.location = '/jsp/personalCenter/myProfile/update_password3.jsp'
                                                             }else {
                                                                 alert("修改密码失败!")
                                                             }

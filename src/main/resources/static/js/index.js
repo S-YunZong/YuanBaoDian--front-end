@@ -64,6 +64,8 @@ $(function () {
     $("#swichLoginHook").click(function () {
         $("#switchHook2").css("display", "none");
         $("#switchHook").css("display", "");
+        $("#loginAccontHook").css("display", "");
+        $("#ziroomRecordHook").css("display", "");
     });
     //点击注册  切换注册
     $("#zRegister").click(function () {
@@ -132,9 +134,11 @@ $(function () {
                 "tel": tel.val()
             },
             success: function (result) {
-                if (result != null && result != "") {
+                if (result != 0) {
                     code_z = result;
                     getRandomCode();
+                }else{
+                    alert("验证码发送异常！")
                 }
             },
             error: function () {
@@ -193,8 +197,6 @@ $(function () {
                     data: {"phone": phone.val(), "password": password.val()},
                     success: function (result) {
                         if (result!=null){
-                            alert("登陆成功")
-                            alert(result.userName)
                             $("#ok_login").css("display", "");
                             $("#loginEntyWrapper").css("display", "none");
                             $("#ziroomRecordHook").css("display", "none");
@@ -263,14 +265,14 @@ $(function () {
             return false;
         }
         //校验验证码
-        /*if (yzm.val().trim() == "") {
+        if (yzm.val().trim() == "") {
             error(yzm, "请输入短信验证码");
             return false;
         }
         if (yzm.val() != code_z) {
             error(yzm, "验证码有误");
             return false;
-        }*/
+        }
         //校验密码
         if (password.val().trim() == "") {
             error(password, "请输入密码");
@@ -283,16 +285,16 @@ $(function () {
         }
         $.ajax({
             type: "POST",//方法类型
-            url: "/user/zhuce",
-            data: {"username": $("#registerUserHook").val()},
+            url: "/user/checkTel",
+            data: {"tel": $("#registerUserHook").val()},
             success: function (result) {
-                alert(result)
                 if (result) {
                     register_user();
                     return false;
+                }else{
+                    $("#asnycErrorWrapperHook2").css("display", "");
+                    $("#zhuce_error").text("此号码已注册！");
                 }
-                $("#asnycErrorWrapperHook2").css("display", "");
-                $("#zhuce_error").text("用户名已存在");
             },
             error: function () {
                 alert("注册异常！");
@@ -315,19 +317,19 @@ function register_user() {
         url: "/user/zhuce",
         data: {
             "userName": "用户_" + tel,
-            "tel": tel,
+            "phone": tel,
             "password": password.val()
         },
         success: function (result) {
-            if (result == 1) {
+            if (result) {
                 alert("注册成功");
                 $("#switchHook2").css("display", "none");
                 $("#switchHook").css("display", "");
                 $("#loginAccontHook").css("display", "");
                 $("#ziroomRecordHook").css("display", "");
-                return;
+            }else{
+                alert("注册失败");
             }
-            alert("注册失败");
         },
         error: function () {
             alert("异常！");
