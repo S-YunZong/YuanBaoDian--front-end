@@ -39,8 +39,8 @@
         </div>
         <ul>
             <li class="myUserInfo"><b></b><a id="geren">个人信息</a></li>
-            <li class="myCertificate"><b></b><a id="zhengjian">证件信息</a></li>
-            <li class="myIDInformation"><b></b><a id="renzheng">实名认证</a></li>
+            <%--<li class="myCertificate"><b></b><a id="zhengjian">证件信息</a></li>
+            <li class="myIDInformation"><b></b><a id="renzheng">实名认证</a></li>--%>
         </ul>
     </div><!--/slideLeft-->
 </div>

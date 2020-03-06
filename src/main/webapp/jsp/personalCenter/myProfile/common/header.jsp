@@ -97,7 +97,8 @@
 
 <div id="header">
     <div class="area clearfix">
-        <h1 class="logo"><a href="/jsp/index.jsp"><img src="/static/image/北工商.jpg" width="150" height="43"></a>
+        <h1 class="logo">
+            <span style="font-size:30px">数据云学院</span>
         </h1>
         <div class="nav">
             <a id="geren2" title="我的资料" class="active">我的资料</a>

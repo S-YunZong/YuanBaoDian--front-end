@@ -196,7 +196,7 @@ $(function () {
                     url: "/user/login",
                     data: {"phone": phone.val(), "password": password.val()},
                     success: function (result) {
-                        if (result!=null){
+                        if (result!=null&&result!=""){
                             $("#ok_login").css("display", "");
                             $("#loginEntyWrapper").css("display", "none");
                             $("#ziroomRecordHook").css("display", "none");
@@ -205,7 +205,7 @@ $(function () {
                         }
                         else {
                             $("#asnycErrorWrapperHook").css("display", "");
-                            $("#asnycErrorWrapperHook i").text("&nbsp;账号或密码错误！");
+                            $("#asnycErrorWrapperHook i").text("  账号或密码错误！");
                         }
                     },
                     error: function () {

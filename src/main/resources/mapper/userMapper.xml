@@ -9,7 +9,7 @@
 	u.*,
 	p.picture_type pictureType,
 	p.picture_url pictureUrl,
-	p.pser_id pserId ,
+	p.pser_id pserId,
 	p.id pictureId
 FROM
 	ybd_user u,
@@ -85,4 +85,10 @@ WHERE
     <select id="checkTel" resultType="java.lang.Integer">
         select * from ybd_user where phone=#{tel}
     </select>
+	<!--//日志录入
+    boolean YbdJournal(String remark,@Param("operation_ip") String operation_ip,@Param("operation_user") String operation_user,@Param("incident") String incident,@Param("frontback") String frontback);-->
+	<insert id="YbdJournal">
+		insert into ybd_journal values
+		(null,#{remark},now(),#{operation_ip},#{operation_user},null,#{incident},#{frontback})
+	</insert>
 </mapper>

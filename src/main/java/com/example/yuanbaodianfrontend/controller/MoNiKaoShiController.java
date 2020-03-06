@@ -2,11 +2,13 @@ package com.example.yuanbaodianfrontend.controller;
 
 import com.example.yuanbaodianfrontend.pojo.*;
 import com.example.yuanbaodianfrontend.service.MoNiKaoShiService;
+import com.example.yuanbaodianfrontend.utils.AsyncService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -21,12 +23,15 @@ import java.util.List;
 public class MoNiKaoShiController {
     @Resource
     private MoNiKaoShiService moNiKaoShiService;
-
+    @Resource
+    private AsyncService asyncService;
     //查询题目类型
     @ResponseBody
     @RequestMapping("selYbdQuestionType")
-    public List<YbdQuestionType> selYbdQuestionType(){
+    public List<YbdQuestionType> selYbdQuestionType(HttpSession session){
         List<YbdQuestionType> list=moNiKaoShiService.selYbdQuestionType();
+        YbdUser user= (YbdUser) session.getAttribute("user_session");
+        asyncService.INSLOG("查看","模拟考试",user.getId());//日志录入
         return list;
     }
     //查询题目
@@ -84,8 +89,8 @@ public class MoNiKaoShiController {
     @RequestMapping("updintegral")
     @ResponseBody
     public boolean updintegral(Integer id,Integer integral,Integer chapterSerialNumber){
-        System.out.println(chapterSerialNumber);
         boolean bo=moNiKaoShiService.updintegral(id,integral,chapterSerialNumber);
+        asyncService.INSLOG("查看","模拟考试",id);//日志录入
         return bo;
     }
     /*查询用户学习进度*/
@@ -106,7 +111,6 @@ public class MoNiKaoShiController {
     @ResponseBody
     @RequestMapping("updzhanti")
     public boolean updzhanti(Integer id){
-        System.out.println("id: "+id);
         boolean b=moNiKaoShiService.updzhanti(id);
         return b;
     }

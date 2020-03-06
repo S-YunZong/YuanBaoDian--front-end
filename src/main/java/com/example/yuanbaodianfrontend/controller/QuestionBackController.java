@@ -3,15 +3,20 @@ package com.example.yuanbaodianfrontend.controller;
 import com.example.yuanbaodianfrontend.pojo.QuestionVo;
 import com.example.yuanbaodianfrontend.pojo.YbdExchanageMall;
 import com.example.yuanbaodianfrontend.pojo.YbdQuestionBack;
+import com.example.yuanbaodianfrontend.pojo.YbdUser;
 import com.example.yuanbaodianfrontend.service.QuestionBackService;
+import com.example.yuanbaodianfrontend.utils.AsyncService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +28,8 @@ public class QuestionBackController {
 
     @Autowired
     private RedisTemplate redisTemplate;
-
+    @Resource
+    private AsyncService asyncService;
     //我的消息
     @RequestMapping("MyMessage")
     @ResponseBody
@@ -43,7 +49,7 @@ public class QuestionBackController {
 //    我的收藏
     @RequestMapping("/myFavorite")
     @ResponseBody
-    public PageInfo<YbdQuestionBack> myFavorite(Integer sign,String phone, Integer pageNum, Integer pageSize){
+    public PageInfo<YbdQuestionBack> myFavorite(Integer sign, String phone, Integer pageNum, Integer pageSize, HttpSession session){
 
         if(pageNum==null){
             pageNum=1;
@@ -67,7 +73,8 @@ public class QuestionBackController {
 
 
         PageInfo<YbdQuestionBack> list = questionBackService.myFavorite(pageNum,pageSize,YbdQuestionBack_list);
-
+        YbdUser user= (YbdUser) session.getAttribute("user_session");
+        asyncService.INSLOG("查看","我的收藏",user.getId());//日志录入
 
 
         return list;
@@ -77,7 +84,7 @@ public class QuestionBackController {
 //    我的错题
     @RequestMapping("/myCovenant")
     @ResponseBody
-    public PageInfo<YbdQuestionBack> myCovenant(String id, Integer pageNum, Integer pageSize){
+    public PageInfo<YbdQuestionBack> myCovenant(String id, Integer pageNum, Integer pageSize,HttpSession session){
 
         if(pageNum==null){
             pageNum=1;
@@ -87,6 +94,8 @@ public class QuestionBackController {
         }
 
         PageInfo<YbdQuestionBack> list = questionBackService.myCovenant(pageNum,pageSize,id);
+        YbdUser user= (YbdUser) session.getAttribute("user_session");
+        asyncService.INSLOG("查看","我的错题",user.getId());//日志录入
 
         return list;
     }
@@ -94,7 +103,7 @@ public class QuestionBackController {
 //    查询我的礼物
     @RequestMapping("/queryConvertRecord")
     @ResponseBody
-    public PageInfo<YbdExchanageMall> queryConvertRecord(String id, Integer pageNum, Integer pageSize){
+    public PageInfo<YbdExchanageMall> queryConvertRecord(String id, Integer pageNum, Integer pageSize,HttpSession session){
 
         if(pageNum==null){
             pageNum=1;
@@ -104,6 +113,8 @@ public class QuestionBackController {
         }
 
         PageInfo<YbdExchanageMall> list = questionBackService.queryConvertRecord(pageNum,pageSize,id);
+        YbdUser user= (YbdUser) session.getAttribute("user_session");
+        asyncService.INSLOG("查看","我的礼物",user.getId());//日志录入
 
         return list;
     }
@@ -121,7 +132,7 @@ public class QuestionBackController {
 //    查询积分记录
     @RequestMapping("/myContract")
     @ResponseBody
-    public PageInfo<YbdExchanageMall> myContract(String id, Integer pageNum, Integer pageSize){
+    public PageInfo<YbdExchanageMall> myContract(String id, Integer pageNum, Integer pageSize,HttpSession session){
 
         if(pageNum==null){
             pageNum=1;
@@ -131,6 +142,8 @@ public class QuestionBackController {
         }
 
         PageInfo<YbdExchanageMall> list = questionBackService.myContract(pageNum,pageSize,id);
+        YbdUser user= (YbdUser) session.getAttribute("user_session");
+        asyncService.INSLOG("查看","积分记录",user.getId());//日志录入
 
         return list;
     }

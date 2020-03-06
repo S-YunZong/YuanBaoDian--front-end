@@ -30,4 +30,5 @@ public interface UserService {
     boolean updatePwd(String phone, String password);
 
     Integer checkTel(String tel);
+
 }

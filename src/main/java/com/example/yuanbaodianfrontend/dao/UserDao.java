@@ -34,4 +34,6 @@ public interface UserDao {
     boolean updatePwd(@Param("phone")String phone,@Param("password") String password);
     //手机号校验
     Integer checkTel(String tel);
+    //日志录入
+    boolean YbdJournal(@Param("remark")String remark,@Param("operation_ip") String operation_ip,@Param("operation_user") String operation_user,@Param("incident") String incident,@Param("frontback") String frontback);
 }
