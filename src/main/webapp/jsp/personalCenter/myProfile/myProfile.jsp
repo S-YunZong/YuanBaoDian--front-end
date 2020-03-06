@@ -43,13 +43,6 @@
                     $("#integral").val(data.integral);
                     $("#quantizationIntegral").val(data.quantizationIntegral);
                     $("#J-m-imgFileImg").attr("src",data.pictureUrl);
-                    if (data.email != null) {
-                        $("#youxiang").attr("style", "");
-                        $("#youxiang2").attr("style", "display:none");
-                    } else {
-                        $("#youxiang2").attr("style", "");
-                        $("#youxiang").attr("style", "display:none");
-                    }
                 }
             }
         })
@@ -158,19 +151,6 @@
                             <td colspan="2">
                                 <span class="gray" id="tel"></span>&nbsp;&nbsp;&nbsp;
                                 <a href="/jsp/personalCenter/myProfile/update_phone.jsp" class="org j-m-change">修改</a>
-                            </td>
-                        </tr>
-                        <tr style="" id="youxiang2">
-                            <td>邮箱</td>
-                            <td colspan="2">
-                                <input type="button" value="立即绑定" class="ui_btn ui_org_btn abled" id="yzTel1">
-                            </td>
-                        </tr>
-                        <tr style="display:none" id="youxiang">
-                            <td>邮箱</td>
-                            <td colspan="2">
-                                <span class="gray" id="email"></span>
-                                <a href="javascript:;" class="org j-m-change">修改</a>
                             </td>
                         </tr>
                         <tr style="">

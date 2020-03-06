@@ -68,7 +68,7 @@
         var da = data.list;
         var p = page || 1;
         var str = "";
-        if (da == "") {
+        if (da == null || da == "") {
             str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                 "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
                 "        <p>您还没有兑换记录，快去兑换您喜欢的礼物吧！</p>\n" +

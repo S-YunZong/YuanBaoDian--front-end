@@ -54,13 +54,6 @@
                                 <span>未绑定手机号</span>
                             </c:if>
                             <i class="phone active"></i>
-                            <c:if test="${not empty user_session.email}" var="judge">
-                                <span class="active">已绑定邮箱</span>
-                            </c:if>
-                            <c:if test="${!judge}">
-                                <span>未绑定邮箱</span>
-                            </c:if>
-                            <i class="email "></i>
                         </p>
                     </div>
                     <div class="line fr"></div>
@@ -140,7 +133,7 @@
             success: function (data) {
                 var da = data.list;
                 var str = "";
-                if (da == "") {
+                if (da == null || da == "") {
                     str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                         "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
                         "        <p>您还没有收藏，快去收藏吧！</p>\n" +
@@ -201,7 +194,7 @@
             },
             success: function (data) {
                 var str = "";
-                if (data == "") {
+                if (data == "" || data  == null) {
                     str += "<div class=\"Z_list-stat Z_list-empty\">\n" +
                         "        <img src=\"https://webimg.ziroom.com/5df144d1-4513-44e2-a885-715b149765a6.png\" alt=\"\">\n" +
                         "        <p>您还没有礼物，快去兑换吧！</p>\n" +
