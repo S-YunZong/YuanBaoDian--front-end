@@ -51,7 +51,6 @@ public class UserController {
     @ResponseBody
     public YbdUser login(String phone, String password,HttpSession session){
         YbdUser login = userService.login(phone, password);
-        System.out.println(login);
             if (login!=null){
                 session.setAttribute("user_session",login);
                 asyncService.INSLOG("查询","登录",login.getId());//日志录入
@@ -147,7 +146,6 @@ public class UserController {
     public boolean changePwd(HttpSession session){
         int code = (int) ((Math.random()*9+1)*1000);
         session.setAttribute("code", code);
-        System.out.println(code);
         //boolean sendSMS = SendSMSUtils.sendMSM(user.getTel(),String.valueOf(code));
         return true;
     }
