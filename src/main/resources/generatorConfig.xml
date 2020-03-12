@@ -38,7 +38,7 @@
                         <property name="enableSubPackages" value="false" />
                     </javaClientGenerator>-->
 
-        <table tableName="ybd_journal" domainObjectName="YbdJournal"
+        <table tableName="ybd_question_keyword" domainObjectName="YbdQuestionKeyword"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>

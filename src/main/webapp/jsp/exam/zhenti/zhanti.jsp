@@ -11,23 +11,113 @@
 <head>
     <title>Title</title>
     <%@include file="/jsp/commet/header.jsp" %>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/static/guoda.com_files/css/zoneStyle.css">
     <style>
 
         #biaoti{
             position: absolute;
             left: 30px;
         }
+        table tr, table td {
+            font-size: 14px;
+        }
+        .tm{
+            font-size: 30px;
+            text-align: center;
+        }
     </style>
 </head>
+<script>
+    $(function () {
+        selgjc()
+    })
+    //查询关键词
+    function selgjc() {
+        $.ajax({
+            url: "/user/selYbdQuestionBackKeyword",
+            type: "post",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                if(data){
+                    var mm="";
+                   $(data).each(function (a,b) {
+                       mm+="<span onclick=\"xuanzeguanjianci(this)\">"+b.keyword+"</span>";
+                   })
+                    $("#tabsSpan").html(mm);
+                }
+            }
+        })
+    }
+    //选择关键词
+    function xuanzeguanjianci(t) {
+        var list=$("#gjzinput").val();
+        var s=list.split(",");
+        var p=0;
+        for (var o=0;o<s.length;o++){
+            p++;
+        }
+        var b=$(t).hasClass("active");
+        var gjz=$(t).text();
+        if(b==true){
+            var mm=[];
+            for (var i=0;i<s.length;i++) {
+                if(gjz!=s[i]){
+                    mm.push(s[i]);
+                }else {
+                    $(t).removeClass("active");
+                }
+            }
+            $("#gjzinput").val(mm);
+        }else {
+            if(p<5){//限制关键词个数
+                $(t).addClass("active");
+                var gjzinput=$("#gjzinput").val();
+                if(gjzinput==""){
+                    $("#gjzinput").val(gjz)
+                }else {
+                    $("#gjzinput").val($("#gjzinput").val()+","+gjz);
+                }
+            }else {
+                alert("最多查询5个关键词！")
+            }
+
+        }
+
+    }
+</script>
 <body>
 <div class="container" id="dati" style="display: block">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <h1 style="margin: 60px 280px">真题题库</h1>
-            <h3 style="margin: 60px 133px">
+
+                <h1 style="margin: 30px 280px">真题题库</h1>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" style="width: 650px" id="gjzinput" placeholder="请选择下列关键词进行搜索！最多查询5个关键词！" disabled>
+                </div>
+                <table>
+                <tr>
+                    <td colspan="3">关键词</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="tags clearfix" id="tabsSpan">
+                            <%--<span onclick="xuanzeguanjianci(this)">体育运动</span>--%>
+
+                            </div>
+                        <input type="hidden" name="tags" id="tagsList">
+                    </td>
+                </tr>
+
+            </table>
+            <%--<h1 style="margin: 90px 280px">真题题库</h1>
+            <h3 style="margin: 90px 133px">
                 学生们可以免费的享受真题题库带来<br><br>
                 的知识考验！！同学们快开始答题吧！
-            </h3>
+            </h3>--%>
             <button type="button" class="btn btn-default btn-lg" onclick="kaishi()" style="margin: 60px 246px;width: 200px;background-color: #F5FAFC">开始答题</button>
         </div>
     </div>
@@ -73,8 +163,7 @@
                 <%--解析--%>
                 <div id="div3" style="border:#EEEEEE solid 2px;width: 600px;height: 200px;">
                     <h3 style="margin: 20px 50px">
-                        试题讲解：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="iconfont iconiconfontweibiaoti1" onclick="wenti()"></i>
+                        试题讲解：
                     </h3>
                     <div style="overflow: auto; width: 500px;height:130px;margin: -10px 80px;">
                         <h5 id="z-jiangjie" style="display: none"></h5>
@@ -269,6 +358,7 @@
     }
     /*带做过题的数据跳转分页查询*/
     function redisfenye(page) {
+        var list=$("#gjzinput").val();
         var phone="${user_session.phone}";
         $.ajax({
             url: "/redis/RECORD_allHash",
@@ -278,12 +368,12 @@
                 phone: phone
             },
             success: function (data) {
-                chaxuntiku(page,data);
+                chaxuntiku(page,data,list);
             }
         })
     }
     /*分页展示题库*/
-    function chaxuntiku(page,redti) {
+    function chaxuntiku(page,redti,gjzz) {
         var p=page || 1;
         $.ajax({
             url:"/user/listYbdQuestionBack",
@@ -292,7 +382,8 @@
             data:{
                 offset:p-1,
                 limit:1,
-                questionTypeId:${param.typeid}
+                questionTypeId:${param.typeid},
+                gjzz:gjzz
             },
             success:function (data) {
                 if(data){

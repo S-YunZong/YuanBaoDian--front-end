@@ -1,7 +1,7 @@
 
 .slideLeft li b,
 .icon {
-    background-image: url(/static/images/zoneIcon.png);
+
     background-repeat: no-repeat;
 }
 
@@ -247,6 +247,7 @@
     margin-right: 10px;
     color: #ccc;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .tags span.active {
@@ -402,7 +403,7 @@
 }
 
 .z_buttw50 {
-    background: url("../images/btn.png") no-repeat left 0;
+
     color: #fff;
     cursor: pointer;
     height: 26px;
@@ -442,7 +443,7 @@
 }
 
 .tc .t_spmybtn01 {
-    background: url(../images/t_myspacefix01.png) no-repeat 0 -409px;
+
     color: #fff;
     width: 60px;
     height: 26px;
@@ -533,7 +534,7 @@
 }
 
 .tsTitle {
-    background: url(../images/change_explain.png) no-repeat left center;
+
     padding-left: 20px;
     font-size: 16px;
     color: #FD8145;

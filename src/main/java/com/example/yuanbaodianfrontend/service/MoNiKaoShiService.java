@@ -10,6 +10,8 @@ public interface MoNiKaoShiService {
     List<YbdQuestionType> selYbdQuestionType();
     //题库
     void listYbdQuestionBack(LimitVo page,int questionTypeId);
+    //题库
+    void listYbdQuestionBack2(LimitVo page,int questionTypeId,String[] gjz);
     //查询章节
     List<YbdChapter> listYbdChapter();
     //查询关卡
@@ -30,6 +32,7 @@ public interface MoNiKaoShiService {
     boolean addYbdUserAnswerRecord(int id);
     //修改真题题库状态
     boolean updzhanti(int id);
-
+    //查询关键词
+    List<YbdQuestionBackKeyword> selYbdQuestionBackKeyword();
 
 }

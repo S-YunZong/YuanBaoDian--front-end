@@ -166,8 +166,7 @@
                 <%--解析--%>
                 <div id="div3" style="border:#EEEEEE solid 2px;width: 600px;height: 200px;">
                     <h3 style="margin: 20px 50px">
-                        试题讲解：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="iconfont iconiconfontweibiaoti1" onclick="wenti()"></i>
+                        试题讲解：
                     </h3>
                     <div style="overflow: auto; width: 500px;height:130px;margin: -10px 80px;">
                         <h5 id="c-jiangjie" style="display: none"></h5>

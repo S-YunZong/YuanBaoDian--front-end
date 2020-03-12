@@ -50,13 +50,13 @@
                 <div class="col-md-12 column">
                     <%--轮播图--%>
                     <div class="carousel slide" id="carousel-481935">
-                        <ol class="carousel-indicators">
-                            <li class=" " data-slide-to="0" data-target="#carousel-481935">
+                        <ol class="carousel-indicators" id="carousel">
+                            <%--<li data-slide-to="0" data-target="#carousel-481935">
                             </li>
                             <li data-slide-to="1" data-target="#carousel-481935">
                             </li>
                             <li data-slide-to="2" data-target="#carousel-481935">
-                            </li>
+                            </li>--%>
                         </ol>
                         <div class="carousel-inner" id="rotationChart">
 <%--                            <div class="item active">--%>
@@ -70,10 +70,10 @@
 <%--                            </div>--%>
                         </div>
                         <a class="left carousel-control" href="#carousel-481935" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <img src="/static/image/尖括号 (1).png" style="margin-top: 150px" height="80px" alt="">
                         </a>
                         <a class="right carousel-control" href="#carousel-481935" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <img src="/static/image/尖括号.png" style="margin-top: 150px" height="80px" alt="">
                         </a>
                     </div>
                     <h2 style="margin: 50px 480px">模拟考试</h2>
@@ -385,5 +385,10 @@
         </div>
     </div>
 </div>
+<style>
+    .glyphicon glyphicon-chevron-right{
+        background-color: red;
+    }
+</style>
 </body>
 </html>

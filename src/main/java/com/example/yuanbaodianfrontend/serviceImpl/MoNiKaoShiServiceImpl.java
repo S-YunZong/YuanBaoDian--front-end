@@ -41,7 +41,16 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
         page.setTotal(Integer.valueOf(String.valueOf(info.getTotal())));
         page.setRows(info.getList());
     }
-
+    @Override
+    public void listYbdQuestionBack2(LimitVo page,int questionTypeId,String[] gjz) {
+        int[] s=moNiKaoShiDao.listYbdQuestionBackid2(questionTypeId,gjz);
+        PageHelper.offsetPage(page.getOffset(), page.getLimit());
+        List<YbdQuestionBack> list = moNiKaoShiDao.listYbdQuestionBack2(questionTypeId,gjz);
+        page.setTimuid(s);
+        PageInfo<YbdQuestionBack> info = new PageInfo<>(list);
+        page.setTotal(Integer.valueOf(String.valueOf(info.getTotal())));
+        page.setRows(info.getList());
+    }
     @Override
     public List<YbdChapter> listYbdChapter() {
         return moNiKaoShiDao.listYbdChapter();
@@ -102,5 +111,10 @@ public class MoNiKaoShiServiceImpl implements MoNiKaoShiService {
     @Override
     public boolean updzhanti(int id) {
         return moNiKaoShiDao.updzhanti(id);
+    }
+
+    @Override
+    public List<YbdQuestionBackKeyword> selYbdQuestionBackKeyword() {
+        return moNiKaoShiDao.selYbdQuestionBackKeyword();
     }
 }

@@ -11,9 +11,13 @@ public interface MoNiKaoShiDao {
     //查看题目类型
     List<YbdQuestionType> selYbdQuestionType();
     //习题查询
-    List<YbdQuestionBack> listYbdQuestionBack(int questionTypeId);
+    List<YbdQuestionBack> listYbdQuestionBack(@Param("questionTypeId") int questionTypeId);
     //查询题目id
-    int[] listYbdQuestionBackid(int questionTypeId);
+    int[] listYbdQuestionBackid(@Param("questionTypeId") int questionTypeId);
+    //习题查询
+    List<YbdQuestionBack> listYbdQuestionBack2(@Param("questionTypeId") int questionTypeId,@Param("gjz")String[] gjz);
+    //查询题目id
+    int[] listYbdQuestionBackid2(@Param("questionTypeId") int questionTypeId,@Param("gjz")String[] gjz);
     //查询章节
     List<YbdChapter> listYbdChapter();
     //查询关卡
@@ -38,4 +42,6 @@ public interface MoNiKaoShiDao {
     boolean addYbdUserAnswerRecord(int id);
     //修改学习进度
     boolean updYbdUserAnswerRecord(@Param("id") int id,@Param("chapterSerialNumber") int chapterSerialNumber);
+    //查询关键词
+    List<YbdQuestionBackKeyword> selYbdQuestionBackKeyword();
 }

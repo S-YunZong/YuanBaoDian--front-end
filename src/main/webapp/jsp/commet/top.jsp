@@ -135,9 +135,9 @@
 
             <!-- 顶部导航 -->
             <ul class="Z_nav_box" onclick="daohang()">
-                <li><a href="/jsp/index.jsp" class="ani active">首页</a></li>
+                <li><a href="/jsp/index.jsp" class="ani ">首页</a></li>
                 <li><a href="/jsp/exam/practiceTest.jsp" class="ani ">模拟考试</a></li>
-                <li><a href="/jsp/Training/Training.jsp" class="ani ">培训机构</a></li>
+                <li><a href="/jsp/Training/Training.jsp" class="ani ">我的学院</a></li>
                 <li><a href="/jsp/PointsGift/PointsGift.jsp" class="ani ">积分礼物</a></li>
                 <li><a href="/jsp/404.jsp" class="ani ">学术分享</a></li>
                 <li><a href="/jsp/404.jsp" class="ani ">视频教学</a></li>

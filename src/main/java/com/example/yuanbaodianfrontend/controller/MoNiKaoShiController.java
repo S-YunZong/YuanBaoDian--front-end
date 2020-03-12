@@ -28,18 +28,24 @@ public class MoNiKaoShiController {
     //查询题目类型
     @ResponseBody
     @RequestMapping("selYbdQuestionType")
-    public List<YbdQuestionType> selYbdQuestionType(HttpSession session){
+    public List<YbdQuestionType> selYbdQuestionType(){
         List<YbdQuestionType> list=moNiKaoShiService.selYbdQuestionType();
-        YbdUser user= (YbdUser) session.getAttribute("user_session");
-        asyncService.INSLOG("查看","模拟考试",user.getId());//日志录入
         return list;
     }
     //查询题目
     @RequestMapping("listYbdQuestionBack")
     @ResponseBody
-    public LimitVo listYbdQuestionBack(LimitVo page,Integer questionTypeId){
-        moNiKaoShiService.listYbdQuestionBack(page,questionTypeId);
-        return page;
+    public LimitVo listYbdQuestionBack(LimitVo page,Integer questionTypeId,String gjzz){
+        String[] gjz = new String[0];
+        System.out.println("字符串："+gjzz);
+        if(gjzz==null || gjzz==""){
+            moNiKaoShiService.listYbdQuestionBack(page,questionTypeId);
+            return page;
+        }else {
+            gjz = gjzz.split(",");
+            moNiKaoShiService.listYbdQuestionBack2(page,questionTypeId,gjz);
+            return page;
+        }
     }
     //查询章节
     @RequestMapping("ybdChapterList")
@@ -113,5 +119,12 @@ public class MoNiKaoShiController {
     public boolean updzhanti(Integer id){
         boolean b=moNiKaoShiService.updzhanti(id);
         return b;
+    }
+    //查询关键词
+    @ResponseBody
+    @RequestMapping("selYbdQuestionBackKeyword")
+    public List<YbdQuestionBackKeyword> selYbdQuestionBackKeyword(){
+        List<YbdQuestionBackKeyword> list=moNiKaoShiService.selYbdQuestionBackKeyword();
+        return list;
     }
 }

@@ -74,9 +74,7 @@
                 <%--解析--%>
                 <div id="div3" style="border:#EEEEEE solid 2px;width: 600px;height: 200px;">
                     <h3 style="margin: 20px 50px">
-                        试题讲解：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="iconfont iconiconfontweibiaoti1" onclick="wenti()"></i>
-                    </h3>
+                        试题讲解：</h3>
                     <div style="overflow: auto; width: 500px;height:130px;margin: -10px 80px;">
                         <h5 id="z-jiangjie" style="display: none"></h5>
                     </div>
@@ -230,6 +228,7 @@
     /*分页展示题库*/
     function chaxuntiku(page) {
         var p=page || 1;
+        var gjzz="";
         $.ajax({
             url:"/user/listYbdQuestionBack",
             type:"post",
@@ -237,7 +236,8 @@
             data:{
                 offset:p-1,
                 limit:1,
-                questionTypeId:1//{param.typeid}
+                questionTypeId:1,//{param.typeid}
+                gjzz:gjzz
             },
             success:function (data) {
                 if(data){

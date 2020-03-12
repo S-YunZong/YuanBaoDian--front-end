@@ -7,7 +7,7 @@
         select * from ybd_question_type
     </select>
     <!--//题库
-    List<YbdQuestionBack> listYbdQuestionBack(int questionTypeId);-->
+    List<YbdQuestionBack> listYbdQuestionBack(int questionTypeId,String[] gjz);-->
     <select id="listYbdQuestionBack" resultType="YbdQuestionBack" resultMap="OptionMap">
       select ybd_question_back.* ,ybd_user.user_name
       from ybd_question_back,ybd_user
@@ -22,12 +22,59 @@
     <select id="seldaan" resultType="YbdQuestionBackOption">
       select * from ybd_question_back_option where question_back_id=#{id}
     </select>
+    <!--//题库
+    List<YbdQuestionBack> listYbdQuestionBack(int questionTypeId,String[] gjz);-->
+    <select id="listYbdQuestionBack2" resultType="YbdQuestionBack" resultMap="OptionMap2">
+        select ybd_question_back.* ,ybd_user.user_name
+        from ybd_question_back,ybd_user
+        <if test="gjz.length!=0">
+            ,(SELECT DISTINCT(ybd_question_keyword.question_back_id) FROM ybd_question_keyword where ybd_question_keyword.keyword_id in (
+            SELECT ybd_question_back_keyword.id FROM ybd_question_back_keyword
+            where ybd_question_back_keyword.keyword in
+            <foreach collection="gjz" item="gjz" open="(" close=")" separator=",">
+                #{gjz}
+            </foreach>
+            )) a
+        </if>
+        where question_type_id=#{questionTypeId}
+        and ybd_question_back.create_user=ybd_user.id
+        <if test="gjz.length!=0">
+            and a.question_back_id=ybd_question_back.id
+        </if>
+    </select>
+    <resultMap id="OptionMap2" type="YbdQuestionBack">
+        <id property="id" column="id"></id>
+        <collection property="optionList" column="id" select="seldaan2" ofType="YbdQuestionBackOption">
+        </collection>
+    </resultMap>
+    <select id="seldaan2" resultType="YbdQuestionBackOption">
+      select * from ybd_question_back_option where question_back_id=#{id}
+    </select>
     <!--id
     int[] listYbdQuestionBackid(int questionTypeId);-->
     <select id="listYbdQuestionBackid" resultType="int">
         select ybd_question_back.id
       from ybd_question_back
       where question_type_id=#{questionTypeId}
+    </select>
+    <!--id
+    int[] listYbdQuestionBackid(int questionTypeId);-->
+    <select id="listYbdQuestionBackid2" resultType="int">
+        select ybd_question_back.id
+        from ybd_question_back
+        <if test="gjz.length!=0">
+            ,(SELECT DISTINCT(ybd_question_keyword.question_back_id) FROM ybd_question_keyword where ybd_question_keyword.keyword_id in (
+            SELECT ybd_question_back_keyword.id FROM ybd_question_back_keyword
+            where ybd_question_back_keyword.keyword in
+            <foreach collection="gjz" item="gjz" open="(" close=")" separator=",">
+                #{gjz}
+            </foreach>
+            )) a
+        </if>
+        where question_type_id=#{questionTypeId}
+        <if test="gjz.length!=0">
+            and a.question_back_id=ybd_question_back.id
+        </if>
     </select>
     <!--//查询章节
     List<YbdChapter> listYbdChapter();-->
@@ -112,6 +159,11 @@
     <update id="updYbdUserAnswerRecord" parameterType="int">
         update ybd_user_answer_record set chapter_serial_number=#{chapterSerialNumber} where user_id=#{id}
     </update>
+    <!--//查询关键词
+    List<YbdQuestionBackKeyword> selYbdQuestionBackKeyword();-->
+    <select id="selYbdQuestionBackKeyword" resultType="YbdQuestionBackKeyword">
+        select * from ybd_question_back_keyword
+    </select>
 </mapper>
 
 

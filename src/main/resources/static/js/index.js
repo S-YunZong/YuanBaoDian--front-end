@@ -356,7 +356,12 @@ function rotationChart(){
         dataType: "json",
         success: function (data) {
             var str ="";
+            var aaa="";
             if(data!=null){
+                for(var i=0;i<data.length;i++){
+                    aaa+="<li data-slide-to=\""+i+"\" data-target=\"#carousel-481935\">\n" +
+                        "                            </li>"
+                }
                 str +="<div class=\"item active\">\n" +
                     "                                <img alt=\"\" src=\""+data[0].pictureUrl+"\" style=\"height: 400px;width: 1140px\"/>\n" +
                     "                            </div>";
@@ -369,10 +374,11 @@ function rotationChart(){
                 }
             }else{
                 str +="<div class=\"item active\">--%>\n" +
-                    "<%--                                <img alt=\"\" src=\"/static/image/timg.gif\" style=\"height: 400px;width: 1140px\"/>--%>\n" +
-                    "<%--                            </div>";
+                    "                               <img alt=\"\" src=\"/static/image/timg.gif\" style=\"height: 400px;width: 1140px\"/>\n" +
+                    "                           </div>";
             }
             $("#rotationChart").html(str);
+            $("#carousel").html(aaa);
         }
     });
 }

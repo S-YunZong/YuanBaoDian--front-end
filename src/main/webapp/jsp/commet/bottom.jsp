@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<div style="width: 1200px;height: 200px;background-color: #F2F2F2;text-align:center;">
+<div style="width: 1050px;height: 200px;background-color: #F2F2F2;text-align:center;">
     <div style="height: 30px">
 
     </div>
